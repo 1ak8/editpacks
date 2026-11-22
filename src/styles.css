@@ -1011,16 +1011,42 @@ html { scroll-padding-top: 92px; }
 .drop-tile:hover .drop-tags, .drop-tile:focus-visible .drop-tags { opacity: 1; visibility: visible; transform: translateY(0); }
 .preview-button { border-color: rgb(237 229 211 / 28%); background: rgb(20 21 20 / 84%); color: #eee8dc; transition: background .2s, border-color .2s, transform .2s; }
 .preview-button:hover, .preview-button:focus-visible { border-color: rgb(237 229 211 / 55%); background: rgb(38 37 33 / 96%); transform: translateY(-1px); }
-.plus-banner { position: relative; display: flex; min-height: 72px; align-items: center; gap: 18px; margin: -22px 0 58px; padding: 15px 22px; overflow: hidden; border: 1px solid rgb(255 255 255 / 11%); border-radius: 18px; background: linear-gradient(108deg, #332b22 0%, #1b1c20 53%, #321d23 100%); box-shadow: inset 0 1px rgb(255 255 255 / 5%); }
-.plus-banner::before { position: absolute; inset: 0; content: ""; background: radial-gradient(ellipse at 20% 50%, rgb(196 161 93 / 10%), transparent 44%), radial-gradient(ellipse at 100% 50%, rgb(173 71 84 / 12%), transparent 42%); pointer-events: none; }
+.plus-banner { position: relative; display: flex; min-height: 72px; align-items: center; gap: 18px; margin: -22px 0 58px; padding: 15px 22px; overflow: hidden; border: 1px solid rgb(183 229 223 / 14%); border-radius: 14px; background: linear-gradient(108deg, #111a1c 0%, #101318 53%, #111719 100%); box-shadow: inset 0 1px rgb(255 255 255 / 5%); }
+.plus-banner::before { position: absolute; inset: 0; content: ""; background: radial-gradient(ellipse at 10% 50%, rgb(34 211 238 / 9%), transparent 42%), radial-gradient(ellipse at 100% 50%, rgb(183 229 223 / 7%), transparent 40%); pointer-events: none; }
 .plus-badge, .plus-banner p, .plus-banner a { position: relative; z-index: 1; }
-.plus-badge { flex: 0 0 auto; padding: 9px 14px; border-radius: 999px; background: #f7f6f2; color: #18191d; font: 750 13px/1 system-ui, sans-serif; letter-spacing: -.02em; }
-.plus-banner p { flex: 1; margin: 0; color: #c4c0bd; font-size: 15px; line-height: 1.45; }
-.plus-banner p strong { color: #f3eee7; font-weight: 650; }
-.plus-banner a { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; color: #f0eeec; font-size: 14px; transition: color .2s, gap .2s; }
+.plus-badge { flex: 0 0 auto; padding: 8px 12px; border: 1px solid rgb(34 211 238 / 25%); border-radius: 999px; background: rgb(34 211 238 / 8%); color: #b7e5df; font: 750 13px/1 system-ui, sans-serif; letter-spacing: -.02em; }
+.plus-banner p { flex: 1; margin: 0; color: #aeb7bc; font-size: 14px; line-height: 1.45; }
+.plus-banner p strong { color: #f3f5f4; font-weight: 650; }
+.plus-banner a { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; color: #b7e5df; font: 600 10px var(--mono); letter-spacing: .04em; transition: color .2s, gap .2s; }
 .plus-banner a:hover, .plus-banner a:focus-visible { gap: 12px; color: #fff; }
+.editor-community { margin: 58px 0 34px; }
+.editor-community-bar { display: flex; min-height: 76px; align-items: center; gap: 22px; padding: 13px 17px; overflow: hidden; border: 1px solid rgb(183 229 223 / 12%); border-radius: 14px; background: linear-gradient(110deg, #11161a, #0d1014 60%, #111719); box-shadow: inset 0 1px rgb(255 255 255 / 4%); }
+.editor-community-intro { display: flex; flex: 0 0 280px; align-items: center; gap: 13px; }
+.editor-community-avatars { display: flex; flex: 0 0 auto; padding-left: 2px; }
+.editor-community-avatars span, .editor-community-avatar { display: grid; place-items: center; border: 1px solid #101418; border-radius: 50%; background: linear-gradient(145deg, #26383d, #14191d); color: #c9e9e5; font: 700 8px var(--mono); }
+.editor-community-avatars span { width: 30px; height: 30px; margin-left: -3px; }
+.editor-community-avatars span + span { margin-left: -8px; }
+.editor-community-intro h2 { margin: 0; color: #e8eeed; font-size: 13px; font-weight: 650; letter-spacing: -.025em; line-height: 1.25; }
+.editor-community-list { display: flex; flex: 1; min-width: 0; align-items: center; gap: 8px; margin: 0; padding: 0 2px 2px 0; overflow-x: auto; list-style: none; scrollbar-width: thin; scrollbar-color: #374448 transparent; }
+.editor-community-chip { display: flex; min-height: 38px; flex: 0 0 auto; align-items: center; gap: 8px; padding: 4px 10px 4px 5px; border: 1px solid rgb(255 255 255 / 7%); border-radius: 999px; background: rgb(255 255 255 / 2%); color: #c1c8cb; }
+.editor-community-avatar { width: 27px; height: 27px; border-color: rgb(183 229 223 / 15%); background: #151c20; color: #b7e5df; }
+.editor-community-name { color: #cbd1d1; font-size: 11px; white-space: nowrap; }
+.editor-community-dot { width: 3px; height: 3px; border-radius: 50%; background: #58c8d3; }
+.editor-community-count { color: #838e93; font: 9px var(--mono); white-space: nowrap; }
+.editor-community-index { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 1px 0; }
+.editor-community-index p { display: flex; align-items: center; gap: 7px; margin: 0; color: #78838a; font: 9px var(--mono); letter-spacing: .03em; }
+.editor-community-index p strong { color: #b7e5df; font-weight: 500; }
+.editor-community-index p i { width: 3px; height: 3px; border-radius: 50%; background: #4c5d61; }
+.editor-community-index a { display: inline-flex; align-items: center; gap: 7px; color: #8c989d; font: 9px var(--mono); letter-spacing: .06em; transition: color .2s; }
+.editor-community-index a:hover, .editor-community-index a:focus-visible { color: #b7e5df; }
+@media (max-width: 760px) {
+  .editor-community-bar { align-items: flex-start; flex-direction: column; gap: 14px; padding: 14px; }
+  .editor-community-intro { flex-basis: auto; }
+  .editor-community-list { width: 100%; }
+}
 @media (max-width: 640px) {
-  .plus-banner { align-items: flex-start; flex-direction: column; gap: 12px; margin: -14px 0 44px; padding: 16px; border-radius: 15px; }
+  .plus-banner { align-items: flex-start; flex-direction: column; gap: 12px; margin: -14px 0 44px; padding: 16px; border-radius: 14px; }
   .plus-banner p { font-size: 14px; }
-  .plus-banner a { font-size: 13px; }
+  .plus-banner a { font-size: 9px; }
+  .editor-community { margin-top: 42px; }
 }

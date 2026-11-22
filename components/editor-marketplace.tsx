@@ -39,6 +39,15 @@ const series = [
   { title: "VAMPIRE DIARIES", studio: "CW // 35MM GRAIN", image: "photo-1470252649378-9c29740c9fa8", count: "54 PACKS" },
 ]
 
+const communityEditors = [
+  { name: "skully", initials: "SK", clips: "14K" },
+  { name: "Danny", initials: "DA", clips: "5,630" },
+  { name: "glö*", initials: "G*", clips: "5,657" },
+  { name: "Rylxqn", initials: "RY", clips: "6,139" },
+  { name: "Op", initials: "OP", clips: "43.2K" },
+  { name: "alchemist", initials: "AL", clips: "636" },
+]
+
 const waveform = [10, 18, 14, 25, 19, 35, 23, 15, 29, 42, 31, 19, 24, 36, 18, 12, 26, 39, 28, 16, 32, 22, 12, 29, 44, 23, 17, 33, 21, 11, 25, 37, 19, 29, 14, 22, 35, 18, 12, 27, 40, 24, 16, 31, 20, 13, 28, 36]
 const quickFilters = ["4K 60FPS", "NO WATERMARK", "PRORES"]
 const FEATURE_DURATION_MS = 5500
@@ -271,6 +280,18 @@ export function EditorMarketplace() {
       </section>
       <SeriesRail />
       <CategoryBrowse onSelectCategory={setPackCategory} />
+      <section className="editor-community" id="community" aria-labelledby="editor-community-title">
+        <div className="editor-community-bar">
+          <div className="editor-community-intro">
+            <div className="editor-community-avatars" aria-hidden="true">{communityEditors.slice(0, 4).map(editor => <span key={editor.name}>{editor.initials}</span>)}</div>
+            <h2 id="editor-community-title">Creators cutting with EditPacks</h2>
+          </div>
+          <ul className="editor-community-list" aria-label="Featured EditPacks creators">
+            {communityEditors.map(editor => <li className="editor-community-chip" key={editor.name}><span className="editor-community-avatar" aria-hidden="true">{editor.initials}</span><span className="editor-community-name">{editor.name}</span><span className="editor-community-dot" aria-hidden="true" /><span className="editor-community-count">{editor.clips}</span></li>)}
+          </ul>
+        </div>
+        <div className="editor-community-index"><p><strong>833</strong> TITLES <i /> <strong>5,066</strong> PACKS</p><a href="#trending">EVERY TITLE <ArrowRight size={14} /></a></div>
+      </section>
     </div>
 
     <footer className="vault-footer"><div className="footer-top"><a className="vault-wordmark" href="#top"><span>EDITPACKS</span></a><span className="footer-manifesto">A TOOLKIT FOR THE FRAME-OBSESSED.</span><span className="r2-status"><i /> CLOUDFLARE R2 / 99.98% OPERATIONAL</span></div><div className="footer-columns"><div><span className="footer-label">THE VAULT</span><a href="#trending">Browse collections</a><a href="#drops">Fresh drops</a><a href="#store">Creator store</a><a href="#categories">Browse by category</a></div><div><span className="footer-label">STUDIO</span><a href="#community">Community / Discord</a><a href="#api">API status</a><a href="#request" onClick={event => { event.preventDefault(); setRequestOpen(true) }}>Request a scenepack</a></div><div><span className="footer-label">LEGAL / SUPPORT</span><a href="#dmca">DMCA takedown portal</a><a href="#terms">Terms of use</a><a href="#contact">Contact the studio</a></div><div className="footer-note"><span>BUILT FOR THE CUT.</span><p>Independent tools for a more considered edit. Handle every source with care.</p></div></div><div className="footer-bottom"><span>© 2025 EDITPACKS — ALL RIGHTS RESERVED</span><span>NO WATERMARKS. NO SHORTCUTS.</span></div></footer>
