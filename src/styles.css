@@ -29,7 +29,7 @@ button, input, textarea { font: inherit; }
 button { color: inherit; }
 .vault-app { position: relative; min-height: 100vh; overflow: clip; background: #08090d; --mono: 'ui-monospace', monospace; --cyan: #22d3ee; --amber: #f59e0b; --muted-copy: #8d929e; }
 .grain-overlay { position: absolute; pointer-events: none; z-index: 12; inset: 0; opacity: .12; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
-.command-dock { position: absolute; z-index: 30; top: 15px; left: 50%; transform: translateX(-50%); width: min(1160px, calc(100% - 56px)); min-height: 55px; padding: 7px 11px 7px 17px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid #ffffff14; border-radius: 999px; background: #0c0d14c9; backdrop-filter: blur(28px); box-shadow: 0 14px 50px #0007, inset 0 1px #ffffff0a; }
+.command-dock { position: absolute; z-index: 30; top: 15px; left: 50%; transform: translateX(-50%); width: min(1360px, calc(100% - 40px)); min-height: 55px; padding: 7px 11px 7px 17px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid #ffffff14; border-radius: 999px; background: #0c0d14c9; backdrop-filter: blur(28px); box-shadow: 0 14px 50px #0007, inset 0 1px #ffffff0a; }
 .vault-wordmark { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: .1em; white-space: nowrap; }.vault-wordmark small { border: 1px solid #ffffff1b; color: #8f929c; border-radius: 3px; padding: 3px 5px; font: 8px var(--mono); letter-spacing: 0; }.wordmark-dot { color: var(--cyan); }.rec-indicator { display: flex; align-items: center; gap: 5px; color: #a1a6ae; font: 8px var(--mono); letter-spacing: .08em; }.rec-indicator i { width: 6px; height: 6px; background: #f04d55; border-radius: 50%; box-shadow: 0 0 9px #f04d55; animation: rec-pulse 1.8s infinite; }
 @keyframes rec-pulse { 50% { opacity: .45; box-shadow: 0 0 2px #f04d55; } }
 .dock-nav { display: flex; align-items: center; gap: 4px; }.dock-nav a { padding: 10px 13px; border-radius: 999px; color: #9b9da8; font-size: 10px; font-weight: 600; transition: color .2s, background .2s; white-space: nowrap; }.dock-nav a:hover { color: white; }.dock-nav a.dock-active { background: #f8fafc; color: #101116; font-weight: 750; }
@@ -254,7 +254,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (max-width: 480px) { .trend-queue { grid-template-columns: 1fr; }.spotlight-copy { right: 14px; bottom: 14px; left: 14px; gap: 6px; }.spotlight-copy > strong { font-size: clamp(18px, 6vw, 28px); } }
 .vault-app :is(.rec-indicator, .vault-wordmark small, .dialog-kicker, .request-dialog > p, .request-dialog label, .request-dialog input, .request-dialog textarea, .dialog-footnote, .request-success p, .search-field input, .search-field kbd, .search-shortcuts kbd, .search-results > button, .result-index, .no-results, .search-shortcuts, .preview-toast > span, .audio-callout > div > span, .audio-callout p, .audio-callout > a, .footer-manifesto, .r2-status, .footer-columns a, .footer-label, .footer-note > span, .footer-note p, .footer-bottom, .request-float, .drop-number, .drop-preview, .drop-caption b, .drop-caption small, .series-number, .series-info small, .series-info > span, .creator-overline, .creator-proof, .price-eyebrow, .creator-buy > a span, .creator-buy small, .timeline-kicker, .timeline-console-head, .timeline-ruler, .track-label, .timeline-clip, .timeline-foot) { font-size: 13px !important; line-height: 1.35; }
 
-.command-dock { position: fixed; z-index: 50; top: 14px; left: 50%; right: auto; width: min(92%, 64rem); transform: translateX(-50%); }
+.command-dock { position: fixed; z-index: 50; top: 14px; left: 50%; right: auto; width: min(96%, 84rem); transform: translateX(-50%); }
 @media (min-width: 1051px) {
   .command-dock { gap: 8px; padding-right: 12px; padding-left: 12px; }
   .vault-wordmark { flex: 0 0 auto; }
@@ -615,6 +615,8 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-badge { border-radius: 2px; }
 .poster-open, .trend-filters button { border-radius: 3px; }
 .poster-card::after { position: absolute; z-index: -1; inset: 0; content: ''; opacity: .7; background: linear-gradient(135deg, rgb(183 229 223 / 10%), transparent 38%); pointer-events: none; }
+.poster-card[data-title-treatment="attack"] .poster-copy > strong { color: #f1e5d0; font-family: Georgia, "Times New Roman", serif; font-weight: 800; letter-spacing: .07em; }
+.poster-card[data-title-treatment="spiderverse"] .poster-copy > strong { color: #fff; font-family: Impact, "Arial Narrow", system-ui, sans-serif; font-size: clamp(15px, 1.5vw, 20px); font-style: italic; font-weight: 900; letter-spacing: -.045em; text-shadow: 2px 1px 0 #f05274; }
 .monitor-frame, .monitor-screen { border-radius: 0 !important; }
 .command-dock { border-radius: 8px; }
 .dock-nav a, .quick-ingest, .pro-button, .preview-button, .ingest-button, .dock-menu, .quick-filters button { border-radius: 5px; }
