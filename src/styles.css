@@ -1731,51 +1731,91 @@ html { scroll-padding-top: 92px; }
   /* Shift text content down with breathing room so it looks clean */
   .hero-content-grid {
     padding-top: 72px !important;
-    padding-bottom: 40px !important;
+    padding-bottom: 48px !important;
   }
 
   .hero-editorial {
-    margin-top: 32px !important;
-    padding-top: 10px !important;
+    margin-top: 54px !important;
+    padding-top: 14px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 10px !important;
+  }
+
+  .telemetry {
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+    margin-bottom: 2px !important;
   }
 
   .hero-editorial h1 {
-    margin: 8px 0 4px !important;
+    margin: 4px 0 2px !important;
     height: auto !important;
     flex: none !important;
   }
 
   .headline-title {
-    font-size: clamp(34px, 9vw, 48px) !important;
+    font-size: clamp(32px, 8.5vw, 44px) !important;
     line-height: 1 !important;
   }
 
   .headline-sub {
-    margin-top: 6px !important;
-    font-size: 14px !important;
+    margin-top: 4px !important;
+    font-size: 13px !important;
+    letter-spacing: 0.04em !important;
   }
 
+  /* Compact tags close together */
   .quick-filters {
-    margin: 4px 0 6px !important;
-    gap: 6px !important;
+    margin: 6px 0 3px !important;
+    gap: 5px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .quick-filters button {
+    padding: 5px 9px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.02em !important;
+    border-radius: 4px !important;
+    line-height: 1.2 !important;
   }
 
   .spec-strip {
-    margin: 2px 0 6px !important;
-    gap: 6px !important;
+    margin: 0 0 4px !important;
+    gap: 5px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .spec-strip span {
+    padding: 5px 9px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.02em !important;
+    border-radius: 4px !important;
+    line-height: 1.2 !important;
   }
 
   .cast-list {
-    margin: 4px 0 14px !important;
-    font-size: 12px !important;
+    margin: 3px 0 10px !important;
+    font-size: 11px !important;
     color: #94a3b8 !important;
+    letter-spacing: 0.03em !important;
   }
 
   .hero-controls {
-    margin-top: 6px !important;
-    gap: 12px !important;
+    margin-top: 4px !important;
+    gap: 10px !important;
+  }
+
+  .hero-controls .ingest-button,
+  .hero-controls .preview-button {
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+    border-radius: 6px !important;
   }
 }
