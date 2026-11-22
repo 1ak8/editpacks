@@ -5,29 +5,29 @@ import { ArrowDownToLine, ArrowRight, Check, Command, Download, Menu, Music2, Pa
 
 const features = [
   { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
-  { id: "02", title: "SPIDER-MAN", subtitle: "ACROSS THE SPIDER-VERSE", type: "MARVEL // ANIMATION", year: "2023 MASTER", cuts: "212 CUTS", downloads: "116K DL", spec: "4K 60FPS · PRORES", cast: "MILES MORALES  /  GWEN STACY  /  MIGUEL O'HARA", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaiJEQM8cI7oNhbn6_rsX2PJFvFYBcxuN4_jBrwbyZyN_O-qaz", palette: "#f05274", code: "SPV—04" },
+  { id: "02", title: "SPIDER-MAN", subtitle: "ACROSS THE SPIDER-VERSE", type: "MARVEL // ANIMATION", year: "2023 MASTER", cuts: "212 CUTS", downloads: "116K DL", spec: "4K 60FPS · PRORES", cast: "MILES MORALES  /  GWEN STACY  /  MIGUEL O'HARA", image: "/spiderman-poster.jpg", palette: "#f05274", code: "SPV—04" },
   { id: "03", title: "ATTACK ON TITAN", subtitle: "THE FINAL SEASON", type: "ANIME // FINAL SEASON", year: "2024 MASTER", cuts: "156 CUTS", downloads: "79K DL", spec: "4K 60FPS · PRORES", cast: "EREN YEAGER  /  MIKASA ACKERMAN  /  LEVI", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600", palette: "#e8a653", code: "AOT—FS" },
   { id: "04", title: "DUNE: PART TWO", subtitle: "THE DESERT AWAKENS", type: "SCI-FI // CINEMA", year: "2024 MASTER", cuts: "96 CUTS", downloads: "88K DL", spec: "IMAX 70MM · PRORES", cast: "PAUL ATREIDES  /  CHANI  /  FEYD-RAUTHA", image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600", palette: "#f1ab50", code: "DUN—02" },
 ]
 
 const trending = [
-  { title: "JUJUTSU KAISEN", downloads: "142K", packs: "184 PACKS", format: "4K 60FPS · PRORES", duration: "18m 42s", cuts: "184 CUTS", image: "photo-1578632767115-351597cf2477", category: "Anime", remake: true, remasterProgress: 78 },
-  { title: "SPIDER-MAN 2099 / MILES MORALES", downloads: "116K", packs: "212 PACKS", format: "4K 60FPS · PRORES", duration: "24m 16s", cuts: "212 CUTS", image: "photo-1607604276583-eef5d076aa5f", category: "Cinema", titleTreatment: "spiderverse" },
-  { title: "NARUTO SHIPPUDEN", downloads: "92K", packs: "176 PACKS", format: "4K HDR · PRORES", duration: "21m 10s", cuts: "176 CUTS", image: "photo-1578632767115-351597cf2477", category: "Anime" },
-  { title: "ATTACK ON TITAN", downloads: "79K", packs: "156 PACKS", format: "4K 60FPS · PRORES", duration: "16m 30s", cuts: "156 CUTS", image: "photo-1534447677768-be436bb09401", category: "Anime", isNew: true, titleTreatment: "attack" },
-  { title: "DEATH NOTE / THE BATMAN", downloads: "61K", packs: "88 PACKS", format: "4K DCI · PRORES", duration: "11m 52s", cuts: "88 CUTS", image: "photo-1500530855697-b586d89ba3ee", category: "Anime" },
-  { title: "DUNE: PART TWO", downloads: "58K", packs: "96 PACKS", format: "IMAX 70MM", duration: "14m 22s", cuts: "96 CUTS", image: "photo-1518709268805-4e9042af9f23", category: "Cinema", isNew: true },
-  { title: "ARCANE: SEASON TWO", downloads: "54K", packs: "132 PACKS", format: "4K HDR", duration: "20m 04s", cuts: "132 CUTS", image: "photo-1470252649378-9c29740c9fa7", category: "Series", remake: true, remasterProgress: 42 },
-  { title: "NEON GENESIS", downloads: "49K", packs: "108 PACKS", format: "35MM SCAN", duration: "15m 36s", cuts: "108 CUTS", image: "photo-1500534623283-312aade485b7", category: "Series" },
-  { title: "STAGE / AFTERGLOW", downloads: "46K", packs: "64 PACKS", format: "LIVE CAM · 4K", duration: "08m 52s", cuts: "64 CUTS", image: "photo-1518837695005-2083093ee35b", category: "K-Pop", isNew: true },
-  { title: "NIGHT CITY", downloads: "42K", packs: "146 PACKS", format: "60 FPS RAW", duration: "17m 19s", cuts: "146 CUTS", image: "photo-1519608487953-e999c86e7455", category: "Gaming" },
+  { title: "Grand Theft Auto VI", downloads: "1.3k", packs: "16 packs", format: "4K 60FPS · PRORES", duration: "18m 42s", cuts: "184 CUTS", image: "/gta6-poster.jpg", category: "Gaming", isNew: true },
+  { title: "Spider-Man: Across The Spider-Verse", downloads: "116k", packs: "212 packs", format: "4K 60FPS · PRORES", duration: "24m 16s", cuts: "212 CUTS", image: "/spiderman-poster.jpg", category: "Cinema", isNew: true, titleTreatment: "spiderverse" },
+  { title: "Naruto vs Luffy", downloads: "42", packs: "2 packs", format: "4K 60FPS · PRORES", duration: "12m 10s", cuts: "64 CUTS", image: "photo-1578632767115-351597cf2477", category: "Anime", isNew: true },
+  { title: "The Body", downloads: "13k", packs: "17 packs", format: "4K DCI · PRORES", duration: "15m 30s", cuts: "88 CUTS", image: "photo-1534447677768-be436bb09401", category: "Cinema" },
+  { title: "Jujutsu Kaisen", downloads: "86k", packs: "130 packs", format: "4K 60FPS · PRORES", duration: "24m 16s", cuts: "212 CUTS", image: "photo-1607604276583-eef5d076aa5f", category: "Anime", remake: true, isNew: true, remasterProgress: 78 },
+  { title: "Naruto Shippuden", downloads: "165k", packs: "112 packs", format: "4K HDR · PRORES", duration: "21m 10s", cuts: "176 CUTS", image: "photo-1578632767115-351597cf2477", category: "Anime", isNew: true },
+  { title: "Attack on Titan", downloads: "46k", packs: "71 packs", format: "4K 60FPS · PRORES", duration: "16m 30s", cuts: "156 CUTS", image: "photo-1534447677768-be436bb09401", category: "Anime", isNew: true },
+  { title: "Death Note / The Batman", downloads: "40k", packs: "31 packs", format: "4K DCI · PRORES", duration: "11m 52s", cuts: "88 CUTS", image: "photo-1500530855697-b586d89ba3ee", category: "Cinema", remake: true },
+  { title: "Dune: Part Two", downloads: "58k", packs: "96 packs", format: "IMAX 70MM", duration: "14m 22s", cuts: "96 CUTS", image: "photo-1518709268805-4e9042af9f23", category: "Cinema", isNew: true },
+  { title: "Arcane: Season Two", downloads: "54k", packs: "132 packs", format: "4K HDR", duration: "20m 04s", cuts: "132 CUTS", image: "photo-1470252649378-9c29740c9fa7", category: "Series", remake: true, remasterProgress: 42 },
 ]
 
 const fresh = [
   { title: "THE INCREDIBLES", studio: "PIXAR // 4K HDR", image: "photo-1533929736458-ca588d08c8be", number: "01", tags: ["New", "Animation"] },
   { title: "CHAINSAW MAN: REZE ARC", studio: "MAPPA STUDIOS", image: "photo-1518837695005-2083093ee35b", number: "02", tags: ["New", "Anime"] },
   { title: "ACROSS THE SPIDER-VERSE", studio: "SONY 4K // 10-BIT", image: "photo-1534796636912-3b95b3ab5986", number: "03", tags: ["New", "Animation"] },
-  { title: "IRON MAN", studio: "MARVEL // IMAX", image: "photo-1480714378408-67cf0d13bc1b", number: "04", tags: ["New", "Marvel"] },
+  { title: "IRON MAN", studio: "MARVEL // IMAX", image: "/spiderman-poster.jpg", number: "04", tags: ["New", "Marvel"] },
   { title: "THE BATMAN", studio: "IMAX 70MM // 4K", image: "photo-1500534623283-312aade485b7", number: "05", tags: ["New", "DC"] },
 ]
 
@@ -53,6 +53,7 @@ const quickFilters = ["4K 60FPS", "NO WATERMARK", "PRORES"]
 const FEATURE_DURATION_MS = 5500
 
 function imageUrl(id: string, width = 660) {
+  if (id.startsWith("/") || id.startsWith("http")) return id
   return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`
 }
 
@@ -81,11 +82,17 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
     rail.scrollBy({ left: direction * (firstCard.offsetWidth + 22) * 2, behavior: "smooth" })
   }
 
-  return <section className="vault-section trending-section" id="trending"><SectionHeading index="01" title="POPULAR SCENEPACKS" link="Browse all" />
-    <div className="chart-note"><span className="chart-note-kicker">THE EDITOR&apos;S CHART <i /> WEEKLY INDEX</span><p>Scenes creators keep coming back to.</p><span className="chart-note-range"><b>01—10</b> / RANKED BY DOWNLOADS</span></div>
-    <div className="trend-filters" aria-label="Filter scenepacks">{filters.map(filter => <button type="button" key={filter.value} className={category === filter.value ? "trend-filter-active" : ""} aria-pressed={category === filter.value} onClick={() => onCategoryChange(filter.value)}>{filter.label}</button>)}</div>
+  return <section className="vault-section trending-section" id="trending">
+    <div className="trending-header-bar">
+      <div className="trending-header-title">
+        <span className="trending-pill" />
+        <h2>Popular Scenepacks</h2>
+      </div>
+      <a href="#trending" className="trending-view-all">View all <ArrowRight size={14} /></a>
+    </div>
     <div className="poster-rail">
-      <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map(pack => <article className="poster-item" key={pack.title} role="listitem">
+      <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" key={pack.title} role="listitem">
+        <span className="poster-rank-number" aria-hidden="true">{index + 1}</span>
         <div className="poster-frame">
           <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title} scenepack`}>
             {pack.isNew && <span className="poster-badge">NEW</span>}
@@ -94,7 +101,15 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
             </span><span className="poster-tags" aria-label="Scenepack tags">{pack.isNew && <span>New</span>}<span>{pack.category === "Gaming" ? "Games" : pack.category}</span></span>
           </button>
         </div>
-        <div className="poster-caption"><span className="poster-caption-category">{pack.category}</span><strong className="poster-caption-title">{pack.title}</strong><span className="poster-caption-meta">{pack.remake && <span className="poster-caption-status">Remaking</span>}<span>{pack.packs.toLowerCase()}</span><i /> <span>{pack.downloads} downloads</span></span></div>
+        <div className="poster-caption">
+          <strong className="poster-caption-title">{pack.title}</strong>
+          <span className="poster-caption-meta">
+            {pack.remake && <span className="poster-caption-status">Remaking</span>}
+            <span>{pack.packs.toLowerCase()}</span>
+            <i>·</i>
+            <span>{pack.downloads} downloads</span>
+          </span>
+        </div>
       </article>)}</div>
       <button type="button" className="poster-rail-control poster-rail-next" aria-label="Show more scenepacks" onClick={() => scrollRail(1)}><ArrowRight size={18} /></button>
     </div>

@@ -853,7 +853,7 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-grid { --poster-gap: clamp(52px, 5.3vw, 97.5px); position: relative; isolation: isolate; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(160px, calc((100% - 4 * var(--poster-gap)) / 5), 259px); grid-template-columns: none; align-items: start; gap: var(--poster-gap); width: 100%; overflow-x: auto; overscroll-behavior-x: contain; padding: 41px 2px 10px 11px; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .poster-grid::-webkit-scrollbar { display: none; }
 .poster-item { position: relative; z-index: auto; min-width: 0; scroll-snap-align: start; }
-.poster-item:first-child { scroll-snap-align: none; }
+.poster-item:first-child { scroll-snap-align: start; }
 .poster-frame { position: relative; aspect-ratio: 2 / 3; }
 .poster-card { position: relative; z-index: 1; display: block; width: 100%; height: 100%; padding: 0; overflow: hidden; border: 1px solid #3b3f42; border-radius: 8px; background-color: #151a1c; background-position: center; background-size: cover; color: #f6f5f0; text-align: left; box-shadow: none; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
 .poster-card::before { position: absolute; z-index: 0; inset: 0; content: ""; background: linear-gradient(180deg, rgb(8 10 12 / 16%), transparent 29%, rgb(8 10 12 / 8%)); transition: background .3s; }
@@ -1113,4 +1113,199 @@ html { scroll-padding-top: 92px; }
   .category-grid { grid-template-columns: 1fr; }
   .category-card { min-height: 180px; }
   .category-card-featured { min-height: 260px; }
+}
+
+/* ── Reference Image 2: Clean Trending Header & Outlined Rank Numbers ── */
+.trending-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.trending-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.trending-pill {
+  width: 4px;
+  height: 20px;
+  border-radius: 999px;
+  background: #22d3ee;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.55);
+}
+.trending-header-title h2 {
+  margin: 0;
+  color: #f3f4f6;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-family: system-ui, sans-serif;
+}
+.trending-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #8b929c;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: system-ui, sans-serif;
+  transition: color 0.2s, transform 0.2s;
+}
+.trending-view-all:hover {
+  color: #22d3ee;
+  transform: translateX(2px);
+}
+
+.poster-grid {
+  padding-left: clamp(75px, 7.5vw, 105px) !important;
+  scroll-padding-left: clamp(75px, 7.5vw, 105px) !important;
+  --poster-gap: clamp(68px, 6.5vw, 100px) !important;
+  grid-auto-columns: clamp(165px, 13.5vw, 220px) !important;
+  scroll-snap-type: x proximity;
+}
+.poster-item {
+  position: relative;
+  scroll-snap-align: start !important;
+}
+.poster-item:first-child {
+  scroll-snap-align: start !important;
+}
+.poster-rank-number {
+  position: absolute;
+  z-index: 0;
+  bottom: 44px;
+  left: -72px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.45);
+  font-size: clamp(140px, 16vw, 195px);
+  font-weight: 850;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  pointer-events: none;
+  user-select: none;
+  transition: -webkit-text-stroke-color 0.3s, transform 0.3s;
+}
+.poster-item:hover .poster-rank-number {
+  -webkit-text-stroke-color: rgba(34, 211, 238, 0.85);
+  transform: translateX(-6px);
+}
+.poster-frame {
+  position: relative;
+  z-index: 1;
+}
+.poster-card {
+  border-radius: 12px !important;
+  border: 1px solid #23272e !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.poster-card:hover, .poster-card:focus-visible {
+  border: 1px solid #333a44 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.poster-card::after {
+  display: none !important;
+}
+.poster-frame {
+  position: relative;
+  z-index: 1;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.poster-card::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(8, 10, 13, 0.55) 0%,
+    rgba(8, 10, 13, 0.08) 25%,
+    rgba(8, 10, 13, 0.05) 50%,
+    rgba(8, 10, 13, 0.25) 75%,
+    rgba(8, 10, 13, 0.85) 100%
+  ) !important;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.poster-card:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 7, 10, 0.4) 0%,
+    rgba(5, 7, 10, 0.1) 30%,
+    rgba(5, 7, 10, 0.65) 60%,
+    rgba(5, 7, 10, 0.95) 85%,
+    #05070a 100%
+  ) !important;
+}
+.poster-card:hover .poster-copy, .poster-card:focus-visible .poster-copy {
+  opacity: 1;
+  transform: translateY(0);
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.poster-badge {
+  top: 10px !important;
+  left: 10px !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  background: #7ee7db !important;
+  color: #071317 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+}
+.poster-caption {
+  padding-top: 12px !important;
+  gap: 5px !important;
+}
+.poster-caption-title {
+  color: #f3f4f6 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+}
+.poster-caption-meta {
+  color: #8b929c !important;
+  font-size: 12px !important;
+  font-family: system-ui, sans-serif !important;
+}
+.poster-caption-status {
+  color: #fbbf24 !important;
+  font-weight: 600 !important;
+  margin-right: 4px !important;
+}
+@media (max-width: 760px) {
+  .poster-grid {
+    padding-left: clamp(60px, 12vw, 85px) !important;
+    scroll-padding-left: clamp(60px, 12vw, 85px) !important;
+    --poster-gap: clamp(60px, 12vw, 85px) !important;
+  }
+  .poster-rank-number {
+    font-size: clamp(100px, 24vw, 145px);
+    left: -52px;
+    bottom: 42px;
+    -webkit-text-stroke-width: 1.8px;
+  }
+}
+@media (max-width: 520px) {
+  .poster-grid {
+    padding-left: 55px !important;
+    scroll-padding-left: 55px !important;
+    --poster-gap: 55px !important;
+  }
+  .poster-rank-number {
+    font-size: clamp(90px, 22vw, 125px);
+    left: -44px;
+    bottom: 38px;
+  }
 }
