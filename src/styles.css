@@ -777,7 +777,7 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-grid { --poster-gap: clamp(52px, 5.3vw, 78px); position: relative; isolation: isolate; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(160px, calc((100% - 4 * var(--poster-gap)) / 5), 220px); grid-template-columns: none; align-items: start; gap: var(--poster-gap); width: 100%; overflow-x: auto; overscroll-behavior-x: contain; padding: 24px 2px 10px clamp(40px, 3vw, 56px); scroll-snap-type: x mandatory; scrollbar-width: none; }
 .poster-grid::-webkit-scrollbar { display: none; }
 .poster-item { position: relative; z-index: auto; min-width: 0; scroll-snap-align: start; }
-.poster-item::before { position: absolute; z-index: 0; top: 70%; left: 50%; width: max-content; content: attr(data-index); color: transparent; -webkit-text-stroke: 1.5px rgb(183 229 223 / 48%); font: 850 clamp(200px, 16vw, 300px)/.78 system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.1em; pointer-events: none; transform: translate(-50%, -50%) scaleX(2.5); text-shadow: 0 0 34px rgb(183 229 223 / 10%); transition: -webkit-text-stroke-color .3s, text-shadow .3s; }
+.poster-item::before { position: absolute; z-index: 0; top: 62%; left: 50%; width: max-content; content: attr(data-index); color: transparent; -webkit-text-stroke: 1.5px rgb(183 229 223 / 48%); font: 850 clamp(150px, 11vw, 220px)/.78 system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.1em; pointer-events: none; transform: translate(-50%, -50%) scaleX(2.5); text-shadow: 0 0 34px rgb(183 229 223 / 10%); transition: -webkit-text-stroke-color .3s, text-shadow .3s; }
 .poster-item[data-index="1"]::before { left: calc(50% + 24px); transform: translate(-50%, -50%) scaleX(4); }
 .poster-item:hover::before { -webkit-text-stroke-color: rgb(216 183 117 / 72%); text-shadow: 0 0 38px rgb(216 183 117 / 16%); }
 .poster-card { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 2 / 3; padding: 0; overflow: hidden; border: 1px solid rgb(255 255 255 / 16%); border-radius: 9px; background-color: #151a1c; background-position: center; background-size: cover; color: #f6f5f0; text-align: left; box-shadow: 0 16px 34px rgb(0 0 0 / 28%); transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s, box-shadow .3s; }
@@ -817,7 +817,7 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 @media (max-width: 760px) {
   .poster-grid { --poster-gap: clamp(60px, 14vw, 74px); grid-auto-columns: clamp(144px, 45vw, 190px); padding-top: 18px; padding-left: 28px; }
   .poster-rail-control { display: none; }
-  .poster-item::before { top: 60%; left: 50%; font-size: clamp(190px, 50vw, 250px); transform: translate(-50%, -50%) scaleX(2.5); }
+  .poster-item::before { top: 63%; left: 50%; font-size: clamp(150px, 45vw, 210px); transform: translate(-50%, -50%) scaleX(2.5); }
   .poster-card { border-radius: 8px; }
   .poster-copy { right: 13px; bottom: 54px; left: 13px; }
   .poster-open { right: 11px; bottom: 11px; left: 11px; }
