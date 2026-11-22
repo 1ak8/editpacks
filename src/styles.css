@@ -1051,3 +1051,16 @@ html { scroll-padding-top: 92px; }
   .editor-community { margin-top: 42px; }
   .editor-community-index p, .editor-community-index a { font-size: 13px; }
 }
+.command-dock { border-color: rgb(255 255 255 / 18%); background: rgb(12 13 20 / 62%); -webkit-backdrop-filter: blur(24px) saturate(140%); backdrop-filter: blur(24px) saturate(140%); }
+.dock-nav a.dock-active { border: 1px solid rgb(255 255 255 / 16%); background: rgb(255 255 255 / 12%); color: #fff; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.dock-nav a:not(.dock-active):hover { background: rgb(255 255 255 / 7%); }
+.quick-ingest, .avatar-button, .dock-menu { border-color: rgb(255 255 255 / 16%); background: rgb(255 255 255 / 6%); -webkit-backdrop-filter: blur(14px) saturate(135%); backdrop-filter: blur(14px) saturate(135%); }
+.pro-button { background: linear-gradient(rgb(255 255 255 / 7%),rgb(255 255 255 / 3%)) padding-box, linear-gradient(110deg,#dfe9e0,#a7ded977,#ffffff24) border-box; -webkit-backdrop-filter: blur(14px) saturate(135%); backdrop-filter: blur(14px) saturate(135%); box-shadow: inset 0 1px rgb(255 255 255 / 10%), 0 0 16px rgb(255 255 255 / 3%); }
+.ingest-button { border: 1px solid rgb(255 255 255 / 24%); background: rgb(255 255 255 / 10%); color: #f4f5f1; -webkit-backdrop-filter: blur(14px) saturate(135%); backdrop-filter: blur(14px) saturate(135%); box-shadow: inset 0 1px rgb(255 255 255 / 12%); }
+.ingest-button:hover { background: rgb(255 255 255 / 18%); color: #fff; }
+.preview-button { border-color: rgb(255 255 255 / 20%); background: rgb(255 255 255 / 7%); -webkit-backdrop-filter: blur(14px) saturate(135%); backdrop-filter: blur(14px) saturate(135%); box-shadow: inset 0 1px rgb(255 255 255 / 9%); }
+.quick-filters button { background: rgb(255 255 255 / 7%); -webkit-backdrop-filter: blur(12px) saturate(135%); backdrop-filter: blur(12px) saturate(135%); }
+.quick-filters button.filter-active { color: #f7f7f4; background: rgb(255 255 255 / 14%); border-color: rgb(255 255 255 / 32%); box-shadow: inset 0 1px rgb(255 255 255 / 16%); }
+@media (max-width: 760px) {
+  .dock-nav { border-color: rgb(255 255 255 / 18%); background: rgb(13 15 22 / 76%); -webkit-backdrop-filter: blur(22px) saturate(140%); backdrop-filter: blur(22px) saturate(140%); }
+}
