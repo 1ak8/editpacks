@@ -1495,3 +1495,177 @@ html { scroll-padding-top: 92px; }
     right: 8px !important;
   }
 }
+
+/* ── Mobile Navigation Bar Polish ── */
+@media (max-width: 760px) {
+  .command-dock {
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    transform: none !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    padding: 0 10px 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-radius: 999px !important;
+    background: rgba(12, 14, 20, 0.88) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    z-index: 100 !important;
+  }
+
+  .vault-wordmark {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+
+  .vault-wordmark small {
+    display: none !important;
+  }
+
+  .rec-indicator {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 9px !important;
+    letter-spacing: 0.06em !important;
+    color: #f87171 !important;
+  }
+
+  .rec-indicator i {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  .dock-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+  }
+
+  .quick-ingest {
+    width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #e2e8f0 !important;
+  }
+
+  .quick-ingest span,
+  .quick-ingest kbd {
+    display: none !important;
+  }
+
+  .avatar-button,
+  .discord-link {
+    display: none !important;
+  }
+
+  .pro-button {
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 11px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    border-radius: 999px !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    color: #f7f5ef !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    white-space: nowrap !important;
+  }
+
+  .dock-menu {
+    width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    color: #fff !important;
+    cursor: pointer !important;
+  }
+
+  /* Dropdown drawer menu when opened on mobile */
+  .dock-nav {
+    display: none !important;
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-direction: column !important;
+    padding: 8px !important;
+    gap: 4px !important;
+    border-radius: 16px !important;
+    background: rgba(13, 16, 22, 0.96) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+    z-index: 99 !important;
+  }
+
+  .dock-nav.dock-nav-open {
+    display: flex !important;
+    animation: dock-dropdown-fade 0.2s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  .dock-nav a {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 14px !important;
+    box-sizing: border-box !important;
+    border-radius: 10px !important;
+    color: #94a3b8 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: background 0.15s, color 0.15s !important;
+  }
+
+  .dock-nav a:hover,
+  .dock-nav a.dock-active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+  }
+}
+
+@keyframes dock-dropdown-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
