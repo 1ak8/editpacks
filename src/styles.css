@@ -1732,12 +1732,12 @@ html { scroll-padding-top: 92px; }
   /* Shift text content down with breathing room so it looks clean */
   .hero-content-grid {
     padding-top: 84px !important;
-    padding-bottom: 48px !important;
+    padding-bottom: 32px !important;
   }
 
   .hero-editorial {
-    margin-top: 54px !important;
-    padding-top: 14px !important;
+    margin-top: clamp(80px, 14vh, 130px) !important;
+    padding-top: 10px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 10px !important;
