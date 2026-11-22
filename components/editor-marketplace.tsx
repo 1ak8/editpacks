@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react"
-import { ArrowDownToLine, ArrowRight, Check, Command, Download, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { ArrowDownToLine, ArrowRight, Check, Command, Download, Menu, Music2, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
 
 const features = [
   { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
@@ -197,6 +197,7 @@ export function EditorMarketplace() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [previewOpen, setPreviewOpen] = useState(false)
   const [audioPlaying, setAudioPlaying] = useState(false)
+  const [communityVisible, setCommunityVisible] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const feature = features[active]
 
@@ -281,16 +282,17 @@ export function EditorMarketplace() {
       <SeriesRail />
       <CategoryBrowse onSelectCategory={setPackCategory} />
       <section className="editor-community" id="community" aria-labelledby="editor-community-title">
-        <div className="editor-community-bar">
+        {communityVisible && <div className="editor-community-bar">
           <div className="editor-community-intro">
-            <span className="editor-community-kicker">COMMUNITY / CREATOR INDEX</span>
-            <h2 id="editor-community-title">EDITORS IN THE MIX</h2>
+            <div className="editor-community-avatars" aria-hidden="true">{communityEditors.slice(0, 4).map(editor => <span key={editor.name}>{editor.initials}</span>)}</div>
+            <h2 id="editor-community-title">See editors who use EditPacks clips</h2>
           </div>
           <ul className="editor-community-list" aria-label="Featured EditPacks creators">
-            {communityEditors.map(editor => <li className="editor-community-chip" key={editor.name}><span className="editor-community-avatar" aria-hidden="true">{editor.initials}</span><span className="editor-community-name">{editor.name}</span><span className="editor-community-dot" aria-hidden="true" /><span className="editor-community-count">{editor.clips}</span></li>)}
+            {communityEditors.map(editor => <li className="editor-community-chip" key={editor.name}><span className="editor-community-avatar" aria-hidden="true">{editor.initials}</span><span className="editor-community-name">{editor.name}</span><Music2 size={13} aria-hidden="true" /><span className="editor-community-count">{editor.clips}</span></li>)}
           </ul>
-        </div>
-        <div className="editor-community-index"><p><strong>833</strong> TITLES <i /> <strong>5,066</strong> PACKS</p><a href="#trending">EVERY TITLE <ArrowRight size={14} /></a></div>
+          <button className="editor-community-close" type="button" aria-label="Dismiss creator showcase" onClick={() => setCommunityVisible(false)}><X size={16} /></button>
+        </div>}
+        <div className="editor-community-index"><p><strong>833</strong> titles <i /> <strong>5,066</strong> packs</p><a href="#trending">Every title <ArrowRight size={16} /></a></div>
       </section>
     </div>
 
