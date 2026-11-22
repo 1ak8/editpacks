@@ -1465,6 +1465,7 @@ html { scroll-padding-top: 92px; }
     width: 100% !important;
     max-width: 100% !important;
     align-self: stretch !important;
+    margin-top: 14px !important;
   }
   .hero-editorial {
     order: 1 !important;
@@ -1730,7 +1731,7 @@ html { scroll-padding-top: 92px; }
 
   /* Shift text content down with breathing room so it looks clean */
   .hero-content-grid {
-    padding-top: 72px !important;
+    padding-top: 84px !important;
     padding-bottom: 48px !important;
   }
 
