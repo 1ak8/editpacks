@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
-import { ArrowDownToLine, ArrowRight, AudioLines, Check, ChevronDown, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react"
+import { ArrowDownToLine, ArrowRight, AudioLines, Check, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
 
 const features = [
   { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
@@ -41,6 +41,7 @@ const series = [
 
 const waveform = [10, 18, 14, 25, 19, 35, 23, 15, 29, 42, 31, 19, 24, 36, 18, 12, 26, 39, 28, 16, 32, 22, 12, 29, 44, 23, 17, 33, 21, 11, 25, 37, 19, 29, 14, 22, 35, 18, 12, 27, 40, 24, 16, 31, 20, 13, 28, 36]
 const quickFilters = ["4K 60FPS", "NO WATERMARK", "PRORES"]
+const FEATURE_DURATION_MS = 5500
 
 function imageUrl(id: string, width = 660) {
   return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`
@@ -76,7 +77,7 @@ function CartridgeRail({ onPreview }: { onPreview: (title: string) => void }) {
     <div className="chart-note"><span className="chart-note-kicker">THE EDITOR&apos;S CHART <i /> WEEKLY INDEX</span><p>Scenes creators keep coming back to.</p><span className="chart-note-range"><b>01—10</b> / RANKED BY DOWNLOADS</span></div>
     <div className="trend-filters" aria-label="Filter scenepacks">{filters.map(filter => <button type="button" key={filter.value} className={category === filter.value ? "trend-filter-active" : ""} aria-pressed={category === filter.value} onClick={() => setCategory(filter.value)}>{filter.label}</button>)}</div>
     <div className="poster-rail">
-      <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" data-index={String(index + 1).padStart(2, "0")} key={pack.title} role="listitem">
+      <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" data-index={String(index + 1)} key={pack.title} role="listitem">
         <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title} scenepack`}>
           <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">NEW</span>}
           <span className="poster-copy"><span className="poster-category">{pack.category} / SCENEPACK</span><strong>{pack.title}</strong><span className="poster-format">{pack.format}</span><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs} <i>·</i> {pack.duration}</span>
@@ -190,7 +191,7 @@ export function EditorMarketplace() {
     const timeout = window.setTimeout(() => {
       setActive((active + 1) % features.length)
       setPreviewOpen(false)
-    }, 5500)
+    }, FEATURE_DURATION_MS)
     return () => window.clearTimeout(timeout)
   }, [active])
 
@@ -239,19 +240,11 @@ export function EditorMarketplace() {
         </div>
       </div>
       <div className="timecode-ruler"><div className="timecode-labels"><span>00:00:00:00</span><span>00:45:00:00</span></div><div className="timecode-track"><input type="range" min="0" max="100" value={playhead} onChange={event => setPlayhead(Number(event.target.value))} aria-label="Scrub featured clip timecode" /><span className="ruler-playhead" style={{ left: `${playhead}%` }} /></div><div className="timecode-ticks" aria-hidden="true">{Array.from({ length: 31 }, (_, index) => <i key={index} />)}</div></div>
-      <div className="filmstrip-wrap">
-        <div className="reel-bar-topline">
-          <div className="reel-bar-title">
-            <span className="reel-bar-kicker">SCENEPACK LIBRARY <i /> CURATED ROTATION</span>
-            <div className="reel-bar-title-row"><span className="reel-bar-label">Featured reels</span><span className="reel-active-count">{String(active + 1).padStart(2, "0")} <i>/</i> {String(features.length).padStart(2, "0")}</span></div>
-          </div>
-          <div className="reel-bar-actions"><button type="button" className="reel-selector">SELECT A MASTER <ChevronDown size={13} /></button><button type="button" className="reel-request" onClick={() => setRequestOpen(true)}><Sparkles size={14} /> REQUEST SCENEPACK</button></div>
+      <div className="filmstrip-wrap image-timeline-wrap">
+        <div className="image-timeline" role="group" aria-label="Featured image timeline">
+          <div className="image-timeline-track" style={{ "--feature-duration": `${FEATURE_DURATION_MS}ms` } as CSSProperties}>{features.map((item, index) => <button type="button" key={item.id} className={`image-timeline-segment ${index < active ? "image-timeline-segment-complete" : ""} ${active === index ? "image-timeline-segment-active" : ""}`} onClick={() => { setActive(index); setPreviewOpen(false) }} aria-current={active === index ? "step" : undefined} aria-label={`Show image ${index + 1}: ${item.title} — ${item.subtitle}`}><span className="sr-only">{item.title} — {item.subtitle}</span></button>)}</div>
+          <span className="image-timeline-count" aria-hidden="true"><b>{String(active + 1).padStart(2, "0")}</b><i>/</i>{String(features.length).padStart(2, "0")}</span>
         </div>
-        <div className="filmstrip" role="group" aria-label="Choose a featured reel">{features.map((item, index) => <button type="button" key={item.id} className={`film-frame ${active === index ? "film-active" : ""}`} onClick={() => { setActive(index); setPreviewOpen(false) }} aria-pressed={active === index} aria-label={`Show featured reel ${item.title}`}>
-          <img className="film-frame-thumb" src={item.image} alt={item.id === "01" ? "Jujutsu Kaisen Shibuya Incident" : item.id === "02" ? "Spider-Man Across the Spider-Verse" : item.id === "03" ? "Attack on Titan The Final Season" : "Dune Part Two Arrakis"} loading="eager" />
-          <span className="film-frame-copy"><b>{item.title}</b><small>{item.subtitle}</small></span>
-        </button>)}</div>
-        <div className="reel-bar-footer"><span className="reel-bar-state"><i /> AUTO-ROTATING PREVIEW</span><div className="reel-progress-track" role="progressbar" aria-label="Featured reel selection" aria-valuemin={1} aria-valuemax={features.length} aria-valuenow={active + 1}><div className="reel-progress-indicator" style={{ width: `${((active + 1) / features.length) * 100}%` }} /></div></div>
       </div>
     </section>
 
