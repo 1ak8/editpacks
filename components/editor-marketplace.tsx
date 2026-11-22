@@ -64,15 +64,29 @@ function CartridgeRail({ onPreview }: { onPreview: (title: string) => void }) {
   const filters = [{ label: "All", value: "All" }, { label: "Anime", value: "Anime" }, { label: "Movies", value: "Cinema" }, { label: "Series", value: "Series" }, { label: "K-Pop", value: "K-Pop" }, { label: "Gaming", value: "Gaming" }]
   const packs = category === "All" ? trending : trending.filter(pack => pack.category === category)
 
+  const posterRailRef = useRef<HTMLDivElement>(null)
+  const scrollRail = (direction: -1 | 1) => {
+    const rail = posterRailRef.current
+    const firstCard = rail?.querySelector<HTMLElement>(".poster-item")
+    if (!rail || !firstCard) return
+    rail.scrollBy({ left: direction * (firstCard.offsetWidth + 22) * 2, behavior: "smooth" })
+  }
+
   return <section className="vault-section trending-section" id="trending"><SectionHeading index="01" title="POPULAR SCENEPACKS" link="Browse all" />
     <div className="chart-note"><span className="chart-note-kicker">THE EDITOR&apos;S CHART <i /> WEEKLY INDEX</span><p>Scenes creators keep coming back to.</p><span className="chart-note-range"><b>01—10</b> / RANKED BY DOWNLOADS</span></div>
     <div className="trend-filters" aria-label="Filter scenepacks">{filters.map(filter => <button type="button" key={filter.value} className={category === filter.value ? "trend-filter-active" : ""} aria-pressed={category === filter.value} onClick={() => setCategory(filter.value)}>{filter.label}</button>)}</div>
-    <div className="poster-grid" aria-label="Popular scenepacks">{packs.map((pack, index) => <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} key={pack.title} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `linear-gradient(180deg, rgba(5,8,12,.04) 28%, rgba(5,8,12,.9) 100%), url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title}`}>
-      <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">Just added</span>}
-      <span className="poster-copy"><span className="poster-category">{pack.category}</span><strong>{pack.title}</strong><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs}</span>
-        {pack.remake && <span className="poster-progress"><i style={{ width: `${pack.remasterProgress}%` }} /></span>}
-      </span><span className="poster-open"><Play size={13} fill="currentColor" /> Preview pack</span>
-    </button>)}</div>
+    <div className="poster-rail">
+      <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" data-index={String(index + 1).padStart(2, "0")} key={pack.title} role="listitem">
+        <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title} scenepack`}>
+          <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">NEW</span>}
+          <span className="poster-copy"><span className="poster-category">{pack.category} / SCENEPACK</span><strong>{pack.title}</strong><span className="poster-format">{pack.format}</span><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs} <i>·</i> {pack.duration}</span>
+            {pack.remake && <><span className="poster-remaster-label">REMASTERING</span><span className="poster-progress"><i style={{ width: `${pack.remasterProgress}%` }} /></span></>}
+          </span><span className="poster-open"><Play size={13} fill="currentColor" /> Preview pack</span>
+        </button>
+        <div className="poster-caption"><span className="poster-caption-category">{pack.category}</span><strong className="poster-caption-title">{pack.title}</strong><span className="poster-caption-meta">{pack.remake && <span className="poster-caption-status">Remaking</span>}<span>{pack.packs.toLowerCase()}</span><i /> <span>{pack.downloads} downloads</span></span></div>
+      </article>)}</div>
+      <button type="button" className="poster-rail-control poster-rail-next" aria-label="Show more scenepacks" onClick={() => scrollRail(1)}><ArrowRight size={18} /></button>
+    </div>
   </section>
 }
 
