@@ -189,15 +189,18 @@ export function EditorMarketplace() {
       </div>
       <div className="timecode-ruler"><div className="timecode-labels"><span>00:00:00:00</span><span>00:45:00:00</span></div><div className="timecode-track"><input type="range" min="0" max="100" value={playhead} onChange={event => setPlayhead(Number(event.target.value))} aria-label="Scrub featured clip timecode" /><span className="ruler-playhead" style={{ left: `${playhead}%` }} /></div><div className="timecode-ticks" aria-hidden="true">{Array.from({ length: 31 }, (_, index) => <i key={index} />)}</div></div>
       <div className="filmstrip-wrap">
-        <div className="reel-progress-track" role="progressbar" aria-label="Featured reel selection" aria-valuemin={1} aria-valuemax={features.length} aria-valuenow={active + 1}><div className="reel-progress-indicator" style={{ width: `${((active + 1) / features.length) * 100}%` }} /></div>
-        <div className="reel-bar-row">
-          <span className="reel-bar-label">FEATURED REELS</span>
-          <div className="filmstrip">{features.map((item, index) => <button type="button" key={item.id} className={`film-frame ${active === index ? "film-active" : ""}`} onClick={() => { setActive(index); setPreviewOpen(false) }} aria-pressed={active === index} aria-label={`Show featured reel ${item.title}`}>
-            <img className="film-frame-thumb" src={item.image} alt={item.id === "01" ? "Jujutsu Kaisen Shibuya Incident" : item.id === "02" ? "Spider-Man Across the Spider-Verse" : item.id === "03" ? "Attack on Titan The Final Season" : "Dune Part Two Arrakis"} loading="eager" />
-            <span className="film-frame-copy"><b>{item.id} / {item.title}</b><small>{item.subtitle}</small></span>
-          </button>)}</div>
+        <div className="reel-bar-topline">
+          <div className="reel-bar-title">
+            <span className="reel-bar-kicker">SCENEPACK LIBRARY <i /> CURATED ROTATION</span>
+            <div className="reel-bar-title-row"><span className="reel-bar-label">Featured reels</span><span className="reel-active-count">{String(active + 1).padStart(2, "0")} <i>/</i> {String(features.length).padStart(2, "0")}</span></div>
+          </div>
           <div className="reel-bar-actions"><button type="button" className="reel-selector">SELECT A MASTER <ChevronDown size={13} /></button><button type="button" className="reel-request" onClick={() => setRequestOpen(true)}><Sparkles size={14} /> REQUEST SCENEPACK</button></div>
         </div>
+        <div className="filmstrip" role="group" aria-label="Choose a featured reel">{features.map((item, index) => <button type="button" key={item.id} className={`film-frame ${active === index ? "film-active" : ""}`} onClick={() => { setActive(index); setPreviewOpen(false) }} aria-pressed={active === index} aria-label={`Show featured reel ${item.title}`}>
+          <img className="film-frame-thumb" src={item.image} alt={item.id === "01" ? "Jujutsu Kaisen Shibuya Incident" : item.id === "02" ? "Spider-Man Across the Spider-Verse" : item.id === "03" ? "Attack on Titan The Final Season" : "Dune Part Two Arrakis"} loading="eager" />
+          <span className="film-frame-copy"><b>{item.title}</b><small>{item.subtitle}</small></span>
+        </button>)}</div>
+        <div className="reel-bar-footer"><span className="reel-bar-state"><i /> AUTO-ROTATING PREVIEW</span><div className="reel-progress-track" role="progressbar" aria-label="Featured reel selection" aria-valuemin={1} aria-valuemax={features.length} aria-valuenow={active + 1}><div className="reel-progress-indicator" style={{ width: `${((active + 1) / features.length) * 100}%` }} /></div></div>
       </div>
     </section>
 
