@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { ArrowDownToLine, ArrowRight, AudioLines, Check, ChevronDown, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, SlidersHorizontal, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { ArrowDownToLine, ArrowRight, AudioLines, Check, ChevronDown, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
 
 const features = [
   { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
@@ -61,33 +61,17 @@ function SectionHeading({ index, title, link = "EXPLORE FULL LEADERBOARD" }: { i
 
 function CartridgeRail({ onPreview }: { onPreview: (title: string) => void }) {
   const [category, setCategory] = useState("All")
-  const filters = ["All", "Anime", "Cinema", "Series", "K-Pop", "Gaming"]
+  const filters = [{ label: "All", value: "All" }, { label: "Anime", value: "Anime" }, { label: "Movies", value: "Cinema" }, { label: "Series", value: "Series" }, { label: "K-Pop", value: "K-Pop" }, { label: "Gaming", value: "Gaming" }]
   const packs = category === "All" ? trending : trending.filter(pack => pack.category === category)
-  const spotlight = packs[0]
-  const portraits = packs.slice(1, 5)
-  const queue = packs.slice(5)
 
-  return <section className="vault-section trending-section" id="trending"><SectionHeading index="01" title="TOP 10 TRENDING INGESTS" />
-    <div className="trend-filters" aria-label="Filter trending packs">{filters.map(filter => <button type="button" key={filter} className={category === filter ? "trend-filter-active" : ""} aria-pressed={category === filter} onClick={() => setCategory(filter)}>{filter}</button>)}</div>
-    {spotlight && <div className="spotlight-layout">
-      <button type="button" className="spotlight-card" onClick={() => onPreview(spotlight.title)} style={{ backgroundImage: `linear-gradient(90deg, rgba(4,7,11,.06), rgba(4,7,11,.03)), linear-gradient(0deg, rgba(4,7,11,.96), rgba(4,7,11,.04) 76%), url(${imageUrl(spotlight.image, 1400)})` }} aria-label={`Stream preview ${spotlight.title}`}>
-        <span className="spotlight-rank" aria-hidden="true">01</span><span className="spotlight-format">{spotlight.format}</span>
-        <span className="spotlight-copy"><span className="spotlight-category">{spotlight.category} <i /> {spotlight.format}</span><strong>{spotlight.title}</strong><span className="spotlight-stats"><Download size={14} /> {spotlight.downloads} downloads <span>·</span> {spotlight.packs}</span><span className="spotlight-play"><Play size={14} fill="currentColor" /> STREAM PREVIEW</span>
-          {spotlight.remake && <><span className="trend-remaking">REMAKING</span><span className="remaster-progress"><span>REMASTER PROGRESS <b>{spotlight.remasterProgress}%</b></span><i><i style={{ width: `${spotlight.remasterProgress}%` }} /></i></span></>}
-        </span>
-        {spotlight.isNew && <span className="trend-new">NEW</span>}
-      </button>
-      <div className="portrait-grid">{portraits.map((pack, index) => <button type="button" className={`portrait-card tone-${index % 4}`} key={pack.title} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `linear-gradient(0deg, rgba(4,7,11,.96), rgba(4,7,11,.04) 76%), url(${imageUrl(pack.image)})` }} aria-label={`Quick preview ${pack.title}`}>
-        <span className="portrait-rank">{String(index + 2).padStart(2, "0")}</span><span className="portrait-play"><Play size={14} fill="currentColor" /></span>{pack.isNew && <span className="trend-new">NEW</span>}
-        <span className="portrait-copy"><span className="spotlight-category">{pack.category} · {pack.format}</span><strong>{pack.title}</strong><span className="portrait-stats"><Download size={13} /> {pack.downloads} DLs · {pack.packs}</span>
-          {pack.remake && <><span className="trend-remaking">REMAKING</span><span className="remaster-progress"><span>REMASTER PROGRESS <b>{pack.remasterProgress}%</b></span><i><i style={{ width: `${pack.remasterProgress}%` }} /></i></span></>}
-        </span>
-      </button>)}</div>
-    </div>}
-    {queue.length > 0 && <div className="trend-queue" aria-label="Trending ranks six through ten">{queue.map((pack, index) => <button type="button" className="queue-card" key={pack.title} onClick={() => onPreview(pack.title)} aria-label={`Quick preview rank ${index + 6}, ${pack.title}`}>
-      <span className="queue-rank">{String(index + 6).padStart(2, "0")}</span><span className="queue-thumb" style={{ backgroundImage: `url(${imageUrl(pack.image, 300)})` }} />
-      <span className="queue-copy"><strong>{pack.title}</strong><span>{pack.category} <i /> {pack.packs} · {pack.downloads} DLs</span>{pack.remake && <span className="queue-remaking">REMAKING · {pack.remasterProgress}%</span>}</span><Play size={14} className="queue-play" />
-    </button>)}</div>}
+  return <section className="vault-section trending-section" id="trending"><SectionHeading index="01" title="POPULAR SCENEPACKS" link="Browse all" />
+    <div className="trend-filters" aria-label="Filter scenepacks">{filters.map(filter => <button type="button" key={filter.value} className={category === filter.value ? "trend-filter-active" : ""} aria-pressed={category === filter.value} onClick={() => setCategory(filter.value)}>{filter.label}</button>)}</div>
+    <div className="poster-grid" aria-label="Popular scenepacks">{packs.map((pack, index) => <button type="button" className="poster-card" key={pack.title} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `linear-gradient(180deg, rgba(5,8,12,.04) 28%, rgba(5,8,12,.9) 100%), url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title}`}>
+      <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">Just added</span>}
+      <span className="poster-copy"><span className="poster-category">{pack.category}</span><strong>{pack.title}</strong><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs}</span>
+        {pack.remake && <span className="poster-progress"><i style={{ width: `${pack.remasterProgress}%` }} /></span>}
+      </span><span className="poster-open"><Play size={13} fill="currentColor" /> Preview pack</span>
+    </button>)}</div>
   </section>
 }
 
@@ -172,7 +156,7 @@ export function EditorMarketplace() {
     <div className="grain-overlay" aria-hidden="true" />
     <header className="command-dock">
       <a href="#top" className="vault-wordmark"><span className="rec-indicator"><i /> REC</span><span>VAULT<span className="wordmark-dot">.</span>PACKS</span><small>v2.4</small></a>
-      <nav className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top">Library</a><a href="#trending">Vault Collections</a><a href="#series">Stem Audio</a><a href="#drops">Store Drops</a></nav>
+      <nav className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top">Home</a><a href="#trending">Explore</a><a href="#series">Movies &amp; Series</a><a href="#drops">New drops</a></nav>
       <div className="dock-actions"><button className="quick-ingest" onClick={() => setSearchOpen(true)} aria-label="Quick ingest search"><Search size={13} /><span>Quick Ingest</span><kbd><Command size={10} /> K</kbd></button><a className="discord-link" href="#community"><Command size={14} /><span>34.2k online</span></a><button className="avatar-button" aria-label="Account"><UserRound size={15} /></button><a className="pro-button" href="#pro" aria-label="Pro access">PRO ACCESS <Sparkles size={12} /></a></div>
       <button className="dock-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"}>{menuOpen ? <X size={17} /> : <Menu size={17} />}</button>
     </header>
@@ -181,13 +165,12 @@ export function EditorMarketplace() {
       <div className="hero-backdrop" aria-hidden="true"><div key={feature.id} className="hero-backdrop-image" style={{ backgroundImage: `url(${feature.image})` }} /></div>
       <div className="hero-content-grid">
         <div className="hero-editorial">
-          <div className="telemetry"><span className="status-light" /> [ MASTER VAULT // {feature.type} ]</div>
-          <h1 id="feature-title"><span key={`title-${feature.id}`} className="headline-title feature-title-fade">{feature.title}<span className="headline-slash"> //</span></span><span key={`subtitle-${feature.id}`} className="headline-sub feature-title-fade">{feature.subtitle}</span></h1>
+          <div className="telemetry"><span className="status-light" /> FEATURED SCENEPACK <i>·</i> {feature.type.split(" // ")[0]}</div>
+          <h1 id="feature-title"><span key={`title-${feature.id}`} className={`headline-title feature-title-fade title-style-${feature.id}`}>{feature.title}<span className="headline-slash"> //</span></span><span key={`subtitle-${feature.id}`} className="headline-sub feature-title-fade">{feature.subtitle}</span></h1>
           <div className="quick-filters" aria-label="Featured pack formats">{quickFilters.map(filter => <button key={filter} className={activeFilter === filter ? "filter-active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter}</button>)}</div>
           <div className="spec-strip">{[feature.year, feature.cuts, feature.downloads].map((value, i) => <span key={value}><i>0{i + 1}</i> {value}</span>)}</div>
           <p className="cast-list">{feature.cast}</p>
-          <div className="hero-controls"><a href="#trending" className="ingest-button"><span>INGEST SCENEPACK</span><ArrowRight size={15} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={13} /> QUICK PREVIEW <kbd>SPACE</kbd></button></div>
-          <div className="utility-link"><a href="#drops"><SlidersHorizontal size={13} /> AI UTILITIES <span>60 FPS LOSSLESS</span></a><span>TC 00:14:22:18 // 4K PRORES 422 // NO WATERMARK</span></div>
+          <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={15} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={13} /> Preview scenes <kbd>SPACE</kbd></button></div>
         </div>
         <div className={`monitor-shell ${previewOpen ? "monitor-playing" : ""}`}>
           <div className="monitor-frame">
