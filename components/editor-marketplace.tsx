@@ -264,6 +264,11 @@ export function EditorMarketplace() {
         <div className="creator-buy"><span className="price-eyebrow">ONE-TIME DROP / LIFETIME ACCESS</span><a href="#store">$15 <span>// COP THE PACK</span><ArrowRight size={16} /></a><small>+14 DAYS PRO ACCESS INCLUDED</small></div>
       </section>
       <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
+      <section className="plus-banner" id="pro" aria-label="EditPacks Plus membership">
+        <span className="plus-badge">EditPacks+</span>
+        <p>Unlimited downloads, 12 editing tools, bulk zips. <strong>$5 a month.</strong></p>
+        <a href="#store">See what&apos;s in it <ArrowRight size={16} /></a>
+      </section>
       <SeriesRail />
       <CategoryBrowse onSelectCategory={setPackCategory} />
     </div>
