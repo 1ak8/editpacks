@@ -990,3 +990,19 @@ html { scroll-padding-top: 92px; }
     transition-duration: .01ms !important;
   }
 }
+
+.poster-copy { position: relative; z-index: 1; }
+.poster-tags { min-height: 26px; align-items: center; margin: 2px 0 1px; opacity: 0; visibility: hidden; transform: translateY(5px); transition: opacity .2s, transform .2s, visibility .2s; }
+.poster-tags > span { padding: 5px 10px; border: 1px solid rgb(237 229 211 / 28%); border-radius: 999px; background: rgb(29 29 27 / 88%); color: #eee8dc; font: 600 11px/1.2 'system-ui', sans-serif; backdrop-filter: blur(12px); }
+.poster-card:hover .poster-tags, .poster-card:focus-visible .poster-tags { opacity: 1; visibility: visible; transform: translateY(0); }
+.drop-tile { display: block; border-radius: 14px; }
+.drop-image { border-radius: 14px; background-size: cover; transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s; }
+.drop-tile:hover .drop-image, .drop-tile:focus-visible .drop-image { transform: translateY(-4px); border-color: rgb(205 233 226 / 48%); box-shadow: 0 18px 38px rgb(0 0 0 / 30%); }
+.drop-hover-details { position: absolute; right: 9px; bottom: 10px; left: 9px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; opacity: 0; transform: translateY(6px); transition: opacity .22s, transform .22s; }
+.drop-tags { display: flex; min-width: 0; flex-wrap: wrap; gap: 5px; }
+.drop-tags > span { padding: 5px 8px; border: 1px solid rgb(237 229 211 / 28%); border-radius: 999px; background: rgb(29 29 27 / 88%); color: #eee8dc; font: 600 10px/1.15 'system-ui', sans-serif; backdrop-filter: blur(12px); }
+.drop-preview { position: static; flex: 0 0 auto; width: auto; height: auto; padding: 8px 10px; border: 1px solid rgb(237 229 211 / 35%); border-radius: 999px; background: rgb(239 232 219 / 94%); color: #1c1b19; font: 700 8px/1 'ui-monospace', monospace; letter-spacing: .04em; opacity: 1; transform: none; }
+.drop-tile:hover .drop-hover-details, .drop-tile:focus-visible .drop-hover-details { opacity: 1; transform: translateY(0); }
+.drop-tile:hover .drop-preview, .drop-tile:focus-visible .drop-preview { opacity: 1; transform: none; }
+.preview-button { border-color: rgb(237 229 211 / 28%); background: rgb(20 21 20 / 84%); color: #eee8dc; transition: background .2s, border-color .2s, transform .2s; }
+.preview-button:hover, .preview-button:focus-visible { border-color: rgb(237 229 211 / 55%); background: rgb(38 37 33 / 96%); transform: translateY(-1px); }

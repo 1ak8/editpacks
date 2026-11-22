@@ -24,11 +24,11 @@ const trending = [
 ]
 
 const fresh = [
-  { title: "THE INCREDIBLES", studio: "PIXAR // 4K HDR", image: "photo-1533929736458-ca588d08c8be", number: "01" },
-  { title: "CHAINSAW MAN: REZE ARC", studio: "MAPPA STUDIOS", image: "photo-1518837695005-2083093ee35b", number: "02" },
-  { title: "ACROSS THE SPIDER-VERSE", studio: "SONY 4K // 10-BIT", image: "photo-1534796636912-3b95b3ab5986", number: "03" },
-  { title: "IRON MAN", studio: "MARVEL // IMAX", image: "photo-1480714378408-67cf0d13bc1b", number: "04" },
-  { title: "THE BATMAN", studio: "IMAX 70MM // 4K", image: "photo-1500534623283-312aade485b7", number: "05" },
+  { title: "THE INCREDIBLES", studio: "PIXAR // 4K HDR", image: "photo-1533929736458-ca588d08c8be", number: "01", tags: ["New", "Animation"] },
+  { title: "CHAINSAW MAN: REZE ARC", studio: "MAPPA STUDIOS", image: "photo-1518837695005-2083093ee35b", number: "02", tags: ["New", "Anime"] },
+  { title: "ACROSS THE SPIDER-VERSE", studio: "SONY 4K // 10-BIT", image: "photo-1534796636912-3b95b3ab5986", number: "03", tags: ["New", "Animation"] },
+  { title: "IRON MAN", studio: "MARVEL // IMAX", image: "photo-1480714378408-67cf0d13bc1b", number: "04", tags: ["New", "Marvel"] },
+  { title: "THE BATMAN", studio: "IMAX 70MM // 4K", image: "photo-1500534623283-312aade485b7", number: "05", tags: ["New", "DC"] },
 ]
 
 const series = [
@@ -79,9 +79,9 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
       <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" data-index={String(index + 1)} key={pack.title} role="listitem">
         <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title} scenepack`}>
           <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">NEW</span>}
-          <span className="poster-copy"><span className="poster-category">{pack.category} / SCENEPACK</span><strong>{pack.title}</strong><span className="poster-format">{pack.format}</span><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs} <i>·</i> {pack.duration}</span>
+          <span className="poster-copy"><span className="poster-category">{pack.category} / SCENEPACK</span><strong>{pack.title}</strong><span className="poster-tags" aria-label="Scenepack tags">{pack.isNew && <span>New</span>}<span>{pack.category === "Gaming" ? "Games" : pack.category}</span></span><span className="poster-format">{pack.format}</span><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs} <i>·</i> {pack.duration}</span>
             {pack.remake && <><span className="poster-remaster-label">REMASTERING</span><span className="poster-progress"><i style={{ width: `${pack.remasterProgress}%` }} /></span></>}
-          </span><span className="poster-tags" aria-label="Scenepack tags">{pack.isNew && <span>New</span>}<span>{pack.category === "Gaming" ? "Games" : pack.category}</span></span>
+          </span>
         </button>
         <div className="poster-caption"><span className="poster-caption-category">{pack.category}</span><strong className="poster-caption-title">{pack.title}</strong><span className="poster-caption-meta">{pack.remake && <span className="poster-caption-status">Remaking</span>}<span>{pack.packs.toLowerCase()}</span><i /> <span>{pack.downloads} downloads</span></span></div>
       </article>)}</div>
@@ -109,7 +109,7 @@ function TimelineWorkbench() {
 function DropGrid({ onPreview }: { onPreview: (title: string) => void }) {
   return <section className="vault-section" id="drops"><SectionHeading index="02" title="FRESH DROPS THIS WEEK" link="ALL NEW ARRIVALS" />
     <div className="drop-grid">{fresh.map(item => <button className="drop-tile" key={item.title} onClick={() => onPreview(item.title)}>
-      <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 20%, rgba(5,7,10,.86)), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-preview"><Play size={13} fill="currentColor" /> QUICK PREVIEW</span></span>
+      <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(5,7,10,.04) 20%, rgba(5,7,10,.88) 100%), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-hover-details"><span className="drop-tags" aria-label="Scenepack tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</span><span className="drop-preview"><Play size={12} fill="currentColor" /> PREVIEW</span></span></span>
       <span className="drop-caption"><span><b>{item.title}</b><small>{item.studio}</small></span><ArrowRight size={15} /></span>
     </button>)}</div>
   </section>
@@ -244,7 +244,7 @@ export function EditorMarketplace() {
           <div className="quick-filters" aria-label="Featured pack formats">{quickFilters.map(filter => <button key={filter} className={activeFilter === filter ? "filter-active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter}</button>)}</div>
           <div className="spec-strip">{[feature.year, feature.cuts, feature.downloads].map((value, i) => <span key={value}><i>0{i + 1}</i> {value}</span>)}</div>
           <p className="cast-list">{feature.cast}</p>
-          <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={15} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={13} /> Preview scenes <kbd>SPACE</kbd></button></div>
+          <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={15} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={13} /> Preview scenes</button></div>
         </div>
         <div className={`monitor-shell ${previewOpen ? "monitor-playing" : ""}`}>
           <div className="monitor-frame">
