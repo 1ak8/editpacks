@@ -285,11 +285,31 @@ export function EditorMarketplace() {
       <div className="content-telemetry"><span>VAULT INDEX <b>001 — 048</b></span><span>LAST SYNC 00:04 AGO <i /></span></div>
       <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.startsWith(item.title.slice(0, 7))); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
       <section className="creator-drop" id="store">
-        <div className="drop-art"><span className="drop-number-badge">DROP <b>#08</b></span><div className="drop-art-title">TWZZUY<br /><i>VELOCITY</i></div><span className="drop-art-foot">SIGNATURE MOTION STUDY / 2025</span></div>
-        <div className="creator-copy"><span className="creator-overline">EXCLUSIVE CREATOR DROP <i /> 08 / 24</span><h2>TWZZUY&apos;S SIGNATURE<br /><em>HARDSTYLE VELOCITY</em> <ShieldCheck size={17} /></h2><p className="creator-proof">VERIFIED CREATOR <b>·</b> 84.8K DOWNLOADS <b>·</b> DROP 08</p><p className="creator-bio">The velocity language behind the hardest edits on your feed. Every transition, impact and dialogue stem — dialled in and ready for your timeline.</p>
-          <div className="stem-player"><button className="stem-play" onClick={() => setAudioPlaying(!audioPlaying)} aria-label={audioPlaying ? "Pause audio preview" : "Play audio preview"}>{audioPlaying ? <Pause size={13} /> : <Play size={13} fill="currentColor" />}</button><span className="stem-name">DIALOGUE STEM <small>00:18 / 00:42</small></span><span className={`stem-wave ${audioPlaying ? "stem-animating" : ""}`}>{waveform.map((height, i) => <i key={i} style={{ height: `${height}px`, animationDelay: `${i * 18}ms` }} />)}</span><Volume2 size={14} className="stem-volume" /></div>
+        <div className="drop-art">
+          <span className="drop-number-badge">DROP <b>#08</b></span>
+          <div className="drop-art-title">TWZZUY<br /><i>VELOCITY</i></div>
+          <span className="drop-art-foot">SIGNATURE MOTION STUDY</span>
         </div>
-        <div className="creator-buy"><span className="price-eyebrow">ONE-TIME DROP / LIFETIME ACCESS</span><a href="#store">$15 <span>// COP THE PACK</span><ArrowRight size={16} /></a><small>+14 DAYS PRO ACCESS INCLUDED</small></div>
+        <div className="creator-copy">
+          <span className="creator-overline">EXCLUSIVE CREATOR DROP <i /> 08 / 24</span>
+          <h2>TWZZUY&apos;S SIGNATURE <em>HARDSTYLE VELOCITY</em> <ShieldCheck size={18} /></h2>
+          <p className="creator-bio">The velocity language behind the hardest edits on your feed. Transitions, impacts and audio dialogue stems ready for your timeline.</p>
+          <div className="stem-player">
+            <button className="stem-play" onClick={() => setAudioPlaying(!audioPlaying)} aria-label={audioPlaying ? "Pause audio preview" : "Play audio preview"}>
+              {audioPlaying ? <Pause size={13} /> : <Play size={13} fill="currentColor" />}
+            </button>
+            <span className="stem-name">DIALOGUE STEM <small>00:18 / 00:42</small></span>
+            <span className={`stem-wave ${audioPlaying ? "stem-animating" : ""}`}>
+              {waveform.slice(0, 24).map((height, i) => <i key={i} style={{ height: `${height}px`, animationDelay: `${i * 18}ms` }} />)}
+            </span>
+            <Volume2 size={14} className="stem-volume" />
+          </div>
+        </div>
+        <div className="creator-buy">
+          <span className="price-eyebrow">ONE-TIME DROP</span>
+          <a href="#store">$15 <span>// GET THE PACK</span><ArrowRight size={15} /></a>
+          <small>84.8K DOWNLOADS · LIFETIME ACCESS</small>
+        </div>
       </section>
       <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
       <section className="plus-banner" id="pro" aria-label="EditPacks Plus membership">
