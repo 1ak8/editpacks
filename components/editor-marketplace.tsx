@@ -127,9 +127,10 @@ function CategoryBrowse({ onSelectCategory }: { onSelectCategory: (category: str
     <div className="category-heading"><div><span className="category-kicker"><i /> FIND YOUR NEXT FRAME</span><h2 id="category-browse-title">Browse by category</h2><p>Curated source material, ready for the way you create.</p></div><span className="category-index">05 <i /> 05 COLLECTIONS</span></div>
     <div className="category-grid">{categories.map((category, index) => {
       const count = trending.filter(pack => pack.category === category.value).length
-      return <a className="category-card" href="#trending" key={category.value} onClick={() => onSelectCategory(category.value)} style={{ backgroundImage: `linear-gradient(180deg, rgba(7,9,13,.08) 12%, rgba(7,9,13,.28) 45%, rgba(7,9,13,.96) 100%), url(${imageUrl(category.image, 760)})` }}>
-        <span className="category-card-top"><span>0{index + 1} / COLLECTION</span><ArrowRight size={17} /></span>
-        <span className="category-card-copy"><span>{category.descriptor}</span><strong>{category.label}</strong><small>{String(count).padStart(2, "0")} FEATURED SCENEPACKS</small></span>
+      const featured = index === 0
+      return <a className={`category-card${featured ? " category-card-featured" : ""}`} href="#trending" key={category.value} onClick={() => onSelectCategory(category.value)} style={{ backgroundImage: `url(${imageUrl(category.image, 760)})` }}>
+        <span className="category-card-top"><span className="category-card-number">0{index + 1}</span><span className="category-card-collection">COLLECTION / 05</span><ArrowRight size={17} /></span>
+        <span className="category-card-copy"><span className="category-card-descriptor">{category.descriptor}</span><strong>{category.label}</strong><small>{String(count).padStart(2, "0")} FEATURED SCENEPACKS</small><span className="category-card-cta">{featured ? "EXPLORE FEATURED" : "EXPLORE COLLECTION"}<ArrowRight size={14} /></span></span>
       </a>
     })}</div>
   </section>
