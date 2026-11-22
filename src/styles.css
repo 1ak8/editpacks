@@ -1711,4 +1711,21 @@ html { scroll-padding-top: 92px; }
   .hero-backdrop::after {
     display: none !important;
   }
+
+  /* Hide timecode ruler and segment slider on mobile */
+  .timecode-ruler,
+  .image-timeline-wrap {
+    display: none !important;
+  }
+
+  /* Shift text content down with breathing room so it looks clean */
+  .hero-content-grid {
+    padding-top: 72px !important;
+    padding-bottom: 34px !important;
+  }
+
+  .hero-editorial {
+    margin-top: 10px !important;
+    padding-top: 4px !important;
+  }
 }
