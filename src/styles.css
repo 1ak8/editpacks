@@ -1432,7 +1432,7 @@ html { scroll-padding-top: 92px; }
   }
 }
 
-/* ── Full screen width on mobile phone devices ── */
+/* ── Full screen width on mobile phone devices & Hero order ── */
 @media (max-width: 760px) {
   .vault-content {
     width: 100% !important;
@@ -1445,6 +1445,21 @@ html { scroll-padding-top: 92px; }
     padding-left: 14px !important;
     padding-right: 14px !important;
     box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+  }
+  /* Live viewport (monitor shell) on top, content (editorial) below */
+  .monitor-shell {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: stretch !important;
+  }
+  .hero-editorial {
+    order: 1 !important;
+    width: 100% !important;
+    min-height: auto !important;
   }
   .command-dock {
     width: calc(100% - 20px) !important;
@@ -1472,6 +1487,7 @@ html { scroll-padding-top: 92px; }
     width: 100% !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
+    gap: 14px !important;
   }
   .command-dock {
     width: calc(100% - 16px) !important;
