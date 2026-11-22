@@ -997,12 +997,18 @@ html { scroll-padding-top: 92px; }
 .poster-card:hover .poster-tags, .poster-card:focus-visible .poster-tags { opacity: 1; visibility: visible; transform: translateY(0); }
 .drop-tile { display: block; border-radius: 14px; }
 .drop-image { border-radius: 14px; background-size: cover; transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s; }
-.drop-tile:hover .drop-image, .drop-tile:focus-visible .drop-image { transform: translateY(-4px); border-color: rgb(205 233 226 / 48%); box-shadow: 0 18px 38px rgb(0 0 0 / 30%); }
-.drop-hover-details { position: absolute; right: 9px; bottom: 10px; left: 9px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; opacity: 0; transform: translateY(6px); transition: opacity .22s, transform .22s; }
+.drop-image::after { position: absolute; z-index: 0; inset: 0; content: ''; background: linear-gradient(180deg, rgb(8 10 12 / 8%) 18%, rgb(8 10 12 / 14%) 40%, rgb(8 10 12 / 92%) 100%); opacity: 0; pointer-events: none; transition: opacity .25s; }
+.drop-tile:hover .drop-image, .drop-tile:focus-visible .drop-image { transform: translateY(-4px); border-color: rgb(237 229 211 / 52%); box-shadow: 0 18px 38px rgb(0 0 0 / 34%); }
+.drop-tile:hover .drop-image::after, .drop-tile:focus-visible .drop-image::after { opacity: 1; }
+.drop-number { z-index: 1; }
+.drop-hover-details { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; align-items: stretch; gap: 9px; padding: 56px 11px 11px; opacity: 0; transform: translateY(7px); transition: opacity .22s, transform .22s; }
+.drop-hover-copy { display: flex; min-width: 0; flex-direction: column; gap: 5px; }
+.drop-hover-copy strong { display: -webkit-box; overflow: hidden; color: #f4f1e9; font: 750 14px/1.08 'system-ui', sans-serif; letter-spacing: -.035em; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.drop-hover-copy small { overflow: hidden; color: rgb(237 233 222 / 70%); font: 600 8px/1.3 'ui-monospace', monospace; letter-spacing: .08em; text-overflow: ellipsis; white-space: nowrap; }
 .drop-tags { display: flex; min-width: 0; flex-wrap: wrap; gap: 5px; }
 .drop-tags > span { padding: 5px 8px; border: 1px solid rgb(237 229 211 / 28%); border-radius: 999px; background: rgb(29 29 27 / 88%); color: #eee8dc; font: 600 10px/1.15 'system-ui', sans-serif; backdrop-filter: blur(12px); }
-.drop-preview { position: static; flex: 0 0 auto; width: auto; height: auto; padding: 8px 10px; border: 1px solid rgb(237 229 211 / 35%); border-radius: 999px; background: rgb(239 232 219 / 94%); color: #1c1b19; font: 700 8px/1 'ui-monospace', monospace; letter-spacing: .04em; opacity: 1; transform: none; }
+.drop-preview { position: static; display: flex; width: 100%; min-height: 38px; flex: 0 0 auto; align-items: center; justify-content: center; gap: 8px; padding: 0 11px; border: 1px solid rgb(237 229 211 / 30%); border-radius: 5px; background: rgb(12 17 18 / 78%); color: #f0ece3; font: 650 10px/1 'system-ui', sans-serif; letter-spacing: .025em; opacity: 1; transform: none; backdrop-filter: blur(12px); transition: border-color .2s, background .2s; }
 .drop-tile:hover .drop-hover-details, .drop-tile:focus-visible .drop-hover-details { opacity: 1; transform: translateY(0); }
-.drop-tile:hover .drop-preview, .drop-tile:focus-visible .drop-preview { opacity: 1; transform: none; }
+.drop-tile:hover .drop-preview, .drop-tile:focus-visible .drop-preview { border-color: rgb(237 229 211 / 58%); background: rgb(30 31 29 / 94%); opacity: 1; transform: none; }
 .preview-button { border-color: rgb(237 229 211 / 28%); background: rgb(20 21 20 / 84%); color: #eee8dc; transition: background .2s, border-color .2s, transform .2s; }
 .preview-button:hover, .preview-button:focus-visible { border-color: rgb(237 229 211 / 55%); background: rgb(38 37 33 / 96%); transform: translateY(-1px); }

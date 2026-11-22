@@ -109,7 +109,7 @@ function TimelineWorkbench() {
 function DropGrid({ onPreview }: { onPreview: (title: string) => void }) {
   return <section className="vault-section" id="drops"><SectionHeading index="02" title="FRESH DROPS THIS WEEK" link="ALL NEW ARRIVALS" />
     <div className="drop-grid">{fresh.map(item => <button className="drop-tile" key={item.title} onClick={() => onPreview(item.title)}>
-      <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(5,7,10,.04) 20%, rgba(5,7,10,.88) 100%), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-hover-details"><span className="drop-tags" aria-label="Scenepack tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</span><span className="drop-preview"><Play size={12} fill="currentColor" /> PREVIEW</span></span></span>
+      <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(5,7,10,.08), rgba(5,7,10,.12)), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-hover-details"><span className="drop-hover-copy"><strong>{item.title}</strong><small>{item.studio}</small></span><span className="drop-tags" aria-label="Scenepack tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</span><span className="drop-preview"><Play size={12} fill="currentColor" /> Preview scenes <ArrowRight size={13} /></span></span></span>
       <span className="drop-caption"><span><b>{item.title}</b><small>{item.studio}</small></span><ArrowRight size={15} /></span>
     </button>)}</div>
   </section>
