@@ -1296,6 +1296,111 @@ html { scroll-padding-top: 92px; }
     bottom: 42px;
     -webkit-text-stroke-width: 1.8px;
   }
+  /* Compact mobile styling for Creator Drop (TWZZUY'S VELOCITY) */
+  .creator-drop {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 28px 0 !important;
+    padding: 14px !important;
+    gap: 12px !important;
+    border-radius: 12px !important;
+  }
+  .drop-art {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100px !important;
+    min-height: 100px !important;
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+  }
+  .drop-art-title {
+    font-size: 20px !important;
+    line-height: 0.9 !important;
+  }
+  .drop-art-title i {
+    font-size: 15px !important;
+  }
+  .drop-number-badge {
+    padding: 3px 6px !important;
+    font-size: 9px !important;
+  }
+  .drop-art-foot {
+    font-size: 8px !important;
+  }
+  .creator-copy {
+    width: 100% !important;
+  }
+  .creator-overline {
+    font-size: 9px !important;
+    letter-spacing: 0.08em !important;
+  }
+  .creator-copy h2 {
+    margin: 6px 0 4px !important;
+    font-size: 17px !important;
+    line-height: 1.15 !important;
+  }
+  .creator-copy h2 svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .creator-proof {
+    font-size: 10px !important;
+    margin: 0 0 6px !important;
+  }
+  .creator-bio {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin: 4px 0 10px !important;
+    max-width: none !important;
+  }
+  .stem-player {
+    max-width: 100% !important;
+    padding: 6px 10px !important;
+    gap: 8px !important;
+    border-radius: 8px !important;
+  }
+  .stem-play {
+    flex: 0 0 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .stem-name {
+    font-size: 10px !important;
+    gap: 2px !important;
+  }
+  .stem-name small {
+    font-size: 8px !important;
+  }
+  .stem-wave {
+    height: 24px !important;
+  }
+  .stem-wave i {
+    max-height: 20px !important;
+  }
+  .creator-buy {
+    width: 100% !important;
+    padding: 0 !important;
+    gap: 6px !important;
+  }
+  .price-eyebrow {
+    font-size: 9px !important;
+  }
+  .creator-buy > a {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+  }
+  .creator-buy > a span {
+    font-size: 10px !important;
+  }
+  .creator-buy > small {
+    font-size: 9px !important;
+  }
 }
 @media (max-width: 520px) {
   .poster-grid {
@@ -1307,5 +1412,22 @@ html { scroll-padding-top: 92px; }
     font-size: clamp(90px, 22vw, 125px);
     left: -44px;
     bottom: 38px;
+  }
+  .creator-drop {
+    margin: 22px 0 !important;
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+  .drop-art {
+    height: 85px !important;
+    min-height: 85px !important;
+    padding: 8px 10px !important;
+  }
+  .creator-copy h2 {
+    font-size: 15px !important;
+  }
+  .creator-bio {
+    font-size: 11px !important;
+    margin-bottom: 8px !important;
   }
 }
