@@ -283,8 +283,8 @@ export function EditorMarketplace() {
       <section className="editor-community" id="community" aria-labelledby="editor-community-title">
         <div className="editor-community-bar">
           <div className="editor-community-intro">
-            <div className="editor-community-avatars" aria-hidden="true">{communityEditors.slice(0, 4).map(editor => <span key={editor.name}>{editor.initials}</span>)}</div>
-            <h2 id="editor-community-title">Creators cutting with EditPacks</h2>
+            <span className="editor-community-kicker">COMMUNITY / CREATOR INDEX</span>
+            <h2 id="editor-community-title">EDITORS IN THE MIX</h2>
           </div>
           <ul className="editor-community-list" aria-label="Featured EditPacks creators">
             {communityEditors.map(editor => <li className="editor-community-chip" key={editor.name}><span className="editor-community-avatar" aria-hidden="true">{editor.initials}</span><span className="editor-community-name">{editor.name}</span><span className="editor-community-dot" aria-hidden="true" /><span className="editor-community-count">{editor.clips}</span></li>)}
