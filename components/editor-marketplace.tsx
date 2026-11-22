@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react"
-import { ArrowDownToLine, ArrowRight, AudioLines, Check, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { ArrowDownToLine, ArrowRight, Check, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
 
 const features = [
   { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
@@ -60,8 +60,7 @@ function SectionHeading({ index, title, link = "EXPLORE FULL LEADERBOARD" }: { i
   return <div className="vault-section-heading"><div className="section-title-lockup"><span className="section-index">{index}</span><span className="section-rule" /><h2>{title}</h2></div><a href="#vault">{link} <ArrowRight size={14} /></a></div>
 }
 
-function CartridgeRail({ onPreview }: { onPreview: (title: string) => void }) {
-  const [category, setCategory] = useState("All")
+function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (title: string) => void; category: string; onCategoryChange: (category: string) => void }) {
   const filters = [{ label: "All", value: "All" }, { label: "Anime", value: "Anime" }, { label: "Movies", value: "Cinema" }, { label: "Series", value: "Series" }, { label: "K-Pop", value: "K-Pop" }, { label: "Gaming", value: "Gaming" }]
   const packs = category === "All" ? trending : trending.filter(pack => pack.category === category)
 
@@ -75,14 +74,14 @@ function CartridgeRail({ onPreview }: { onPreview: (title: string) => void }) {
 
   return <section className="vault-section trending-section" id="trending"><SectionHeading index="01" title="POPULAR SCENEPACKS" link="Browse all" />
     <div className="chart-note"><span className="chart-note-kicker">THE EDITOR&apos;S CHART <i /> WEEKLY INDEX</span><p>Scenes creators keep coming back to.</p><span className="chart-note-range"><b>01—10</b> / RANKED BY DOWNLOADS</span></div>
-    <div className="trend-filters" aria-label="Filter scenepacks">{filters.map(filter => <button type="button" key={filter.value} className={category === filter.value ? "trend-filter-active" : ""} aria-pressed={category === filter.value} onClick={() => setCategory(filter.value)}>{filter.label}</button>)}</div>
+    <div className="trend-filters" aria-label="Filter scenepacks">{filters.map(filter => <button type="button" key={filter.value} className={category === filter.value ? "trend-filter-active" : ""} aria-pressed={category === filter.value} onClick={() => onCategoryChange(filter.value)}>{filter.label}</button>)}</div>
     <div className="poster-rail">
       <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" data-index={String(index + 1)} key={pack.title} role="listitem">
         <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title} scenepack`}>
           <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">NEW</span>}
           <span className="poster-copy"><span className="poster-category">{pack.category} / SCENEPACK</span><strong>{pack.title}</strong><span className="poster-format">{pack.format}</span><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs} <i>·</i> {pack.duration}</span>
             {pack.remake && <><span className="poster-remaster-label">REMASTERING</span><span className="poster-progress"><i style={{ width: `${pack.remasterProgress}%` }} /></span></>}
-          </span><span className="poster-open"><Play size={13} fill="currentColor" /> Preview pack</span>
+          </span><span className="poster-tags" aria-label="Scenepack tags">{pack.isNew && <span>New</span>}<span>{pack.category === "Gaming" ? "Games" : pack.category}</span></span>
         </button>
         <div className="poster-caption"><span className="poster-caption-category">{pack.category}</span><strong className="poster-caption-title">{pack.title}</strong><span className="poster-caption-meta">{pack.remake && <span className="poster-caption-status">Remaking</span>}<span>{pack.packs.toLowerCase()}</span><i /> <span>{pack.downloads} downloads</span></span></div>
       </article>)}</div>
@@ -119,6 +118,27 @@ function DropGrid({ onPreview }: { onPreview: (title: string) => void }) {
 function SeriesRail() {
   return <section className="vault-section" id="series"><SectionHeading index="04" title="SERIES STREAM VAULT" link="BROWSE THE ARCHIVE" />
     <div className="series-rail">{series.map((item, i) => <a className="series-tile" href="#vault" key={item.title} style={{ backgroundImage: `linear-gradient(180deg, rgba(4,6,9,.08), rgba(4,6,9,.9)), url(${imageUrl(item.image)})` }}><span className="series-number">0{i + 1} / SERIES</span><span className="series-info"><small>{item.studio}</small><b>{item.title}</b><span>{item.count} <ArrowRight size={12} /></span></span></a>)}</div>
+  </section>
+}
+
+function CategoryBrowse({ onSelectCategory }: { onSelectCategory: (category: string) => void }) {
+  const categories = [
+    { label: "Anime", value: "Anime", image: "photo-1578632767115-351597cf2477", descriptor: "Worlds beyond the frame" },
+    { label: "Cinema", value: "Cinema", image: "photo-1509316975850-ff9c5deb0cd9", descriptor: "The big-screen cut" },
+    { label: "Series", value: "Series", image: "photo-1470252649378-9c29740c9fa7", descriptor: "Stories in every frame" },
+    { label: "K-Pop", value: "K-Pop", image: "photo-1518837695005-2083093ee35b", descriptor: "Stage lights, sharp edits" },
+    { label: "Gaming", value: "Gaming", image: "photo-1519608487953-e999c86e7455", descriptor: "Built for the next level" },
+  ]
+
+  return <section className="category-browse" id="categories" aria-labelledby="category-browse-title">
+    <div className="category-heading"><div><span className="category-kicker"><i /> FIND YOUR NEXT FRAME</span><h2 id="category-browse-title">Browse by category</h2><p>Curated source material, ready for the way you create.</p></div><span className="category-index">05 <i /> 05 COLLECTIONS</span></div>
+    <div className="category-grid">{categories.map((category, index) => {
+      const count = trending.filter(pack => pack.category === category.value).length
+      return <a className="category-card" href="#trending" key={category.value} onClick={() => onSelectCategory(category.value)} style={{ backgroundImage: `linear-gradient(180deg, rgba(7,9,13,.08) 12%, rgba(7,9,13,.28) 45%, rgba(7,9,13,.96) 100%), url(${imageUrl(category.image, 760)})` }}>
+        <span className="category-card-top"><span>0{index + 1} / COLLECTION</span><ArrowRight size={17} /></span>
+        <span className="category-card-copy"><span>{category.descriptor}</span><strong>{category.label}</strong><small>{String(count).padStart(2, "0")} FEATURED SCENEPACKS</small></span>
+      </a>
+    })}</div>
   </section>
 }
 
@@ -177,6 +197,7 @@ function FeaturedHeading({ feature }: { feature: (typeof features)[number] }) {
 
 export function EditorMarketplace() {
   const [active, setActive] = useState(0)
+  const [packCategory, setPackCategory] = useState("All")
   const [activeFilter, setActiveFilter] = useState("ALL CUTS")
   const [playhead, setPlayhead] = useState(32)
   const [requestOpen, setRequestOpen] = useState(false)
@@ -209,7 +230,7 @@ export function EditorMarketplace() {
     <div className="grain-overlay" aria-hidden="true" />
     <header className="command-dock">
       <a href="#top" className="vault-wordmark"><span className="rec-indicator"><i /> REC</span><span>EDITPACKS</span></a>
-      <nav id="primary-navigation" className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top" aria-current="page" onClick={() => setMenuOpen(false)}>Home</a><a href="#trending" onClick={() => setMenuOpen(false)}>Explore</a><a href="#series" onClick={() => setMenuOpen(false)}>Series</a><a href="#drops" onClick={() => setMenuOpen(false)}>New drops</a></nav>
+      <nav id="primary-navigation" className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top" aria-current="page" onClick={() => setMenuOpen(false)}>Home</a><a href="#trending" onClick={() => setMenuOpen(false)}>Explore</a><a href="#series" onClick={() => setMenuOpen(false)}>Series</a><a href="#categories" onClick={() => setMenuOpen(false)}>Categories</a><a href="#drops" onClick={() => setMenuOpen(false)}>New drops</a></nav>
       <div className="dock-actions"><button className="quick-ingest" onClick={() => setSearchOpen(true)} aria-label="Quick ingest search"><Search size={13} /><span>Quick Ingest</span><kbd><Command size={10} /> K</kbd></button><button className="avatar-button" aria-label="Account"><UserRound size={15} /></button><a className="pro-button" href="#pro" aria-label="Pro access">PRO ACCESS <Sparkles size={12} /></a></div>
       <button className="dock-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="primary-navigation">{menuOpen ? <X size={17} /> : <Menu size={17} />}</button>
     </header>
@@ -250,21 +271,21 @@ export function EditorMarketplace() {
 
     <div className="vault-content" id="vault">
       <div className="content-telemetry"><span>VAULT INDEX <b>001 — 048</b></span><span>LAST SYNC 00:04 AGO <i /></span></div>
-      <CartridgeRail onPreview={title => { const matchingFeature = features.findIndex(item => title.startsWith(item.title.slice(0, 7))); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
+      <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.startsWith(item.title.slice(0, 7))); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
       <TimelineWorkbench />
       <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
+      <SeriesRail />
       <section className="creator-drop" id="store">
         <div className="drop-art"><span className="drop-number-badge">DROP <b>#08</b></span><div className="drop-art-title">TWZZUY<br /><i>VELOCITY</i></div><span className="drop-art-foot">SIGNATURE MOTION STUDY / 2025</span></div>
-        <div className="creator-copy"><span className="creator-overline">EXCLUSIVE CREATOR DROP <i /> 08 / 24</span><h2>TWZZUY&apos;S SIGNATURE<br /><em>HARDSTYLE VELOCITY</em> <ShieldCheck size={17} /></h2><p className="creator-proof">VERIFIED CREATOR <b>·</b> 84.8K DOWNLOADS <b>·</b> DROP 08</p><p className="creator-bio">The velocity language behind the hardest edits on your feed. Every transition, impact and dialogue stem — dialled in and ready for your timeline.</p>
+        <div className="creator-copy"><span className="creator-overline">EXCLUSIVE CREATIVE DROP <i /> 08 / 24</span><h2>TWZZUY&apos;S SIGNATURE<br /><em>HARDSTYLE VELOCITY</em> <ShieldCheck size={17} /></h2><p className="creator-proof">VERIFIED CREATOR <b>·</b> 84.8K DOWNLOADS <b>·</b> DROP 08</p><p className="creator-bio">The velocity language behind the hardest edits on your feed. Every transition, impact and dialogue stem — dialled in and ready for your timeline.</p>
           <div className="stem-player"><button className="stem-play" onClick={() => setAudioPlaying(!audioPlaying)} aria-label={audioPlaying ? "Pause audio preview" : "Play audio preview"}>{audioPlaying ? <Pause size={13} /> : <Play size={13} fill="currentColor" />}</button><span className="stem-name">DIALOGUE STEM <small>00:18 / 00:42</small></span><span className={`stem-wave ${audioPlaying ? "stem-animating" : ""}`}>{waveform.map((height, i) => <i key={i} style={{ height: `${height}px`, animationDelay: `${i * 18}ms` }} />)}</span><Volume2 size={14} className="stem-volume" /></div>
         </div>
         <div className="creator-buy"><span className="price-eyebrow">ONE-TIME DROP / LIFETIME ACCESS</span><a href="#store">$15 <span>// COP THE PACK</span><ArrowRight size={16} /></a><small>+14 DAYS PRO ACCESS INCLUDED</small></div>
       </section>
-      <SeriesRail />
-      <section className="audio-callout" id="audio"><span className="audio-callout-icon"><AudioLines size={20} /></span><div><span>STEMS / SFX / UTILITY</span><h2>Every layer. In its own lane.</h2><p>Isolated dialogue, foley, ambience and more. Built for editors who care about the mix.</p></div><a href="#drops">BROWSE AUDIO <ArrowRight size={14} /></a></section>
+      <CategoryBrowse onSelectCategory={setPackCategory} />
     </div>
 
-    <footer className="vault-footer"><div className="footer-top"><a className="vault-wordmark" href="#top"><span>EDITPACKS</span></a><span className="footer-manifesto">A TOOLKIT FOR THE FRAME-OBSESSED.</span><span className="r2-status"><i /> CLOUDFLARE R2 / 99.98% OPERATIONAL</span></div><div className="footer-columns"><div><span className="footer-label">THE VAULT</span><a href="#trending">Browse collections</a><a href="#drops">Fresh drops</a><a href="#store">Creator store</a></div><div><span className="footer-label">STUDIO</span><a href="#community">Community / Discord</a><a href="#api">API status</a><a href="#request" onClick={event => { event.preventDefault(); setRequestOpen(true) }}>Request a scenepack</a></div><div><span className="footer-label">LEGAL / SUPPORT</span><a href="#dmca">DMCA takedown portal</a><a href="#terms">Terms of use</a><a href="#contact">Contact the studio</a></div><div className="footer-note"><span>BUILT FOR THE CUT.</span><p>Independent tools for a more considered edit. Handle every source with care.</p></div></div><div className="footer-bottom"><span>© 2025 EDITPACKS — ALL RIGHTS RESERVED</span><span>NO WATERMARKS. NO SHORTCUTS.</span></div></footer>
+    <footer className="vault-footer"><div className="footer-top"><a className="vault-wordmark" href="#top"><span>EDITPACKS</span></a><span className="footer-manifesto">A TOOLKIT FOR THE FRAME-OBSESSED.</span><span className="r2-status"><i /> CLOUDFLARE R2 / 99.98% OPERATIONAL</span></div><div className="footer-columns"><div><span className="footer-label">THE VAULT</span><a href="#trending">Browse collections</a><a href="#drops">Fresh drops</a><a href="#store">Creator store</a><a href="#categories">Browse by category</a></div><div><span className="footer-label">STUDIO</span><a href="#community">Community / Discord</a><a href="#api">API status</a><a href="#request" onClick={event => { event.preventDefault(); setRequestOpen(true) }}>Request a scenepack</a></div><div><span className="footer-label">LEGAL / SUPPORT</span><a href="#dmca">DMCA takedown portal</a><a href="#terms">Terms of use</a><a href="#contact">Contact the studio</a></div><div className="footer-note"><span>BUILT FOR THE CUT.</span><p>Independent tools for a more considered edit. Handle every source with care.</p></div></div><div className="footer-bottom"><span>© 2025 EDITPACKS — ALL RIGHTS RESERVED</span><span>NO WATERMARKS. NO SHORTCUTS.</span></div></footer>
 
     {requestOpen && <RequestDialog onClose={() => setRequestOpen(false)} />}
     {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
