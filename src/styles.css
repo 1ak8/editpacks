@@ -617,8 +617,9 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-card::after { position: absolute; z-index: -1; inset: 0; content: ''; opacity: .7; background: linear-gradient(135deg, rgb(183 229 223 / 10%), transparent 38%); pointer-events: none; }
 .monitor-frame, .monitor-screen { border-radius: 0 !important; }
 .command-dock { border-radius: 8px; }
-.dock-nav a, .quick-ingest, .pro-button, .preview-button, .ingest-button, .dock-menu, .quick-filters button { border-radius: 4px; }
-.spec-strip span, .film-frame, .drop-image, .series-tile, .timeline-workbench, .creator-drop, .audio-callout, .timeline-console, .request-dialog, .search-dialog { border-radius: 4px; }
+.dock-nav a, .quick-ingest, .pro-button, .preview-button, .ingest-button, .dock-menu, .quick-filters button { border-radius: 5px; }
+.spec-strip span, .film-frame, .drop-image, .series-tile, .timeline-workbench, .creator-drop, .audio-callout, .timeline-console, .request-dialog, .search-dialog { border-radius: 6px; }
+.vault-section-heading > a, .utility-link a span { border-radius: 3px; }
 @media (max-width: 760px) {
   .chart-note { align-items: flex-start; flex-wrap: wrap; }
   .chart-note p { flex: 1 1 100%; order: 1; margin: -5px 0 0; }
