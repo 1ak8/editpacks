@@ -991,8 +991,8 @@ html { scroll-padding-top: 92px; }
   }
 }
 
-.poster-copy { position: relative; z-index: 1; }
-.poster-tags { min-height: 26px; align-items: center; margin: 2px 0 1px; opacity: 0; visibility: hidden; transform: translateY(5px); transition: opacity .2s, transform .2s, visibility .2s; }
+.poster-copy { position: absolute; z-index: 2; right: 15px; bottom: 52px; left: 15px; width: auto; max-width: none; max-height: calc(100% - 80px); margin: 0; padding: 0; }
+.poster-tags { position: absolute; z-index: 2; right: 15px; bottom: 15px; left: 15px; min-height: 26px; align-items: center; margin: 0; opacity: 0; visibility: hidden; transform: translateY(5px); transition: opacity .2s, transform .2s, visibility .2s; }
 .poster-tags > span { padding: 5px 10px; border: 1px solid rgb(237 229 211 / 28%); border-radius: 999px; background: rgb(29 29 27 / 88%); color: #eee8dc; font: 600 11px/1.2 'system-ui', sans-serif; backdrop-filter: blur(12px); }
 .poster-card:hover .poster-tags, .poster-card:focus-visible .poster-tags { opacity: 1; visibility: visible; transform: translateY(0); }
 .drop-tile { display: block; border-radius: 14px; }
