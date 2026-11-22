@@ -87,7 +87,7 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
     <div className="poster-rail">
       <div className="poster-grid" ref={posterRailRef} role="list" aria-label="Popular scenepacks">{packs.map((pack, index) => <article className="poster-item" data-index={String(index + 1)} key={pack.title} role="listitem">
         <button type="button" className="poster-card" data-title-treatment={"titleTreatment" in pack ? pack.titleTreatment : undefined} onClick={() => onPreview(pack.title)} style={{ backgroundImage: `url(${imageUrl(pack.image, 760)})` }} aria-label={`Preview ${pack.title} scenepack`}>
-          <span className="poster-rank">{String(index + 1).padStart(2, "0")}</span>{pack.isNew && <span className="poster-badge">NEW</span>}
+          {pack.isNew && <span className="poster-badge">NEW</span>}
           <span className="poster-copy"><span className="poster-category">{pack.category} / SCENEPACK</span><strong>{pack.title}</strong><span className="poster-format">{pack.format}</span><span className="poster-stats"><Download size={13} /> {pack.downloads} downloads</span><span className="poster-pack-count">{pack.packs} <i>·</i> {pack.duration}</span>
             {pack.remake && <><span className="poster-remaster-label">REMASTERING</span><span className="poster-progress"><i style={{ width: `${pack.remasterProgress}%` }} /></span></>}
           </span><span className="poster-tags" aria-label="Scenepack tags">{pack.isNew && <span>New</span>}<span>{pack.category === "Gaming" ? "Games" : pack.category}</span></span>

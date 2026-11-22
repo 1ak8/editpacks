@@ -855,15 +855,13 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-grid::-webkit-scrollbar { display: none; }
 .poster-item { position: relative; z-index: auto; min-width: 0; scroll-snap-align: start; }
 .poster-item:first-child { scroll-snap-align: none; }
-.poster-item::before { position: absolute; z-index: 0; top: 63.5%; left: 50%; width: max-content; content: attr(data-index); color: transparent; -webkit-text-stroke: 1.5px rgb(183 229 223 / 48%); font: 850 clamp(150px, 11vw, 220px)/.78 system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.1em; pointer-events: none; transform: translate(-50%, -50%) scaleX(3); text-shadow: 0 0 34px rgb(183 229 223 / 10%); transition: -webkit-text-stroke-color .3s, text-shadow .3s; }
-.poster-item[data-index="1"]::before { left: calc(50% + 40px); transform: translate(-50%, -50%) scaleX(4.7); }
-.poster-item:hover::before { -webkit-text-stroke-color: rgb(216 183 117 / 72%); text-shadow: 0 0 38px rgb(216 183 117 / 16%); }
+.poster-item::before { position: absolute; z-index: 0; top: 52%; left: 50%; width: max-content; content: attr(data-index); color: transparent; -webkit-text-stroke: 1.25px rgb(128 158 168 / 62%); font: 500 clamp(220px, 15vw, 250px)/.78 system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.07em; pointer-events: none; transform: translate(-50%, -50%) scaleX(2); transition: -webkit-text-stroke-color .3s; }
+.poster-item:hover::before { -webkit-text-stroke-color: rgb(158 183 189 / 72%); }
 .poster-card { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 2 / 3; padding: 0; overflow: hidden; border: 1px solid rgb(255 255 255 / 16%); border-radius: 9px; background-color: #151a1c; background-position: center; background-size: cover; color: #f6f5f0; text-align: left; box-shadow: 0 16px 34px rgb(0 0 0 / 28%); transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s, box-shadow .3s; }
 .poster-card::before { position: absolute; z-index: 0; inset: 0; content: ""; background: linear-gradient(180deg, rgb(8 10 12 / 16%), transparent 29%, rgb(8 10 12 / 8%)); transition: background .3s; }
 .poster-card::after { display: none; }
 .poster-card:hover, .poster-card:focus-visible { z-index: 2; transform: translateY(-5px); border-color: rgb(255 255 255 / 30%); box-shadow: 0 20px 42px rgb(0 0 0 / 32%); }
 .poster-card:hover::before, .poster-card:focus-visible::before { background: linear-gradient(180deg, rgb(8 10 12 / 18%) 0%, rgb(8 10 12 / 18%) 22%, rgb(8 10 12 / 88%) 100%); }
-.poster-rank { position: absolute; z-index: 2; top: 13px; right: 13px; left: auto; color: rgb(245 246 240 / 78%); font: 500 10px ui-monospace, monospace; letter-spacing: .08em; }
 .poster-badge { position: absolute; z-index: 2; top: 12px; right: auto; left: 12px; padding: 6px 9px; border: 0; border-radius: 4px; background: #b7e5df; color: #10201e; font: 800 10px/1 system-ui, sans-serif; letter-spacing: .06em; }
 .poster-copy { position: absolute; z-index: 2; right: 20px; bottom: 75px; left: 20px; display: flex; width: auto; max-width: 195px; max-height: calc(100% - 86px); flex-direction: column; align-items: flex-start; gap: 12px; overflow: hidden; opacity: 0; transform: translateY(12px); transition: opacity .24s ease, transform .24s ease; }
 .poster-card:hover .poster-copy, .poster-card:focus-visible .poster-copy { opacity: 1; transform: translateY(0); }
@@ -891,11 +889,10 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-rail-control:hover { transform: scale(1.06); border-color: rgb(183 229 223 / 65%); background: #172323; color: #b7e5df; }
 .poster-rail-next { right: -18px; }
 .poster-item:first-child .poster-card { border-color: rgb(255 255 255 / 16%); box-shadow: 0 16px 34px rgb(0 0 0 / 28%); }
-.poster-item:first-child .poster-rank { color: #d8b775; }
 @media (max-width: 760px) {
   .poster-grid { --poster-gap: clamp(60px, 14vw, 74px); grid-auto-columns: clamp(144px, 45vw, 190px); padding-top: 18px; padding-left: 28px; }
   .poster-rail-control { display: none; }
-  .poster-item::before { top: 63%; left: 50%; font-size: clamp(150px, 45vw, 210px); transform: translate(-50%, -50%) scaleX(2.5); }
+  .poster-item::before { top: 52%; left: 50%; font-size: clamp(200px, 45vw, 235px); transform: translate(-50%, -50%) scaleX(2); }
   .poster-card { border-radius: 8px; }
   .poster-copy { right: 13px; bottom: 54px; left: 13px; }
   .poster-open { right: 11px; bottom: 11px; left: 11px; }
