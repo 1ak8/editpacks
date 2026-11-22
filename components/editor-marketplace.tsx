@@ -209,9 +209,9 @@ export function EditorMarketplace() {
     <div className="grain-overlay" aria-hidden="true" />
     <header className="command-dock">
       <a href="#top" className="vault-wordmark"><span className="rec-indicator"><i /> REC</span><span>EDITPACKS</span></a>
-      <nav className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top">Home</a><a href="#trending">Explore</a><a href="#series">Movies &amp; Series</a><a href="#drops">New drops</a></nav>
+      <nav id="primary-navigation" className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top" aria-current="page" onClick={() => setMenuOpen(false)}>Home</a><a href="#trending" onClick={() => setMenuOpen(false)}>Explore</a><a href="#series" onClick={() => setMenuOpen(false)}>Series</a><a href="#drops" onClick={() => setMenuOpen(false)}>New drops</a></nav>
       <div className="dock-actions"><button className="quick-ingest" onClick={() => setSearchOpen(true)} aria-label="Quick ingest search"><Search size={13} /><span>Quick Ingest</span><kbd><Command size={10} /> K</kbd></button><button className="avatar-button" aria-label="Account"><UserRound size={15} /></button><a className="pro-button" href="#pro" aria-label="Pro access">PRO ACCESS <Sparkles size={12} /></a></div>
-      <button className="dock-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"}>{menuOpen ? <X size={17} /> : <Menu size={17} />}</button>
+      <button className="dock-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="primary-navigation">{menuOpen ? <X size={17} /> : <Menu size={17} />}</button>
     </header>
 
     <section className="studio-hero" aria-labelledby="feature-title">
