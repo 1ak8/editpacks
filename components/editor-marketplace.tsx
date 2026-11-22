@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react"
-import { ArrowDownToLine, ArrowRight, Check, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { ArrowDownToLine, ArrowRight, Check, Command, Download, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
 
 const features = [
   { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
@@ -86,22 +86,6 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
         <div className="poster-caption"><span className="poster-caption-category">{pack.category}</span><strong className="poster-caption-title">{pack.title}</strong><span className="poster-caption-meta">{pack.remake && <span className="poster-caption-status">Remaking</span>}<span>{pack.packs.toLowerCase()}</span><i /> <span>{pack.downloads} downloads</span></span></div>
       </article>)}</div>
       <button type="button" className="poster-rail-control poster-rail-next" aria-label="Show more scenepacks" onClick={() => scrollRail(1)}><ArrowRight size={18} /></button>
-    </div>
-  </section>
-}
-
-function TimelineWorkbench() {
-  const [playing, setPlaying] = useState(false)
-
-  return <section className={`timeline-workbench ${playing ? "timeline-playing" : ""}`} aria-labelledby="timeline-title">
-    <div className="timeline-intro"><span className="timeline-kicker"><Disc3 size={15} /> EDITOR SESSION / 04</span><h2 id="timeline-title">Every source.<br /><em>On its own track.</em></h2><p>Clean, organized scene sources for the moments that make the cut.</p><div className="timeline-project-meta"><span>SEQUENCE 04A</span><span>4K / 23.976</span><span>00:45:00:00</span></div></div>
-    <div className="timeline-console"><div className="timeline-console-head"><span><i /> SEQUENCE / SHIBUYA_APPROACH_04</span><button onClick={() => setPlaying(!playing)} aria-label={playing ? "Pause timeline playback" : "Play timeline preview"}>{playing ? <Pause size={15} /> : <Play size={15} fill="currentColor" />} {playing ? "PAUSE" : "PLAY SEQUENCE"}</button></div>
-      <div className="timeline-ruler"><span>00:00</span><span>00:08</span><span>00:16</span><span>00:24</span><span>00:32</span><span>00:40</span><span>00:45</span></div>
-      <div className="timeline-tracks"><div className="timeline-playhead" />
-        <div className="timeline-track video-track"><span className="track-label"><b>V1</b><span>VIDEO<br /><small>RAW 4K</small></span></span><div className="track-lane"><span className="timeline-clip clip-video clip-a">SCENE 042 / PRORES 422 HQ</span><span className="timeline-clip clip-video clip-b">SCENE 043 / LOG C</span><span className="timeline-clip clip-video clip-c">SCENE 044 / ARRIRAW</span></div></div>
-        <div className="timeline-track"><span className="track-label"><b>A1</b><span>AUDIO<br /><small>DIALOGUE</small></span></span><div className="track-lane"><span className="timeline-clip clip-audio dialogue-clip">ISOLATED DIALOGUE STEM <span className="timeline-wave">{waveform.slice(0, 35).map((height, i) => <i key={i} style={{ height: `${Math.max(6, height * .55)}px` }} />)}</span></span></div></div>
-        <div className="timeline-track"><span className="track-label"><b>A2</b><span>AUDIO<br /><small>SFX / IMPACTS</small></span></span><div className="track-lane"><span className="timeline-clip clip-impact impact-a">IMPACT 01 <span className="impact-wave">{waveform.slice(0, 12).map((height, i) => <i key={i} style={{ height: `${Math.max(4, height * .55)}px` }} />)}</span></span><span className="timeline-clip clip-impact impact-b">FOLEY / ROOM TONE <span className="impact-wave">{waveform.slice(14, 31).map((height, i) => <i key={i} style={{ height: `${Math.max(4, height * .5)}px` }} />)}</span></span></div></div>
-      </div><div className="timeline-foot"><span><Headphones size={13} /> STEMS SEPARATED / 48 KHZ</span><span>SNAP TO FRAME <b>ON</b></span></div>
     </div>
   </section>
 }
@@ -272,16 +256,15 @@ export function EditorMarketplace() {
     <div className="vault-content" id="vault">
       <div className="content-telemetry"><span>VAULT INDEX <b>001 — 048</b></span><span>LAST SYNC 00:04 AGO <i /></span></div>
       <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.startsWith(item.title.slice(0, 7))); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
-      <TimelineWorkbench />
-      <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
-      <SeriesRail />
       <section className="creator-drop" id="store">
         <div className="drop-art"><span className="drop-number-badge">DROP <b>#08</b></span><div className="drop-art-title">TWZZUY<br /><i>VELOCITY</i></div><span className="drop-art-foot">SIGNATURE MOTION STUDY / 2025</span></div>
-        <div className="creator-copy"><span className="creator-overline">EXCLUSIVE CREATIVE DROP <i /> 08 / 24</span><h2>TWZZUY&apos;S SIGNATURE<br /><em>HARDSTYLE VELOCITY</em> <ShieldCheck size={17} /></h2><p className="creator-proof">VERIFIED CREATOR <b>·</b> 84.8K DOWNLOADS <b>·</b> DROP 08</p><p className="creator-bio">The velocity language behind the hardest edits on your feed. Every transition, impact and dialogue stem — dialled in and ready for your timeline.</p>
+        <div className="creator-copy"><span className="creator-overline">EXCLUSIVE CREATOR DROP <i /> 08 / 24</span><h2>TWZZUY&apos;S SIGNATURE<br /><em>HARDSTYLE VELOCITY</em> <ShieldCheck size={17} /></h2><p className="creator-proof">VERIFIED CREATOR <b>·</b> 84.8K DOWNLOADS <b>·</b> DROP 08</p><p className="creator-bio">The velocity language behind the hardest edits on your feed. Every transition, impact and dialogue stem — dialled in and ready for your timeline.</p>
           <div className="stem-player"><button className="stem-play" onClick={() => setAudioPlaying(!audioPlaying)} aria-label={audioPlaying ? "Pause audio preview" : "Play audio preview"}>{audioPlaying ? <Pause size={13} /> : <Play size={13} fill="currentColor" />}</button><span className="stem-name">DIALOGUE STEM <small>00:18 / 00:42</small></span><span className={`stem-wave ${audioPlaying ? "stem-animating" : ""}`}>{waveform.map((height, i) => <i key={i} style={{ height: `${height}px`, animationDelay: `${i * 18}ms` }} />)}</span><Volume2 size={14} className="stem-volume" /></div>
         </div>
         <div className="creator-buy"><span className="price-eyebrow">ONE-TIME DROP / LIFETIME ACCESS</span><a href="#store">$15 <span>// COP THE PACK</span><ArrowRight size={16} /></a><small>+14 DAYS PRO ACCESS INCLUDED</small></div>
       </section>
+      <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
+      <SeriesRail />
       <CategoryBrowse onSelectCategory={setPackCategory} />
     </div>
 
