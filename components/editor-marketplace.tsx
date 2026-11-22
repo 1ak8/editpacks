@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 import { ArrowDownToLine, ArrowRight, AudioLines, Check, ChevronDown, Command, Disc3, Download, Headphones, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
 
 const features = [
@@ -123,6 +123,43 @@ function SearchDialog({ onClose }: { onClose: () => void }) {
   return <div className="modal-backdrop search-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}><section className="search-dialog" role="dialog" aria-modal="true" aria-label="Quick ingest search"><div className="search-field"><Search size={18} /><input autoFocus value={query} onChange={event => setQuery(event.target.value)} placeholder="Search titles, scenes, audio stems..." /><button onClick={onClose} aria-label="Close search"><kbd>ESC</kbd></button></div><div className="search-results"><span className="dialog-kicker">{query ? "MATCHING VAULT RECORDS" : "POPULAR IN THE VAULT"}</span>{results.map((title, i) => <button key={title} onClick={onClose}><span className="result-index">0{i + 1}</span><span>{title}</span><ArrowRight size={14} /></button>)}{results.length === 0 && <p className="no-results">NO MATCHES // TRY ANOTHER SEARCH TERM</p>}</div><div className="search-shortcuts"><span><kbd>↑</kbd><kbd>↓</kbd> TO NAVIGATE</span><span><kbd>↵</kbd> TO OPEN</span><span><kbd>ESC</kbd> TO CLOSE</span></div></section></div>
 }
 
+function FeaturedHeading({ feature }: { feature: (typeof features)[number] }) {
+  const titleRef = useRef<HTMLSpanElement>(null)
+
+  useLayoutEffect(() => {
+    const title = titleRef.current
+    const heading = title?.parentElement
+    if (!title || !heading) return
+
+    let disposed = false
+    const fitTitle = () => {
+      if (disposed) return
+      title.style.removeProperty("font-size")
+      const baseFontSize = Number.parseFloat(window.getComputedStyle(title).fontSize)
+      const titleWidth = title.getBoundingClientRect().width
+      const availableWidth = heading.clientWidth - 2
+      if (baseFontSize > 0 && titleWidth > availableWidth && availableWidth > 0) {
+        title.style.fontSize = `${(baseFontSize * availableWidth) / titleWidth}px`
+      }
+    }
+
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(fitTitle)
+    observer?.observe(heading)
+    window.addEventListener("resize", fitTitle)
+    fitTitle()
+    void document.fonts.ready.then(fitTitle)
+
+    return () => {
+      disposed = true
+      observer?.disconnect()
+      window.removeEventListener("resize", fitTitle)
+      title.style.removeProperty("font-size")
+    }
+  }, [feature.id, feature.title])
+
+  return <h1 id="feature-title"><span ref={titleRef} className={`headline-title feature-title-fade title-style-${feature.id}`}>{feature.title}<span className="headline-slash"> //</span></span><span className="headline-sub feature-title-fade">{feature.subtitle}</span></h1>
+}
+
 export function EditorMarketplace() {
   const [active, setActive] = useState(0)
   const [activeFilter, setActiveFilter] = useState("ALL CUTS")
@@ -167,7 +204,7 @@ export function EditorMarketplace() {
       <div className="hero-content-grid">
         <div className="hero-editorial">
           <div className="telemetry"><span className="status-light" /> FEATURED SCENEPACK <i>·</i> {feature.type.split(" // ")[0]}</div>
-          <h1 id="feature-title"><span key={`title-${feature.id}`} className={`headline-title feature-title-fade title-style-${feature.id}`}>{feature.title}<span className="headline-slash"> //</span></span><span key={`subtitle-${feature.id}`} className="headline-sub feature-title-fade">{feature.subtitle}</span></h1>
+          <FeaturedHeading feature={feature} />
           <div className="quick-filters" aria-label="Featured pack formats">{quickFilters.map(filter => <button key={filter} className={activeFilter === filter ? "filter-active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter}</button>)}</div>
           <div className="spec-strip">{[feature.year, feature.cuts, feature.downloads].map((value, i) => <span key={value}><i>0{i + 1}</i> {value}</span>)}</div>
           <p className="cast-list">{feature.cast}</p>
