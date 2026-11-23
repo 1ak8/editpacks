@@ -285,30 +285,33 @@ export function EditorMarketplace() {
       <div className="content-telemetry"><span>VAULT INDEX <b>001 — 048</b></span><span>LAST SYNC 00:04 AGO <i /></span></div>
       <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.startsWith(item.title.slice(0, 7))); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
       <section className="creator-drop" id="store">
-        <div className="drop-art">
-          <span className="drop-number-badge">DROP <b>#08</b></span>
-          <div className="drop-art-title">TWZZUY<br /><i>VELOCITY</i></div>
-          <span className="drop-art-foot">SIGNATURE MOTION STUDY</span>
+        <div className="drop-art" style={{ backgroundImage: `url('/hero-anime.png')` }}>
+          <div className="drop-art-overlay" />
+          <span className="drop-number-badge">DROP 08</span>
         </div>
         <div className="creator-copy">
-          <span className="creator-overline">EXCLUSIVE CREATOR DROP <i /> 08 / 24</span>
-          <h2>TWZZUY&apos;S SIGNATURE <em>HARDSTYLE VELOCITY</em> <ShieldCheck size={18} /></h2>
-          <p className="creator-bio">The velocity language behind the hardest edits on your feed. Transitions, impacts and audio dialogue stems ready for your timeline.</p>
+          <div className="creator-badge-row">
+            <span className="creator-tag">EXCLUSIVE DROP</span>
+            <span className="creator-verified"><ShieldCheck size={14} /> VERIFIED CREATOR</span>
+          </div>
+          <h2>TWZZUY: HARDSTYLE VELOCITY</h2>
+          <p className="creator-bio">Signature transitions, velocity curves, and dialogue stems crafted for modern edits.</p>
           <div className="stem-player">
             <button className="stem-play" onClick={() => setAudioPlaying(!audioPlaying)} aria-label={audioPlaying ? "Pause audio preview" : "Play audio preview"}>
-              {audioPlaying ? <Pause size={13} /> : <Play size={13} fill="currentColor" />}
+              {audioPlaying ? <Pause size={12} /> : <Play size={12} fill="currentColor" />}
             </button>
-            <span className="stem-name">DIALOGUE STEM <small>00:18 / 00:42</small></span>
+            <span className="stem-name">AUDIO PREVIEW <small>00:18 / 00:42</small></span>
             <span className={`stem-wave ${audioPlaying ? "stem-animating" : ""}`}>
-              {waveform.slice(0, 24).map((height, i) => <i key={i} style={{ height: `${height}px`, animationDelay: `${i * 18}ms` }} />)}
+              {waveform.slice(0, 18).map((height, i) => <i key={i} style={{ height: `${Math.max(6, height * 0.7)}px`, animationDelay: `${i * 18}ms` }} />)}
             </span>
-            <Volume2 size={14} className="stem-volume" />
           </div>
         </div>
         <div className="creator-buy">
-          <span className="price-eyebrow">ONE-TIME DROP</span>
-          <a href="#store">$15 <span>// GET THE PACK</span><ArrowRight size={15} /></a>
-          <small>84.8K DOWNLOADS · LIFETIME ACCESS</small>
+          <a href="#store" className="creator-buy-btn">
+            <span>GET PACK — $15</span>
+            <ArrowRight size={15} />
+          </a>
+          <span className="creator-buy-meta">84.8K Downloads · Lifetime Access</span>
         </div>
       </section>
       <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
