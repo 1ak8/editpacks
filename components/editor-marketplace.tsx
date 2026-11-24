@@ -49,7 +49,6 @@ const communityEditors = [
 ]
 
 const waveform = [10, 18, 14, 25, 19, 35, 23, 15, 29, 42, 31, 19, 24, 36, 18, 12, 26, 39, 28, 16, 32, 22, 12, 29, 44, 23, 17, 33, 21, 11, 25, 37, 19, 29, 14, 22, 35, 18, 12, 27, 40, 24, 16, 31, 20, 13, 28, 36]
-const quickFilters = ["4K 60FPS", "NO WATERMARK", "PRORES"]
 const FEATURE_DURATION_MS = 5500
 
 function imageUrl(id: string, width = 660) {
@@ -209,8 +208,7 @@ function FeaturedHeading({ feature }: { feature: (typeof features)[number] }) {
 export function EditorMarketplace() {
   const [active, setActive] = useState(0)
   const [packCategory, setPackCategory] = useState("All")
-  const [activeFilter, setActiveFilter] = useState("ALL CUTS")
-  const [playhead, setPlayhead] = useState(32)
+   const [playhead, setPlayhead] = useState(32)
   const [requestOpen, setRequestOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [previewOpen, setPreviewOpen] = useState(false)
@@ -253,7 +251,6 @@ export function EditorMarketplace() {
         <div className="hero-editorial">
           <div className="telemetry"><span className="status-light" /> FEATURED SCENEPACK <i>·</i> {feature.type.split(" // ")[0]}</div>
           <FeaturedHeading feature={feature} />
-          <div className="quick-filters" aria-label="Featured pack formats">{quickFilters.map(filter => <button key={filter} className={activeFilter === filter ? "filter-active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter}</button>)}</div>
           <div className="spec-strip">{[feature.year, feature.cuts, feature.downloads].map((value, i) => <span key={value}><i>0{i + 1}</i> {value}</span>)}</div>
           <p className="cast-list">{feature.cast}</p>
           <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={15} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={13} /> Preview scenes</button></div>
