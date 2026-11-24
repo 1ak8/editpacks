@@ -4066,3 +4066,9 @@ width: 34px !important;
     height: 210px !important;
   }
 }
+
+@media (max-width: 760px) {
+  .vault-app .vault-content > :is(.vault-section, .creator-drop, .category-browse, .editor-community) {
+    margin-block: 96px !important;
+  }
+}
