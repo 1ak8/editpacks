@@ -5,37 +5,42 @@ import { ArrowDownToLine, ArrowRight, Check, Download, Menu, Pause, Play, Search
 import { FeaturedFrameCarousel } from "./featured-frame-carousel"
 
 const features = [
-  { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO / MAKI / TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
+  { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO / MAKI / TOJI FUSHIGURO", image: "/jjk-cinematic.png", palette: "#64d7e8", code: "JJK—SHB" },
   { id: "02", title: "SPIDER-MAN", subtitle: "ACROSS THE SPIDER-VERSE", type: "MARVEL // ANIMATION", year: "2023 MASTER", cuts: "212 CUTS", downloads: "116K DL", spec: "4K 60FPS · PRORES", cast: "MILES MORALES / GWEN STACY / MIGUEL O'HARA", image: "/spiderman-poster.jpg", palette: "#f05274", code: "SPV—04" },
-  { id: "03", title: "ATTACK ON TITAN", subtitle: "THE FINAL SEASON", type: "ANIME // FINAL SEASON", year: "2024 MASTER", cuts: "156 CUTS", downloads: "79K DL", spec: "4K 60FPS · PRORES", cast: "EREN YEAGER / MIKASA ACKERMAN / LEVI", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600", palette: "#e8a653", code: "AOT—FS" },
-  { id: "04", title: "DUNE: PART TWO", subtitle: "THE DESERT AWAKENS", type: "SCI-FI // CINEMA", year: "2024 MASTER", cuts: "96 CUTS", downloads: "88K DL", spec: "IMAX 70MM · PRORES", cast: "PAUL ATREIDES / CHANI / FEYD-RAUTHA", image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600", palette: "#f1ab50", code: "DUN—02" },
+  { id: "03", title: "ATTACK ON TITAN", subtitle: "THE FINAL SEASON", type: "ANIME // FINAL SEASON", year: "2024 MASTER", cuts: "156 CUTS", downloads: "79K DL", spec: "4K 60FPS · PRORES", cast: "EREN YEAGER / MIKASA ACKERMAN / LEVI", image: "/attack-on-titan.png", palette: "#e8a653", code: "AOT—FS" },
+  { id: "04", title: "DUNE: PART TWO", subtitle: "THE DESERT AWAKENS", type: "SCI-FI // CINEMA", year: "2024 MASTER", cuts: "96 CUTS", downloads: "88K DL", spec: "IMAX 70MM · PRORES", cast: "PAUL ATREIDES / CHANI / FEYD-RAUTHA", image: "/dune-part-two.png", palette: "#f1ab50", code: "DUN—02" },
   { id: "05", title: "GRAND THEFT AUTO VI", subtitle: "4K 60FPS · PRORES", type: "GAMING // OPEN WORLD", year: "VAULT MASTER", cuts: "184 CUTS", downloads: "1.3K DL", spec: "4K 60FPS · PRORES", cast: "16 PACKS / 18M 42S", image: "/gta6-poster.jpg", palette: "#d7ad6c", code: "GTA—VI" },
-  { id: "06", title: "NARUTO VS LUFFY", subtitle: "4K 60FPS · PRORES", type: "ANIME // CROSSOVER", year: "VAULT MASTER", cuts: "64 CUTS", downloads: "42 DL", spec: "4K 60FPS · PRORES", cast: "2 PACKS / 12M 10S", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#f08b51", code: "NAR—LFY" },
-  { id: "07", title: "THE BODY", subtitle: "4K DCI · PRORES", type: "CINEMA // FEATURE", year: "VAULT MASTER", cuts: "88 CUTS", downloads: "13K DL", spec: "4K DCI · PRORES", cast: "17 PACKS / 15M 30S", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600", palette: "#d37a8c", code: "BODY—01" },
-  { id: "08", title: "NARUTO SHIPPUDEN", subtitle: "4K HDR · PRORES", type: "ANIME // SERIES", year: "VAULT MASTER", cuts: "176 CUTS", downloads: "165K DL", spec: "4K HDR · PRORES", cast: "112 PACKS / 21M 10S", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#e17a47", code: "NAR—SHP" },
-  { id: "09", title: "DEATH NOTE / THE BATMAN", subtitle: "4K DCI · PRORES", type: "CINEMA // DOUBLE FEATURE", year: "VAULT MASTER", cuts: "88 CUTS", downloads: "40K DL", spec: "4K DCI · PRORES", cast: "31 PACKS / 11M 52S", image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600", palette: "#b75c72", code: "DN—BAT" },
-  { id: "10", title: "ARCANE: SEASON TWO", subtitle: "4K HDR", type: "SERIES // ANIMATION", year: "VAULT MASTER", cuts: "132 CUTS", downloads: "54K DL", spec: "4K HDR", cast: "132 PACKS / 20M 04S", image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa7?q=80&w=600", palette: "#77c5c0", code: "ARC—02" },
+  { id: "06", title: "NARUTO VS LUFFY", subtitle: "4K 60FPS · PRORES", type: "ANIME // CROSSOVER", year: "VAULT MASTER", cuts: "64 CUTS", downloads: "42 DL", spec: "4K 60FPS · PRORES", cast: "2 PACKS / 12M 10S", image: "/naruto-vs-luffy.png", palette: "#f08b51", code: "NAR—LFY" },
+  { id: "07", title: "THE BODY", subtitle: "4K DCI · PRORES", type: "CINEMA // FEATURE", year: "VAULT MASTER", cuts: "88 CUTS", downloads: "13K DL", spec: "4K DCI · PRORES", cast: "17 PACKS / 15M 30S", image: "/the-body.png", palette: "#d37a8c", code: "BODY—01" },
+  { id: "08", title: "NARUTO SHIPPUDEN", subtitle: "4K HDR · PRORES", type: "ANIME // SERIES", year: "VAULT MASTER", cuts: "176 CUTS", downloads: "165K DL", spec: "4K HDR · PRORES", cast: "112 PACKS / 21M 10S", image: "/naruto-shippuden.png", palette: "#e17a47", code: "NAR—SHP" },
+  { id: "09", title: "DEATH NOTE / THE BATMAN", subtitle: "4K DCI · PRORES", type: "CINEMA // DOUBLE FEATURE", year: "VAULT MASTER", cuts: "88 CUTS", downloads: "40K DL", spec: "4K DCI · PRORES", cast: "31 PACKS / 11M 52S", image: "/death-note-batman.png", palette: "#b75c72", code: "DN—BAT" },
+  { id: "10", title: "ARCANE: SEASON TWO", subtitle: "4K HDR", type: "SERIES // ANIMATION", year: "VAULT MASTER", cuts: "132 CUTS", downloads: "54K DL", spec: "4K HDR", cast: "132 PACKS / 20M 04S", image: "/arcane-city.png", palette: "#77c5c0", code: "ARC—02" },
 ]
 
 const trending = [
   { title: "Grand Theft Auto VI", downloads: "1.3k", packs: "16 packs", format: "4K 60FPS · PRORES", duration: "18m 42s", cuts: "184 CUTS", image: "/gta6-poster.jpg", category: "Gaming", isNew: true },
   { title: "Spider-Man: Across The Spider-Verse", downloads: "116k", packs: "212 packs", format: "4K 60FPS · PRORES", duration: "24m 16s", cuts: "212 CUTS", image: "/spiderman-poster.jpg", category: "Cinema", isNew: true, titleTreatment: "spiderverse" },
-  { title: "Naruto vs Luffy", downloads: "42", packs: "2 packs", format: "4K 60FPS · PRORES", duration: "12m 10s", cuts: "64 CUTS", image: "photo-1578632767115-351597cf2477", category: "Anime", isNew: true },
-  { title: "The Body", downloads: "13k", packs: "17 packs", format: "4K DCI · PRORES", duration: "15m 30s", cuts: "88 CUTS", image: "photo-1534447677768-be436bb09401", category: "Cinema" },
-  { title: "Jujutsu Kaisen", downloads: "86k", packs: "130 packs", format: "4K 60FPS · PRORES", duration: "24m 16s", cuts: "212 CUTS", image: "photo-1607604276583-eef5d076aa5f", category: "Anime", remake: true, isNew: true, remasterProgress: 78 },
-  { title: "Naruto Shippuden", downloads: "165k", packs: "112 packs", format: "4K HDR · PRORES", duration: "21m 10s", cuts: "176 CUTS", image: "photo-1578632767115-351597cf2477", category: "Anime", isNew: true },
-  { title: "Attack on Titan", downloads: "46k", packs: "71 packs", format: "4K 60FPS · PRORES", duration: "16m 30s", cuts: "156 CUTS", image: "photo-1534447677768-be436bb09401", category: "Anime", isNew: true },
-  { title: "Death Note / The Batman", downloads: "40k", packs: "31 packs", format: "4K DCI · PRORES", duration: "11m 52s", cuts: "88 CUTS", image: "photo-1500530855697-b586d89ba3ee", category: "Cinema", remake: true },
-  { title: "Dune: Part Two", downloads: "58k", packs: "96 packs", format: "IMAX 70MM", duration: "14m 22s", cuts: "96 CUTS", image: "photo-1518709268805-4e9042af9f23", category: "Cinema", isNew: true },
-  { title: "Arcane: Season Two", downloads: "54k", packs: "132 packs", format: "4K HDR", duration: "20m 04s", cuts: "132 CUTS", image: "photo-1470252649378-9c29740c9fa7", category: "Series", remake: true, remasterProgress: 42 },
+  { title: "Naruto vs Luffy", downloads: "42", packs: "2 packs", format: "4K 60FPS · PRORES", duration: "12m 10s", cuts: "64 CUTS", image: "/naruto-vs-luffy.png", category: "Anime", isNew: true },
+  { title: "The Body", downloads: "13k", packs: "17 packs", format: "4K DCI · PRORES", duration: "15m 30s", cuts: "88 CUTS", image: "/the-body.png", category: "Cinema" },
+  { title: "Jujutsu Kaisen", downloads: "86k", packs: "130 packs", format: "4K 60FPS · PRORES", duration: "24m 16s", cuts: "212 CUTS", image: "/jjk-cinematic.png", category: "Anime", remake: true, isNew: true, remasterProgress: 78 },
+  { title: "Naruto Shippuden", downloads: "165k", packs: "112 packs", format: "4K HDR · PRORES", duration: "21m 10s", cuts: "176 CUTS", image: "/naruto-shippuden.png", category: "Anime", isNew: true },
+  { title: "Attack on Titan", downloads: "46k", packs: "71 packs", format: "4K 60FPS · PRORES", duration: "16m 30s", cuts: "156 CUTS", image: "/attack-on-titan.png", category: "Anime", isNew: true },
+  { title: "Death Note / The Batman", downloads: "40k", packs: "31 packs", format: "4K DCI · PRORES", duration: "11m 52s", cuts: "88 CUTS", image: "/death-note-batman.png", category: "Cinema", remake: true },
+  { title: "Dune: Part Two", downloads: "58k", packs: "96 packs", format: "IMAX 70MM", duration: "14m 22s", cuts: "96 CUTS", image: "/dune-part-two.png", category: "Cinema", isNew: true },
+  { title: "Arcane: Season Two", downloads: "54k", packs: "132 packs", format: "4K HDR", duration: "20m 04s", cuts: "132 CUTS", image: "/arcane-city.png", category: "Series", remake: true, remasterProgress: 42, titleTreatment: "arcane" },
 ]
 
 const fresh = [
-  { title: "THE INCREDIBLES", studio: "PIXAR // 4K HDR", image: "photo-1533929736458-ca588d08c8be", number: "01", tags: ["New", "Animation"] },
-  { title: "CHAINSAW MAN: REZE ARC", studio: "MAPPA STUDIOS", image: "photo-1518837695005-2083093ee35b", number: "02", tags: ["New", "Anime"] },
-  { title: "ACROSS THE SPIDER-VERSE", studio: "SONY 4K // 10-BIT", image: "photo-1534796636912-3b95b3ab5986", number: "03", tags: ["New", "Animation"] },
-  { title: "IRON MAN", studio: "MARVEL // IMAX", image: "/spiderman-poster.jpg", number: "04", tags: ["New", "Marvel"] },
-  { title: "THE BATMAN", studio: "IMAX 70MM // 4K", image: "photo-1500534623283-312aade485b7", number: "05", tags: ["New", "DC"] },
+  { title: "THE INCREDIBLES", studio: "PIXAR // 4K HDR", image: "/incredibles-family.png", number: "01", tags: ["New", "Animation"] },
+  { title: "CHAINSAW MAN: REZE ARC", studio: "MAPPA STUDIOS", image: "/chainsaw-reze.png", number: "02", tags: ["New", "Anime"] },
+  { title: "ACROSS THE SPIDER-VERSE", studio: "SONY 4K // 10-BIT", image: "/spiderman-poster.jpg", number: "03", tags: ["New", "Animation"] },
+  { title: "IRON MAN", studio: "MARVEL // IMAX", image: "/iron-man.png", number: "04", tags: ["New", "Marvel"] },
+  { title: "THE BATMAN", studio: "IMAX 70MM // 4K", image: "/batman-noir.png", number: "05", tags: ["New", "DC"] },
+  { title: "INTERSTELLAR", studio: "PARAMOUNT // IMAX", image: "photo-1519608487953-e999c86e7455", number: "06", tags: ["Cinema", "Sci-Fi"] },
+  { title: "ARCANE: SEASON TWO", studio: "RIOT // 4K HDR", image: "/arcane-city.png", number: "07", tags: ["Series", "Animation"] },
+  { title: "DEATH NOTE", studio: "Madhouse // 4K", image: "/death-note-batman.png", number: "08", tags: ["Anime", "Thriller"] },
+  { title: "DUNE: PART TWO", studio: "WARNER // IMAX 70MM", image: "/dune-part-two.png", number: "09", tags: ["Cinema", "Sci-Fi"] },
+  { title: "JUJUTSU KAISEN", studio: "MAPPA // 4K HDR", image: "/jjk-cinematic.png", number: "10", tags: ["Anime", "Action"] },
 ]
 
 const series = [
@@ -44,6 +49,11 @@ const series = [
   { title: "EUPHORIA", studio: "HBO // KODAK VISION3", image: "photo-1519608487953-e999c86e7455", count: "38 PACKS" },
   { title: "THE BOYS", studio: "AMAZON // HDR", image: "photo-1480714378408-67cf0d13bc1b", count: "31 PACKS" },
   { title: "VAMPIRE DIARIES", studio: "CW // 35MM GRAIN", image: "photo-1470252649378-9c29740c9fa8", count: "54 PACKS" },
+  { title: "BREAKING BAD", studio: "AMC // 4K MASTER", image: "photo-1500534623283-312aade485b7", count: "62 PACKS" },
+  { title: "STRANGER THINGS", studio: "NETFLIX // DOLBY VISION", image: "photo-1534796636912-3b95b3ab5986", count: "48 PACKS" },
+  { title: "SUCCESSION", studio: "HBO // 35MM GRAIN", image: "photo-1493246507139-91e8fad9978e", count: "36 PACKS" },
+  { title: "TRUE DETECTIVE", studio: "HBO // CINEMA GRADE", image: "photo-1500530855697-b586d89ba3ee", count: "29 PACKS" },
+  { title: "BETTER CALL SAUL", studio: "AMC // 4K HDR", image: "photo-1518709268805-4e9042af9f23", count: "41 PACKS" },
 ]
 
 const waveform = [10, 18, 14, 25, 19, 35, 23, 15, 29, 42, 31, 19, 24, 36, 18, 12, 26, 39, 28, 16, 32, 22, 12, 29, 44, 23, 17, 33, 21, 11, 25, 37, 19, 29, 14, 22, 35, 18, 12, 27, 40, 24, 16, 31, 20, 13, 28, 36]
@@ -54,7 +64,7 @@ function imageUrl(id: string, width = 660) {
   return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`
 }
 
-function SectionHeading({ index, title, link = "EXPLORE FULL LEADERBOARD" }: { index: string; title: string; link?: string }) {
+function SectionHeading({ index, title, link = "Explore full leaderboard" }: { index: string; title: string; link?: string }) {
   return <div className="vault-section-heading"><div className="section-title-lockup"><span className="section-index">{index}</span><span className="section-rule" /><h2>{title}</h2></div><a href="#vault">{link} <ArrowRight size={14} /></a></div>
 }
 
@@ -89,7 +99,7 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
             </span><span className="poster-tags" aria-label="Scenepack tags">{pack.isNew && <span>New</span>}<span>{pack.category === "Gaming" ? "Games" : pack.category}</span></span>
           </button>
         </div>
-        <div className="poster-caption">
+        <div className={pack.titleTreatment === "arcane" ? "poster-caption poster-caption-arcane" : "poster-caption"}>
           <strong className="poster-caption-title">{pack.title}</strong>
           <span className="poster-caption-meta">
             {pack.remake && <span className="poster-caption-status">Remaking</span>}
@@ -105,8 +115,8 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
 }
 
 function DropGrid({ onPreview }: { onPreview: (title: string) => void }) {
-  return <section className="vault-section" id="drops"><SectionHeading index="02" title="FRESH DROPS THIS WEEK" link="ALL NEW ARRIVALS" />
-    <div className="drop-grid">{fresh.map(item => <button className="drop-tile" key={item.title} onClick={() => onPreview(item.title)}>
+  return <section className="vault-section" id="drops"><SectionHeading index="02" title="Fresh drops this week" link="All new arrivals" />
+    <div className="drop-grid" role="region" aria-label="Fresh drops posters, horizontally scrollable" tabIndex={0}>{fresh.map(item => <button className="drop-tile" key={item.title} onClick={() => onPreview(item.title)}>
       <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(8,10,12,.18) 0%, transparent 28%, rgba(8,10,12,.92) 100%), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-hover-details"><span className="drop-hover-copy"><strong>{item.title}</strong><small>{item.studio}</small></span></span><span className="drop-tags" aria-label="Scenepack tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</span></span>
       <span className="drop-caption"><span><b>{item.title}</b><small>{item.studio}</small></span><ArrowRight size={15} /></span>
     </button>)}</div>
@@ -114,29 +124,28 @@ function DropGrid({ onPreview }: { onPreview: (title: string) => void }) {
 }
 
 function SeriesRail() {
-  return <section className="vault-section" id="series"><SectionHeading index="04" title="SERIES STREAM VAULT" link="BROWSE THE ARCHIVE" />
-    <div className="series-rail">{series.map((item, i) => <a className="series-tile" href="#vault" key={item.title} style={{ backgroundImage: `linear-gradient(180deg, rgba(4,6,9,.08), rgba(4,6,9,.9)), url(${imageUrl(item.image)})` }}><span className="series-number">0{i + 1} / SERIES</span><span className="series-info"><small>{item.studio}</small><b>{item.title}</b><span>{item.count} <ArrowRight size={12} /></span></span></a>)}</div>
+  return <section className="vault-section" id="series"><SectionHeading index="04" title="Series stream vault" link="Browse the archive" />
+    <div className="series-rail" role="region" aria-label="Series stream posters, horizontally scrollable" tabIndex={0}>{series.map((item, i) => <a className="series-tile" href="#vault" key={item.title} style={{ backgroundImage: `linear-gradient(180deg, rgba(4,6,9,.08), rgba(4,6,9,.9)), url(${imageUrl(item.image)})` }}><span className="series-number">0{i + 1} / SERIES</span><span className="series-info"><small>{item.studio}</small><b>{item.title}</b><span>{item.count} <ArrowRight size={12} /></span></span></a>)}</div>
   </section>
 }
 
-function CategoryBrowse({ onSelectCategory }: { onSelectCategory: (category: string) => void }) {
+function CategoryBrowse() {
   const categories = [
     { label: "Anime", value: "Anime", image: "photo-1578632767115-351597cf2477", descriptor: "Worlds beyond the frame" },
     { label: "Cinema", value: "Cinema", image: "photo-1509316975850-ff9c5deb0cd9", descriptor: "The big-screen cut" },
-    { label: "Series", value: "Series", image: "photo-1470252649378-9c29740c9fa7", descriptor: "Stories in every frame" },
+    { label: "Series", value: "Series", image: "photo-1480714378408-67cf0d13bc1b", descriptor: "Stories in every frame" },
     { label: "K-Pop", value: "K-Pop", image: "photo-1518837695005-2083093ee35b", descriptor: "Stage lights, sharp edits" },
     { label: "Gaming", value: "Gaming", image: "photo-1519608487953-e999c86e7455", descriptor: "Built for the next level" },
   ]
 
   return <section className="category-browse" id="categories" aria-labelledby="category-browse-title">
-    <div className="category-heading"><div><span className="category-kicker"><i /> FIND YOUR NEXT FRAME</span><h2 id="category-browse-title">Browse by category</h2><p>Curated source material, ready for the way you create.</p></div><span className="category-index">05 <i /> 05 COLLECTIONS</span></div>
+    <div className="category-heading"><h2 id="category-browse-title">Browse by category</h2></div>
     <div className="category-grid">{categories.map((category, index) => {
-      const count = trending.filter(pack => pack.category === category.value).length
       const featured = index === 0
-      return <a className={`category-card${featured ? " category-card-featured" : ""}`} href="#trending" key={category.value} onClick={() => onSelectCategory(category.value)} style={{ backgroundImage: `url(${imageUrl(category.image, 760)})` }}>
-        <span className="category-card-top"><span className="category-card-number">0{index + 1}</span><span className="category-card-collection">COLLECTION / 05</span><ArrowRight size={17} /></span>
-        <span className="category-card-copy"><span className="category-card-descriptor">{category.descriptor}</span><strong>{category.label}</strong><small>{String(count).padStart(2, "0")} FEATURED SCENEPACKS</small><span className="category-card-cta">{featured ? "EXPLORE FEATURED" : "EXPLORE COLLECTION"}<ArrowRight size={14} /></span></span>
-      </a>
+      return <div className={`category-card${featured ? " category-card-featured" : ""}`} key={category.value} style={{ backgroundImage: `url(${imageUrl(category.image, 760)})` }}>
+        <span className="category-card-top" aria-hidden="true"><ArrowRight size={17} /></span>
+        <span className="category-card-copy"><span className="category-card-descriptor">{category.descriptor}</span><strong>{category.label}</strong></span>
+      </div>
     })}</div>
   </section>
 }
@@ -227,7 +236,6 @@ export function EditorMarketplace() {
     <div className="grain-overlay" aria-hidden="true" />
     <header className="command-dock">
       <div className="dock-brand">
-        <span className="recording-mark" aria-hidden="true"><i /> REC</span>
         <a href="#top" className="dock-logo" aria-label="EditPacks home"><span>EDITPACKS</span></a>
       </div>
       <nav id="primary-navigation" className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation">
@@ -238,7 +246,7 @@ export function EditorMarketplace() {
         <a href="#trending" onClick={() => setMenuOpen(false)}>New drops</a>
       </nav>
       <div className="dock-actions" aria-label="Quick links">
-        <button className="dock-icon-button" onClick={() => setSearchOpen(true)} aria-label="Search packs"><Search size={18} /></button>
+        <button className="dock-icon-button" onClick={() => { setMenuOpen(false); setSearchOpen(true) }} aria-label="Search packs"><Search size={18} /></button>
         <a className="dock-icon-button dock-account-link" href="#pro" aria-label="Member access"><UserRound size={18} /></a>
         <a className="membership-link" href="#pro"><span className="pro-access-label">PRO ACCESS</span><Sparkles size={15} aria-hidden="true" /></a>
       </div>
@@ -249,9 +257,9 @@ export function EditorMarketplace() {
       <div className="hero-backdrop" aria-hidden="true"><div key={feature.id} className="hero-backdrop-image" style={{ backgroundImage: `url(${feature.image})` }} /></div>
       <div className="hero-content-grid">
         <div className="hero-editorial">
-          <div className="telemetry"><span className="status-light" /> FEATURED SCENEPACK <i>·</i> {feature.type.split(" // ")[0]}</div>
+          <div className="telemetry">{feature.type.split(" // ")[0]}</div>
           <FeaturedHeading feature={feature} />
-          <p className="cast-list">{feature.cast}</p>
+          <p className="cast-list">{feature.cast.split(" / ").join(" · ")}</p>
           <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={17} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={15} /> Preview scenes</button></div>
         </div>
         <FeaturedFrameCarousel
@@ -265,8 +273,7 @@ export function EditorMarketplace() {
     </section>
 
     <div className="vault-content" id="vault">
-      <div className="content-telemetry"><span>VAULT INDEX <b>001 — 048</b></span><span>LAST SYNC 00:04 AGO <i /></span></div>
-      <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.toLowerCase().startsWith(item.title.slice(0, 7).toLowerCase())); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
+      <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.toLowerCase().startsWith(item.title.slice(0, 7).toLowerCase())); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(false) }} />
       <section className="creator-drop" id="store">
         <div className="drop-art" style={{ backgroundImage: `url('/hero-anime.png')` }}>
           <div className="drop-art-overlay" />
@@ -297,14 +304,10 @@ export function EditorMarketplace() {
           <span className="creator-buy-meta">84.8K Downloads · Lifetime Access</span>
         </div>
       </section>
-      <DropGrid onPreview={title => { setPreviewOpen(true); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
-      <section className="plus-banner" id="pro" aria-label="EditPacks Plus membership">
-        <span className="plus-badge">EditPacks+</span>
-        <p>Unlimited downloads, 12 editing tools, bulk zips. <strong>$5 a month.</strong></p>
-        <a href="#store">See what&apos;s in it <ArrowRight size={16} /></a>
-      </section>
+
+      <DropGrid onPreview={title => { setPreviewOpen(false); const found = features.findIndex(item => title.includes(item.title.slice(0, 8))); if (found >= 0) setActive(found) }} />
       <SeriesRail />
-      <CategoryBrowse onSelectCategory={setPackCategory} />
+      <CategoryBrowse />
       <section className="editor-community" id="community" aria-label="Vault catalog totals">
         <div className="editor-community-index"><p><strong>833</strong> titles <i /> <strong>5,066</strong> packs</p><a href="#trending">Every title <ArrowRight size={16} /></a></div>
       </section>
@@ -314,6 +317,5 @@ export function EditorMarketplace() {
 
     {requestOpen && <RequestDialog onClose={() => setRequestOpen(false)} />}
     {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
-    {previewOpen && <div className="preview-toast" role="status"><span><i /> PREVIEWING</span><b>{feature.title}</b><button onClick={() => setPreviewOpen(false)} aria-label="Close preview"><X size={14} /></button></div>}
   </main>
 }
