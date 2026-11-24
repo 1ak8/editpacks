@@ -1,13 +1,20 @@
 "use client"
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react"
-import { ArrowDownToLine, ArrowRight, Check, Command, Download, Menu, Music2, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { ArrowDownToLine, ArrowRight, Check, Download, Menu, Pause, Play, Search, ShieldCheck, Sparkles, UserRound, Volume2, X } from "lucide-react"
+import { FeaturedFrameCarousel } from "./featured-frame-carousel"
 
 const features = [
-  { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO  /  MAKI  /  TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
-  { id: "02", title: "SPIDER-MAN", subtitle: "ACROSS THE SPIDER-VERSE", type: "MARVEL // ANIMATION", year: "2023 MASTER", cuts: "212 CUTS", downloads: "116K DL", spec: "4K 60FPS · PRORES", cast: "MILES MORALES  /  GWEN STACY  /  MIGUEL O'HARA", image: "/spiderman-poster.jpg", palette: "#f05274", code: "SPV—04" },
-  { id: "03", title: "ATTACK ON TITAN", subtitle: "THE FINAL SEASON", type: "ANIME // FINAL SEASON", year: "2024 MASTER", cuts: "156 CUTS", downloads: "79K DL", spec: "4K 60FPS · PRORES", cast: "EREN YEAGER  /  MIKASA ACKERMAN  /  LEVI", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600", palette: "#e8a653", code: "AOT—FS" },
-  { id: "04", title: "DUNE: PART TWO", subtitle: "THE DESERT AWAKENS", type: "SCI-FI // CINEMA", year: "2024 MASTER", cuts: "96 CUTS", downloads: "88K DL", spec: "IMAX 70MM · PRORES", cast: "PAUL ATREIDES  /  CHANI  /  FEYD-RAUTHA", image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600", palette: "#f1ab50", code: "DUN—02" },
+  { id: "01", title: "JUJUTSU KAISEN", subtitle: "SHIBUYA INCIDENT", type: "ANIME // MASTER VAULT", year: "2024 MASTER", cuts: "184 CUTS", downloads: "142K DL", spec: "4K 60FPS · PRORES", cast: "SATORU GOJO / MAKI / TOJI FUSHIGURO", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#64d7e8", code: "JJK—SHB" },
+  { id: "02", title: "SPIDER-MAN", subtitle: "ACROSS THE SPIDER-VERSE", type: "MARVEL // ANIMATION", year: "2023 MASTER", cuts: "212 CUTS", downloads: "116K DL", spec: "4K 60FPS · PRORES", cast: "MILES MORALES / GWEN STACY / MIGUEL O'HARA", image: "/spiderman-poster.jpg", palette: "#f05274", code: "SPV—04" },
+  { id: "03", title: "ATTACK ON TITAN", subtitle: "THE FINAL SEASON", type: "ANIME // FINAL SEASON", year: "2024 MASTER", cuts: "156 CUTS", downloads: "79K DL", spec: "4K 60FPS · PRORES", cast: "EREN YEAGER / MIKASA ACKERMAN / LEVI", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600", palette: "#e8a653", code: "AOT—FS" },
+  { id: "04", title: "DUNE: PART TWO", subtitle: "THE DESERT AWAKENS", type: "SCI-FI // CINEMA", year: "2024 MASTER", cuts: "96 CUTS", downloads: "88K DL", spec: "IMAX 70MM · PRORES", cast: "PAUL ATREIDES / CHANI / FEYD-RAUTHA", image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600", palette: "#f1ab50", code: "DUN—02" },
+  { id: "05", title: "GRAND THEFT AUTO VI", subtitle: "4K 60FPS · PRORES", type: "GAMING // OPEN WORLD", year: "VAULT MASTER", cuts: "184 CUTS", downloads: "1.3K DL", spec: "4K 60FPS · PRORES", cast: "16 PACKS / 18M 42S", image: "/gta6-poster.jpg", palette: "#d7ad6c", code: "GTA—VI" },
+  { id: "06", title: "NARUTO VS LUFFY", subtitle: "4K 60FPS · PRORES", type: "ANIME // CROSSOVER", year: "VAULT MASTER", cuts: "64 CUTS", downloads: "42 DL", spec: "4K 60FPS · PRORES", cast: "2 PACKS / 12M 10S", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#f08b51", code: "NAR—LFY" },
+  { id: "07", title: "THE BODY", subtitle: "4K DCI · PRORES", type: "CINEMA // FEATURE", year: "VAULT MASTER", cuts: "88 CUTS", downloads: "13K DL", spec: "4K DCI · PRORES", cast: "17 PACKS / 15M 30S", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600", palette: "#d37a8c", code: "BODY—01" },
+  { id: "08", title: "NARUTO SHIPPUDEN", subtitle: "4K HDR · PRORES", type: "ANIME // SERIES", year: "VAULT MASTER", cuts: "176 CUTS", downloads: "165K DL", spec: "4K HDR · PRORES", cast: "112 PACKS / 21M 10S", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600", palette: "#e17a47", code: "NAR—SHP" },
+  { id: "09", title: "DEATH NOTE / THE BATMAN", subtitle: "4K DCI · PRORES", type: "CINEMA // DOUBLE FEATURE", year: "VAULT MASTER", cuts: "88 CUTS", downloads: "40K DL", spec: "4K DCI · PRORES", cast: "31 PACKS / 11M 52S", image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600", palette: "#b75c72", code: "DN—BAT" },
+  { id: "10", title: "ARCANE: SEASON TWO", subtitle: "4K HDR", type: "SERIES // ANIMATION", year: "VAULT MASTER", cuts: "132 CUTS", downloads: "54K DL", spec: "4K HDR", cast: "132 PACKS / 20M 04S", image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa7?q=80&w=600", palette: "#77c5c0", code: "ARC—02" },
 ]
 
 const trending = [
@@ -39,30 +46,12 @@ const series = [
   { title: "VAMPIRE DIARIES", studio: "CW // 35MM GRAIN", image: "photo-1470252649378-9c29740c9fa8", count: "54 PACKS" },
 ]
 
-const communityEditors = [
-  { name: "skully", initials: "SK", clips: "14K" },
-  { name: "Danny", initials: "DA", clips: "5,630" },
-  { name: "glö*", initials: "G*", clips: "5,657" },
-  { name: "Rylxqn", initials: "RY", clips: "6,139" },
-  { name: "Op", initials: "OP", clips: "43.2K" },
-  { name: "alchemist", initials: "AL", clips: "636" },
-]
-
 const waveform = [10, 18, 14, 25, 19, 35, 23, 15, 29, 42, 31, 19, 24, 36, 18, 12, 26, 39, 28, 16, 32, 22, 12, 29, 44, 23, 17, 33, 21, 11, 25, 37, 19, 29, 14, 22, 35, 18, 12, 27, 40, 24, 16, 31, 20, 13, 28, 36]
 const FEATURE_DURATION_MS = 5500
 
 function imageUrl(id: string, width = 660) {
   if (id.startsWith("/") || id.startsWith("http")) return id
   return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`
-}
-
-function formatTimecode(progress: number) {
-  const totalFrames = Math.round((progress / 100) * 45 * 60 * 24)
-  const frames = totalFrames % 24
-  const totalSeconds = Math.floor(totalFrames / 24)
-  const seconds = totalSeconds % 60
-  const minutes = Math.floor(totalSeconds / 60) % 60
-  return `00:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(frames).padStart(2, "0")}`
 }
 
 function SectionHeading({ index, title, link = "EXPLORE FULL LEADERBOARD" }: { index: string; title: string; link?: string }) {
@@ -118,7 +107,7 @@ function CartridgeRail({ onPreview, category, onCategoryChange }: { onPreview: (
 function DropGrid({ onPreview }: { onPreview: (title: string) => void }) {
   return <section className="vault-section" id="drops"><SectionHeading index="02" title="FRESH DROPS THIS WEEK" link="ALL NEW ARRIVALS" />
     <div className="drop-grid">{fresh.map(item => <button className="drop-tile" key={item.title} onClick={() => onPreview(item.title)}>
-      <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(5,7,10,.08), rgba(5,7,10,.12)), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-hover-details"><span className="drop-hover-copy"><strong>{item.title}</strong><small>{item.studio}</small></span></span><span className="drop-tags" aria-label="Scenepack tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</span></span>
+      <span className="drop-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(8,10,12,.18) 0%, transparent 28%, rgba(8,10,12,.92) 100%), url(${imageUrl(item.image)})` }}><span className="drop-number">{item.number}</span><span className="drop-hover-details"><span className="drop-hover-copy"><strong>{item.title}</strong><small>{item.studio}</small></span></span><span className="drop-tags" aria-label="Scenepack tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</span></span>
       <span className="drop-caption"><span><b>{item.title}</b><small>{item.studio}</small></span><ArrowRight size={15} /></span>
     </button>)}</div>
   </section>
@@ -206,14 +195,12 @@ function FeaturedHeading({ feature }: { feature: (typeof features)[number] }) {
 }
 
 export function EditorMarketplace() {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(2)
   const [packCategory, setPackCategory] = useState("All")
-   const [playhead, setPlayhead] = useState(32)
   const [requestOpen, setRequestOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [previewOpen, setPreviewOpen] = useState(false)
   const [audioPlaying, setAudioPlaying] = useState(false)
-  const [communityVisible, setCommunityVisible] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const feature = features[active]
 
@@ -239,10 +226,23 @@ export function EditorMarketplace() {
   return <main className="vault-app" id="top">
     <div className="grain-overlay" aria-hidden="true" />
     <header className="command-dock">
-      <a href="#top" className="vault-wordmark"><span className="rec-indicator"><i /> REC</span><span>EDITPACKS</span></a>
-      <nav id="primary-navigation" className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation"><a className="dock-active" href="#top" aria-current="page" onClick={() => setMenuOpen(false)}>Home</a><a href="#trending" onClick={() => setMenuOpen(false)}>Explore</a><a href="#series" onClick={() => setMenuOpen(false)}>Series</a><a href="#categories" onClick={() => setMenuOpen(false)}>Categories</a><a href="#drops" onClick={() => setMenuOpen(false)}>New drops</a></nav>
-      <div className="dock-actions"><button className="quick-ingest" onClick={() => setSearchOpen(true)} aria-label="Quick ingest search"><Search size={13} /><span>Quick Ingest</span><kbd><Command size={10} /> K</kbd></button><button className="avatar-button" aria-label="Account"><UserRound size={15} /></button><a className="pro-button" href="#pro" aria-label="Pro access">PRO ACCESS <Sparkles size={12} /></a></div>
-      <button className="dock-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="primary-navigation">{menuOpen ? <X size={17} /> : <Menu size={17} />}</button>
+      <div className="dock-brand">
+        <span className="recording-mark" aria-hidden="true"><i /> REC</span>
+        <a href="#top" className="dock-logo" aria-label="EditPacks home"><span>EDITPACKS</span></a>
+      </div>
+      <nav id="primary-navigation" className={`dock-nav ${menuOpen ? "dock-nav-open" : ""}`} aria-label="Main navigation">
+        <a className="dock-active" href="#top" aria-current="page" onClick={() => setMenuOpen(false)}>Home</a>
+        <a href="#trending" onClick={() => setMenuOpen(false)}>Explore</a>
+        <a href="#drops" onClick={() => setMenuOpen(false)}>Series</a>
+        <a href="#categories" onClick={() => setMenuOpen(false)}>Categories</a>
+        <a href="#trending" onClick={() => setMenuOpen(false)}>New drops</a>
+      </nav>
+      <div className="dock-actions" aria-label="Quick links">
+        <button className="dock-icon-button" onClick={() => setSearchOpen(true)} aria-label="Search packs"><Search size={18} /></button>
+        <a className="dock-icon-button dock-account-link" href="#pro" aria-label="Member access"><UserRound size={18} /></a>
+        <a className="membership-link" href="#pro"><span className="pro-access-label">PRO ACCESS</span><Sparkles size={15} aria-hidden="true" /></a>
+      </div>
+      <button className="dock-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="primary-navigation">{menuOpen ? <X size={18} /> : <Menu size={18} />}</button>
     </header>
 
     <section className="studio-hero" aria-labelledby="feature-title">
@@ -251,36 +251,22 @@ export function EditorMarketplace() {
         <div className="hero-editorial">
           <div className="telemetry"><span className="status-light" /> FEATURED SCENEPACK <i>·</i> {feature.type.split(" // ")[0]}</div>
           <FeaturedHeading feature={feature} />
-          <div className="spec-strip">{[feature.year, feature.cuts, feature.downloads].map((value, i) => <span key={value}><i>0{i + 1}</i> {value}</span>)}</div>
           <p className="cast-list">{feature.cast}</p>
-          <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={15} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={13} /> Preview scenes</button></div>
+          <div className="hero-controls"><a href="#trending" className="ingest-button"><span>Explore scenepacks</span><ArrowRight size={17} /></a><button className="preview-button" onClick={() => setPreviewOpen(true)}><Play size={15} /> Preview scenes</button></div>
         </div>
-        <div className={`monitor-shell ${previewOpen ? "monitor-playing" : ""}`}>
-          <div className="monitor-frame">
-            <div className="monitor-topline"><span><i /> REC 00:14:22:18</span><span>3840 × 2160 <b>·</b> 23.976 FPS</span></div>
-            <div className="monitor-screen"><div key={feature.id} className="monitor-screen-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(6,8,10,.08), rgba(6,8,10,.24)), url(${feature.image})` }} />
-              <span className="viewfinder corner-tl" /><span className="viewfinder corner-tr" /><span className="viewfinder corner-bl" /><span className="viewfinder corner-br" /><span className="crosshair">+</span>
-              <span className="monitor-timecode">TC {feature.code} // {formatTimecode(playhead)}</span><span className="monitor-take">TAKE 04 <b>·</b> CAM A</span>
-              {previewOpen && <span className="playing-stamp"><i /> PLAYBACK // PREVIEW</span>}
-              <span className="monitor-side-data">ISO 800<br />ƒ / 2.8<br />180°</span>
-            </div>
-            <div className="monitor-bottomline"><span>INPUT 01 <b>·</b> PRORES 422 HQ</span><span className="audio-meter">{waveform.slice(0, 22).map((v, i) => <i key={i} style={{ height: `${Math.max(4, v / 2)}px` }} />)}</span><span>48 KHZ</span></div>
-          </div>
-          <div className="monitor-caption"><span>LIVE VIEWPORT / {feature.code}</span><span>1.85:1 <b>·</b> LOG C</span></div>
-        </div>
-      </div>
-      <div className="timecode-ruler"><div className="timecode-labels"><span>00:00:00:00</span><span>00:45:00:00</span></div><div className="timecode-track"><input type="range" min="0" max="100" value={playhead} onChange={event => setPlayhead(Number(event.target.value))} aria-label="Scrub featured clip timecode" /><span className="ruler-playhead" style={{ left: `${playhead}%` }} /></div><div className="timecode-ticks" aria-hidden="true">{Array.from({ length: 31 }, (_, index) => <i key={index} />)}</div></div>
-      <div className="filmstrip-wrap image-timeline-wrap">
-        <div className="image-timeline" role="group" aria-label="Featured image timeline">
-          <div className="image-timeline-track" style={{ "--feature-duration": `${FEATURE_DURATION_MS}ms` } as CSSProperties}>{features.map((item, index) => <button type="button" key={item.id} className={`image-timeline-segment ${index < active ? "image-timeline-segment-complete" : ""} ${active === index ? "image-timeline-segment-active" : ""}`} onClick={() => { setActive(index); setPreviewOpen(false) }} aria-current={active === index ? "step" : undefined} aria-label={`Show image ${index + 1}: ${item.title} — ${item.subtitle}`}><span className="sr-only">{item.title} — {item.subtitle}</span></button>)}</div>
-          <span className="image-timeline-count" aria-hidden="true"><b>{String(active + 1).padStart(2, "0")}</b><i>/</i>{String(features.length).padStart(2, "0")}</span>
-        </div>
+        <FeaturedFrameCarousel
+          frames={features.map(item => ({ ...item, image: imageUrl(item.image, 760) }))}
+          activeIndex={active}
+          durationMs={FEATURE_DURATION_MS}
+          isPreviewing={previewOpen}
+          onSelect={index => { setActive(index); setPreviewOpen(false) }}
+        />
       </div>
     </section>
 
     <div className="vault-content" id="vault">
       <div className="content-telemetry"><span>VAULT INDEX <b>001 — 048</b></span><span>LAST SYNC 00:04 AGO <i /></span></div>
-      <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.startsWith(item.title.slice(0, 7))); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
+      <CartridgeRail category={packCategory} onCategoryChange={setPackCategory} onPreview={title => { const matchingFeature = features.findIndex(item => title.toLowerCase().startsWith(item.title.slice(0, 7).toLowerCase())); setActive(matchingFeature >= 0 ? matchingFeature : 0); setPreviewOpen(true) }} />
       <section className="creator-drop" id="store">
         <div className="drop-art" style={{ backgroundImage: `url('/hero-anime.png')` }}>
           <div className="drop-art-overlay" />
@@ -293,7 +279,7 @@ export function EditorMarketplace() {
           </div>
           <h2>TWZZUY: HARDSTYLE VELOCITY</h2>
           <p className="creator-bio">Signature transitions, velocity curves, and dialogue stems crafted for modern edits.</p>
-          <div className="stem-player">
+          <div className="stem-player" id="sound">
             <button className="stem-play" onClick={() => setAudioPlaying(!audioPlaying)} aria-label={audioPlaying ? "Pause audio preview" : "Play audio preview"}>
               {audioPlaying ? <Pause size={12} /> : <Play size={12} fill="currentColor" />}
             </button>
@@ -319,17 +305,7 @@ export function EditorMarketplace() {
       </section>
       <SeriesRail />
       <CategoryBrowse onSelectCategory={setPackCategory} />
-      <section className="editor-community" id="community" aria-labelledby="editor-community-title">
-        {communityVisible && <div className="editor-community-bar">
-          <div className="editor-community-intro">
-            <div className="editor-community-avatars" aria-hidden="true">{communityEditors.slice(0, 4).map(editor => <span key={editor.name}>{editor.initials}</span>)}</div>
-            <h2 id="editor-community-title">See editors who use EditPacks clips</h2>
-          </div>
-          <ul className="editor-community-list" aria-label="Featured EditPacks creators">
-            {communityEditors.map(editor => <li className="editor-community-chip" key={editor.name}><span className="editor-community-avatar" aria-hidden="true">{editor.initials}</span><span className="editor-community-name">{editor.name}</span><Music2 size={13} aria-hidden="true" /><span className="editor-community-count">{editor.clips}</span></li>)}
-          </ul>
-          <button className="editor-community-close" type="button" aria-label="Dismiss creator showcase" onClick={() => setCommunityVisible(false)}><X size={16} /></button>
-        </div>}
+      <section className="editor-community" id="community" aria-label="Vault catalog totals">
         <div className="editor-community-index"><p><strong>833</strong> titles <i /> <strong>5,066</strong> packs</p><a href="#trending">Every title <ArrowRight size={16} /></a></div>
       </section>
     </div>

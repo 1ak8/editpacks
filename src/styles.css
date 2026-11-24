@@ -201,7 +201,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 /* Full-bleed cinematic home and a true in-flow reels dock. */
 .command-dock { left: clamp(24px, 4vw, 64px); right: clamp(24px, 4vw, 64px); width: auto; top: 14px; transform: none; }
 .studio-hero { display: flex; flex-direction: column; height: 100dvh; min-height: 0; overflow: hidden; border-bottom: 1px solid #ffffff22; }
-.hero-content-grid { flex: 1 1 auto; min-height: 0; width: auto; max-width: none; margin: 0; padding: clamp(72px, 11vh, 112px) clamp(24px, 4vw, 64px) 8px; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: clamp(16px, 3vw, 40px); box-sizing: border-box; }
+.hero-content-grid { flex: 1 1 auto; min-height: 0; width: auto; max-width: none; margin: 0; padding: clamp(96px, 14vh, 130px) clamp(24px, 4vw, 64px) 8px; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: clamp(16px, 3vw, 40px); box-sizing: border-box; }
 .hero-editorial { max-width: none; padding-top: 0; margin-right: 0 !important; }
 .hero-editorial h1 { margin: 14px 0 18px; font-size: clamp(42px, 6.2vw, 76px); }
 .monitor-shell { max-width: 525px; margin: 0 !important; }
@@ -384,7 +384,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 }
 @media (max-width: 1100px) and (min-width: 761px) {
   .hero-content-grid { width: 100%; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: clamp(20px, 3vw, 32px); }
-  .hero-editorial, .monitor-shell { grid-column: auto; }
+  .hero-editorial, .monitor-shell, .frame-carousel { grid-column: auto; }
   .headline-title { font-size: clamp(38px, 4.35vw, 45px); white-space: normal; }
   .hero-editorial h1 { margin: 12px 0 14px; }
   .quick-filters { gap: 7px; margin-bottom: 10px; }
@@ -595,7 +595,7 @@ html, body { background: #080a0d; }
 body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .vault-app { --cyan: #a7ded9; --muted-copy: #a5adad; background: #080a0d; font-family: 'system-ui', sans-serif; }
 .grain-overlay { opacity: .045; }
-.command-dock { min-height: 58px; border-color: rgb(255 255 255 / 13%); border-radius: 999px; background: rgb(13 17 19 / 76%); box-shadow: 0 14px 44px rgb(0 0 0 / 30%), inset 0 1px rgb(255 255 255 / 7%); backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
+.command-dock { min-height: 58px; border: 1px solid rgb(255 255 255 / 14%); border-radius: 999px; background: #111719; box-shadow: 0 14px 36px rgb(0 0 0 / 42%); backdrop-filter: none; -webkit-backdrop-filter: none; }
 .dock-nav a.dock-active { color: #101719; background: #d8e7e2; }
 .dock-nav a:hover { color: #f4f5f2; }
 .quick-ingest, .pro-button, .preview-button, .ingest-button, .dock-menu { border-radius: 999px; }
@@ -769,7 +769,7 @@ body { color: #f3f1ec; font-family: 'system-ui', sans-serif; }
 .poster-card[data-title-treatment="attack"] .poster-copy > strong { color: #f1e5d0; font-family: "AttackTitle", system-ui, sans-serif; font-weight: 400; letter-spacing: .02em; text-shadow: 0 1px 2px rgb(0 0 0 / 55%); }
 .poster-card[data-title-treatment="spiderverse"] .poster-copy > strong { color: #fff; font-family: "SpiderVerseTitle", "Arial Narrow", sans-serif; font-size: clamp(15px, 1.5vw, 20px); font-style: normal; font-weight: 700; letter-spacing: -.02em; text-shadow: 2px 1px 0 #f05274; }
 .monitor-frame, .monitor-screen { border-radius: 0 !important; }
-.command-dock { border-radius: 8px; }
+.command-dock { border-radius: 999px; }
 .dock-nav a, .quick-ingest, .pro-button, .preview-button, .ingest-button, .dock-menu, .quick-filters button { border-radius: 5px; }
 .spec-strip span, .film-frame, .drop-image, .series-tile, .timeline-workbench, .creator-drop, .audio-callout, .timeline-console, .request-dialog, .search-dialog { border-radius: 6px; }
 .vault-section-heading > a, .utility-link a span { border-radius: 3px; }
@@ -1049,7 +1049,7 @@ html { scroll-padding-top: 92px; }
 @media (max-width: 640px) {
   .drop-grid, .series-rail, .category-grid { column-gap: 10px; }
 }
-.command-dock { border-color: rgb(255 255 255 / 18%); background: rgb(12 13 20 / 62%); -webkit-backdrop-filter: blur(24px) saturate(140%); backdrop-filter: blur(24px) saturate(140%); }
+.command-dock { border-color: rgb(255 255 255 / 18%); background: #111719; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .dock-nav a.dock-active { border: 1px solid rgb(255 255 255 / 16%); background: rgb(255 255 255 / 12%); color: #fff; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 .dock-nav a:not(.dock-active):hover { background: rgb(255 255 255 / 7%); }
 .quick-ingest, .avatar-button, .dock-menu { border-color: rgb(255 255 255 / 16%); background: rgb(255 255 255 / 6%); -webkit-backdrop-filter: blur(14px) saturate(135%); backdrop-filter: blur(14px) saturate(135%); }
@@ -1522,10 +1522,10 @@ html { scroll-padding-top: 92px; }
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    border-radius: 8px !important;
-    background: rgba(12, 14, 20, 0.88) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 999px !important;
+    background: #111719 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     border: 1px solid rgba(255, 255, 255, 0.14) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
     z-index: 100 !important;
@@ -1723,8 +1723,7 @@ html { scroll-padding-top: 92px; }
     display: none !important;
   }
 
-  /* Hide timecode ruler and segment slider on mobile */
-  .timecode-ruler,
+  /* Keep the image segment selector off mobile */
   .image-timeline-wrap {
     display: none !important;
   }
@@ -1825,6 +1824,290 @@ html { scroll-padding-top: 92px; }
 .drop-grid,
 .series-rail {
   gap: clamp(22px, 2.2vw, 36px) !important;
+}
+
+.hero-controls .ingest-button,
+.hero-controls .preview-button {
+  border-radius: 18px !important;
+}
+
+.poster-item .poster-rank-number {
+  pointer-events: none;
+}
+
+ .drop-grid,
+.series-rail {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  grid-template-rows: none !important;
+  gap: clamp(12px, 1.5vw, 20px) !important;
+  column-gap: clamp(12px, 1.5vw, 20px) !important;
+  min-height: 0 !important;
+}
+
+.drop-image,
+.series-tile {
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 2 / 3 !important;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 14%) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 35px rgb(0 0 0 / 19%);
+}
+
+.drop-tile:hover .drop-image,
+.series-tile:hover {
+  border-color: rgb(205 233 226 / 48%) !important;
+  box-shadow: 0 20px 48px rgb(0 0 0 / 34%), 0 0 24px rgb(183 229 223 / 8%);
+}
+
+@media (max-width: 1050px) {
+  .drop-grid,
+  .series-rail {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .drop-grid,
+  .series-rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .drop-grid,
+  .series-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+}
+
+
+.command-dock {
+  position: fixed !important;
+  top: 16px !important;
+  left: 50% !important;
+  right: auto !important;
+  width: min(1240px, calc(100% - 64px)) !important;
+  min-height: 76px !important;
+  padding: 0 22px 0 26px !important;
+  transform: translateX(-50%) !important;
+  display: grid !important;
+  grid-template-columns: minmax(180px, 1fr) auto minmax(220px, 1fr) !important;
+  gap: 28px !important;
+  border: 1px solid #ffffff1a !important;
+  border-bottom-color: #a7ded955 !important;
+  border-radius: 18px 18px 34px 34px !important;
+  background: #0d1113 !important;
+  box-shadow: 0 14px 42px #0009, inset 0 1px #ffffff0b !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 100 !important;
+}
+.command-dock .vault-wordmark {
+  gap: 10px !important;
+  color: #f3f1ec !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .14em !important;
+}
+.command-dock .rec-indicator {
+  gap: 6px !important;
+  color: #a7ded9 !important;
+  font-size: 8px !important;
+  letter-spacing: .1em !important;
+}
+.command-dock .rec-indicator i {
+  width: 7px !important;
+  height: 7px !important;
+  background: #a7ded9 !important;
+  box-shadow: 0 0 10px #a7ded988 !important;
+}
+.command-dock .dock-nav {
+  width: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  gap: clamp(16px, 2.2vw, 32px) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.command-dock .dock-nav a {
+  position: relative !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #929b9a !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  letter-spacing: .025em !important;
+  transition: color .18s ease !important;
+}
+.command-dock .dock-nav a::after {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 4px !important;
+  left: 0 !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+  background: #a7ded9 !important;
+  content: '' !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform .18s ease !important;
+}
+.command-dock .dock-nav a:hover,
+.command-dock .dock-nav a.dock-active {
+  color: #f4f1e9 !important;
+}
+.command-dock .dock-nav a:hover::after,
+.command-dock .dock-nav a.dock-active::after {
+  transform: scaleX(1) !important;
+}
+.command-dock .dock-actions {
+  justify-self: end !important;
+  gap: 10px !important;
+}
+.command-dock .quick-ingest {
+  height: 38px !important;
+  padding: 0 11px !important;
+  gap: 8px !important;
+  border: 1px solid #ffffff1b !important;
+  border-radius: 10px !important;
+  background: #171d1e !important;
+  color: #e4e8e3 !important;
+  font-size: 10px !important;
+}
+.command-dock .quick-ingest kbd {
+  background: #252d2e !important;
+  color: #9fa9a7 !important;
+}
+.command-dock .avatar-button {
+width: 34px !important;
+    height: 34px !important;
+  border-color: #ffffff1a !important;
+  background: #171d1e !important;
+  color: #c5d0ce !important;
+}
+.command-dock .pro-button {
+  min-height: 38px !important;
+  padding: 0 14px !important;
+  border: 1px solid #a7ded955 !important;
+  border-radius: 10px !important;
+  background: #a7ded9 !important;
+  color: #0b1415 !important;
+  box-shadow: none !important;
+  font-size: 9px !important;
+}
+.command-dock .pro-button svg {
+  color: #284746 !important;
+}
+.command-dock .dock-menu {
+  border-color: #ffffff24 !important;
+  background: #171d1e !important;
+  color: #edf2ee !important;
+}
+@media (max-width: 1050px) and (min-width: 761px) {
+  .command-dock {
+    width: calc(100% - 36px) !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    gap: 16px !important;
+    padding-inline: 18px !important;
+  }
+  .command-dock .dock-nav {
+    gap: 14px !important;
+  }
+  .command-dock .dock-nav a {
+    font-size: 10px !important;
+  }
+}
+@media (max-width: 760px) {
+  .command-dock {
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    transform: none !important;
+    min-height: 58px !important;
+    height: 58px !important;
+    padding: 0 10px 0 16px !important;
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    gap: 8px !important;
+    border-radius: 16px 16px 26px 26px !important;
+  }
+  .command-dock .vault-wordmark {
+    font-size: 11px !important;
+    letter-spacing: .1em !important;
+  }
+  .command-dock .rec-indicator {
+    font-size: 7px !important;
+  }
+  .command-dock .dock-actions {
+    margin-left: 0 !important;
+    gap: 6px !important;
+  }
+  .command-dock .quick-ingest,
+  .command-dock .dock-menu {
+    width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 10px !important;
+    background: #171d1e !important;
+  }
+  .vault-app .command-dock .pro-button {
+    width: auto !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 10px !important;
+    border-radius: 9px !important;
+    font-size: 8px !important;
+  }
+  .command-dock .dock-menu {
+    display: grid !important;
+  }
+  .command-dock .dock-nav {
+    top: calc(100% + 9px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    padding: 8px !important;
+    gap: 3px !important;
+    border: 1px solid #ffffff1a !important;
+    border-radius: 14px !important;
+    background: #0d1113 !important;
+    box-shadow: 0 16px 34px #000b !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .command-dock .dock-nav a {
+    min-height: 42px !important;
+    padding: 0 12px !important;
+    border-radius: 8px !important;
+    color: #a3acab !important;
+    font-size: 12px !important;
+  }
+  .command-dock .dock-nav a::after {
+    display: none !important;
+  }
+  .command-dock .dock-nav a:hover,
+  .command-dock .dock-nav a.dock-active {
+    background: #1a2424 !important;
+    color: #d4efeb !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .command-dock .dock-nav a,
+  .command-dock .dock-nav a::after {
+    transition: none !important;
+  }
 }
 
 @media (max-width: 980px) {
@@ -2066,3 +2349,801 @@ html { scroll-padding-top: 92px; }
     max-width: 100% !important;
   }
 }
+
+.command-dock {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(180px, 1fr) auto minmax(300px, 1fr) !important;
+  width: 100% !important;
+  min-height: 64px !important;
+  padding: 0 24px !important;
+  gap: 24px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgb(255 255 255 / 10%) !important;
+  border-radius: 0 !important;
+  background: rgb(8 9 11 / 88%) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(22px) saturate(115%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(115%) !important;
+}
+.command-dock .vault-wordmark {
+  justify-self: start;
+  color: #f7f7f5 !important;
+  font: 750 25px/1 system-ui, sans-serif !important;
+  letter-spacing: -.065em !important;
+  text-transform: lowercase;
+}
+.command-dock .dock-nav {
+  justify-self: center;
+  gap: 2px !important;
+  max-width: none !important;
+  padding: 5px !important;
+  border: 1px solid rgb(255 255 255 / 14%) !important;
+  border-radius: 999px !important;
+  background: rgb(15 16 18 / 82%) !important;
+  box-shadow: none !important;
+}
+.command-dock .dock-nav a {
+  padding: 0 14px !important;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px !important;
+  color: #c9c9ca !important;
+  font: 400 14px/1 system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+.command-dock .dock-nav a:hover {
+  color: #fff !important;
+  background: rgb(255 255 255 / 8%) !important;
+}
+.command-dock .dock-nav a.dock-active {
+  background: #f5f4f1 !important;
+  color: #171719 !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+.command-dock .dock-actions {
+  justify-self: end;
+  gap: 16px !important;
+}
+.command-dock .quick-ingest {
+  width: 194px;
+  height: 60px;
+  justify-content: flex-start;
+  padding: 0 21px !important;
+  border: 1px solid rgb(255 255 255 / 16%) !important;
+  border-radius: 999px !important;
+  background: #222224 !important;
+  color: #aaa9aa !important;
+  font: 400 14px/1 system-ui, sans-serif !important;
+}
+.command-dock .pro-button {
+  min-width: 126px;
+  height: 56px;
+  justify-content: center;
+  padding: 0 22px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #f5f4f1 !important;
+  color: #171719 !important;
+  box-shadow: none !important;
+  font: 600 14px/1 system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+.command-dock .dock-menu { display: none !important; }
+@media (max-width: 1050px) and (min-width: 761px) {
+  .command-dock {
+    grid-template-columns: minmax(150px, 1fr) auto minmax(230px, 1fr) !important;
+    padding: 0 16px !important;
+    gap: 12px !important;
+  }
+  .command-dock .dock-nav { display: flex !important; }
+  .command-dock .dock-nav a { padding: 0 10px !important; font-size: 12px !important; }
+  .command-dock .quick-ingest { width: 150px; }
+  .command-dock .quick-ingest span { display: block !important; }
+  .command-dock .dock-actions { gap: 8px !important; }
+}
+@media (max-width: 760px) {
+  .command-dock {
+    top: 0 !important;
+    left: 0 !important;
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    width: 100% !important;
+    min-height: 60px !important;
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+  .command-dock .vault-wordmark { font-size: 22px !important; }
+  .command-dock .dock-actions { gap: 7px !important; margin-left: 0 !important; }
+  .command-dock .quick-ingest {
+    width: 122px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+  }
+  .command-dock .quick-ingest span { display: block !important; }
+  .command-dock .pro-button {
+    min-width: 0 !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 12px !important;
+    font-size: 11px !important;
+  }
+  .command-dock .dock-menu { display: grid !important; }
+  .command-dock .dock-nav {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 8px !important;
+    border-radius: 16px !important;
+    background: rgb(13 15 18 / 97%) !important;
+  }
+  .command-dock .dock-nav a { min-height: 42px !important; width: 100% !important; padding: 0 14px !important; font-size: 14px !important; }
+}
+
+.command-dock .vault-wordmark {
+  font-size: 25px !important;
+  line-height: 1 !important;
+}
+.command-dock .quick-ingest span {
+  display: block !important;
+}
+.vault-app .command-dock .vault-wordmark {
+  font-size: 25px !important;
+  line-height: 1 !important;
+}
+.vault-app .command-dock .dock-nav a::after {
+  display: none !important;
+  content: none !important;
+}
+@media (max-width: 760px) {
+  .vault-app .command-dock .vault-wordmark { font-size: 21px !important; }
+}
+
+.vault-app .command-dock {
+  position: absolute !important;
+  top: 18px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(14px, 2vw, 30px) !important;
+  width: min(1440px, calc(100% - 48px)) !important;
+  min-height: 76px !important;
+  padding: 10px 14px 10px 24px !important;
+  border: 1px solid rgb(255 255 255 / 13%) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(110deg, rgb(7 13 20 / 88%), rgb(20 24 32 / 84%)) !important;
+  box-shadow: 0 16px 44px rgb(0 0 0 / 28%), inset 0 1px 0 rgb(255 255 255 / 8%) !important;
+  backdrop-filter: blur(24px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(125%) !important;
+}
+.vault-app .dock-brand {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  gap: clamp(14px, 2vw, 26px) !important;
+}
+.vault-app .dock-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  color: #f8fafc !important;
+  font: 800 21px/1 system-ui, sans-serif !important;
+  letter-spacing: -.055em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+.vault-app .dock-logo svg { color: #8ed4dd !important; stroke-width: 1.5 !important; }
+.vault-app .membership-link {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  min-height: 44px !important;
+  padding: 0 17px !important;
+  border: 1px solid rgb(183 232 239 / 40%) !important;
+  border-radius: 999px !important;
+  background: #a5dce3 !important;
+  color: #14252a !important;
+  font: 650 13px/1 system-ui, sans-serif !important;
+  letter-spacing: -.01em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: background .2s ease, transform .2s ease !important;
+}
+.vault-app .membership-link:hover { background: #c1edf1 !important; transform: translateY(-1px) !important; }
+.vault-app .membership-link svg { stroke-width: 2 !important; }
+.vault-app .command-dock .dock-nav {
+  position: static !important;
+  display: flex !important;
+  flex: 0 1 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  padding: 6px !important;
+  border: 1px solid rgb(255 255 255 / 7%) !important;
+  border-radius: 16px !important;
+  background: rgb(5 9 14 / 32%) !important;
+  box-shadow: none !important;
+}
+.vault-app .command-dock .dock-nav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  min-height: 44px !important;
+  padding: 0 clamp(11px, 1.3vw, 19px) !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  color: #b7bec7 !important;
+  font: 500 14px/1 system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: color .18s ease, background .18s ease, border-color .18s ease !important;
+}
+.vault-app .command-dock .dock-nav a::after { display: none !important; content: none !important; }
+.vault-app .command-dock .dock-nav a:hover { background: rgb(255 255 255 / 7%) !important; color: #fff !important; }
+.vault-app .command-dock .dock-nav a.dock-active {
+  border-color: rgb(255 255 255 / 90%) !important;
+  background: #f8f8f6 !important;
+  color: #14171a !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%) !important;
+}
+.vault-app .command-dock .dock-actions {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 6px !important;
+  margin: 0 !important;
+}
+.vault-app .dock-icon-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  padding: 0 !important;
+  border: 1px solid transparent !important;
+  border-radius: 13px !important;
+  background: transparent !important;
+  color: #c2c8d0 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: color .18s ease, background .18s ease, border-color .18s ease !important;
+}
+.vault-app .dock-icon-button:hover { color: white !important; background: rgb(255 255 255 / 8%) !important; border-color: rgb(255 255 255 / 9%) !important; }
+.vault-app .dock-community-link { margin-left: 4px !important; }
+.vault-app .dock-account-link {
+  width: 44px !important;
+  height: 44px !important;
+  margin-left: 3px !important;
+  border: 1px solid rgb(255 255 255 / 15%) !important;
+  border-radius: 50% !important;
+  background: rgb(255 255 255 / 5%) !important;
+}
+.vault-app .command-dock .dock-menu { display: none !important; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .vault-app .command-dock { gap: 12px !important; padding-left: 16px !important; padding-right: 10px !important; }
+  .vault-app .dock-brand { gap: 12px !important; }
+  .vault-app .dock-logo { font-size: 18px !important; }
+  .vault-app .membership-link { min-height: 40px !important; padding: 0 12px !important; font-size: 12px !important; }
+  .vault-app .command-dock .dock-nav a { min-height: 40px !important; padding-right: 10px !important; padding-left: 10px !important; font-size: 12px !important; }
+  .vault-app .dock-icon-button { width: 36px !important; height: 36px !important; }
+}
+@media (max-width: 760px) {
+  .vault-app .command-dock {
+    top: 10px !important;
+    width: calc(100% - 24px) !important;
+    min-height: 58px !important;
+    padding: 7px 8px 7px 13px !important;
+    gap: 8px !important;
+    border-radius: 16px !important;
+  }
+  .vault-app .dock-brand { gap: 8px !important; }
+  .vault-app .dock-logo { gap: 5px !important; font-size: 17px !important; }
+  .vault-app .dock-logo svg { width: 16px !important; height: 16px !important; }
+  .vault-app .membership-link { min-height: 36px !important; gap: 5px !important; padding: 0 10px !important; font-size: 11px !important; }
+  .vault-app .membership-link svg { width: 12px !important; height: 12px !important; }
+  .vault-app .command-dock .dock-nav {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    padding: 8px !important;
+    border: 1px solid rgb(255 255 255 / 13%) !important;
+    border-radius: 14px !important;
+    background: rgb(12 17 24 / 97%) !important;
+    box-shadow: 0 16px 36px rgb(0 0 0 / 36%) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  .vault-app .command-dock .dock-nav.dock-nav-open { display: flex !important; }
+  .vault-app .command-dock .dock-nav a { justify-content: flex-start !important; width: 100% !important; min-height: 42px !important; padding: 0 13px !important; border-radius: 10px !important; font-size: 14px !important; }
+  .vault-app .dock-actions { margin-left: auto !important; gap: 2px !important; }
+  .vault-app .dock-icon-button { width: 38px !important; height: 38px !important; }
+  .vault-app .dock-community-link, .vault-app .dock-account-link { display: none !important; }
+  .vault-app .command-dock .dock-menu {
+    display: inline-grid !important;
+    place-items: center !important;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    border: 1px solid rgb(255 255 255 / 13%) !important;
+    border-radius: 12px !important;
+    background: rgb(255 255 255 / 5%) !important;
+    color: #f2f4f6 !important;
+  }
+}
+@media (max-width: 380px) {
+  .vault-app .dock-logo { font-size: 15px !important; }
+  .vault-app .membership-link { padding: 0 8px !important; }
+  .vault-app .dock-icon-button, .vault-app .command-dock .dock-menu { width: 34px !important; height: 34px !important; }
+}
+
+
+.vault-app .command-dock {
+  position: absolute !important;
+  top: 16px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  display: grid !important;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(240px, 1fr) !important;
+  align-items: center !important;
+  justify-content: stretch !important;
+  gap: 14px !important;
+  width: min(1600px, calc(100% - 80px)) !important;
+  min-height: 56px !important;
+  padding: 4px 14px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.vault-app .dock-brand {
+  display: flex !important;
+  align-items: center !important;
+  justify-self: start !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+}
+.vault-app .recording-mark {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  color: #b1b4bd !important;
+  font: 500 12px/1 system-ui, sans-serif !important;
+  letter-spacing: .17em !important;
+}
+.vault-app .recording-mark i {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #ba3949;
+  box-shadow: 0 0 10px rgb(186 57 73 / 38%);
+}
+.vault-app .dock-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #f4f4f5 !important;
+  font: 800 14px/1 system-ui, sans-serif !important;
+  letter-spacing: .09em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+.vault-app .command-dock .dock-nav {
+  position: static !important;
+  display: flex !important;
+  justify-self: center !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(6px, .8vw, 14px) !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.vault-app .command-dock .dock-nav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-height: 40px !important;
+  padding: 0 14px !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  color: #c4c4ce !important;
+  font: 500 13px/1 system-ui, sans-serif !important;
+  letter-spacing: .045em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: color .18s ease, background .18s ease, border-color .18s ease !important;
+}
+.vault-app .command-dock .dock-nav a::after { display: none !important; content: none !important; }
+.vault-app .command-dock .dock-nav a:hover { color: #fff !important; background: rgb(255 255 255 / 5%) !important; }
+.vault-app .command-dock .dock-nav a.dock-active {
+  border-color: rgb(255 255 255 / 13%) !important;
+  background: #28292f !important;
+  color: #f6f6f7 !important;
+  font-weight: 700 !important;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%) !important;
+}
+.vault-app .command-dock .dock-actions {
+  display: flex !important;
+  justify-self: end !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+.vault-app .dock-icon-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  border: 1px solid rgb(255 255 255 / 14%) !important;
+  border-radius: 8px !important;
+  background: rgb(255 255 255 / 2%) !important;
+  color: #aeb1bb !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: color .18s ease, background .18s ease, border-color .18s ease !important;
+}
+.vault-app .dock-icon-button:hover { border-color: rgb(255 255 255 / 30%) !important; background: rgb(255 255 255 / 7%) !important; color: white !important; }
+.vault-app .dock-account-link { border-radius: 50% !important; }
+.vault-app .membership-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-width: 150px !important;
+  min-height: 36px !important;
+  padding: 0 11px !important;
+  border: 1px solid #aeb4ad !important;
+  border-radius: 6px !important;
+  background: linear-gradient(110deg, rgb(30 42 37 / 80%), rgb(22 26 28 / 86%)) !important;
+  color: #f2f0e9 !important;
+  font: 750 12px/1 system-ui, sans-serif !important;
+  letter-spacing: .09em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: border-color .18s ease, background .18s ease !important;
+}
+.vault-app .membership-link:hover { border-color: #e4ddc6 !important; background: rgb(68 75 57 / 70%) !important; transform: none !important; }
+.vault-app .membership-link svg { color: #dfc267 !important; stroke-width: 1.8 !important; }
+.vault-app .command-dock .dock-menu { display: none !important; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .vault-app .command-dock { grid-template-columns: minmax(135px, 1fr) auto minmax(210px, 1fr) !important; gap: 8px !important; width: calc(100% - 36px) !important; min-height: 54px !important; padding: 5px 12px !important; }
+  .vault-app .recording-mark { font-size: 10px !important; gap: 5px !important; }
+  .vault-app .dock-logo { font-size: 14px !important; letter-spacing: .06em !important; }
+  .vault-app .command-dock .dock-nav { flex-direction: row !important; gap: 2px !important; }
+  .vault-app .command-dock .dock-nav a { min-height: 38px !important; padding: 0 8px !important; font-size: 11px !important; }
+  .vault-app .command-dock .dock-actions { gap: 7px !important; }
+  .vault-app .dock-icon-button { width: 40px !important; height: 34px !important; }
+  .vault-app .membership-link { min-width: 125px !important; min-height: 36px !important; font-size: 11px !important; }
+}
+@media (max-width: 760px) {
+  .vault-app .command-dock {
+    top: 10px !important;
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    width: calc(100% - 24px) !important;
+    min-height: 56px !important;
+    padding: 6px 7px 6px 11px !important;
+    gap: 6px !important;
+    border-radius: 11px !important;
+  }
+  .vault-app .dock-brand { gap: 7px !important; }
+  .vault-app .recording-mark { gap: 5px !important; font-size: 10px !important; letter-spacing: .12em !important; }
+  .vault-app .recording-mark i { width: 7px; height: 7px; flex-basis: 7px; }
+  .vault-app .dock-logo { font-size: 13px !important; letter-spacing: .07em !important; }
+  .vault-app .command-dock .dock-nav {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-self: auto !important;
+    width: 100% !important;
+    padding: 8px !important;
+    border: 1px solid rgb(255 255 255 / 15%) !important;
+    border-radius: 10px !important;
+    background: rgb(13 14 20 / 97%) !important;
+    box-shadow: 0 16px 36px rgb(0 0 0 / 35%) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  .vault-app .command-dock .dock-nav.dock-nav-open { display: flex !important; }
+  .vault-app .command-dock .dock-nav a { justify-content: flex-start !important; width: 100% !important; min-height: 40px !important; padding: 0 12px !important; font-size: 13px !important; }
+  .vault-app .command-dock .dock-actions { margin-left: auto !important; gap: 5px !important; }
+  .vault-app .dock-icon-button { width: 34px !important; height: 34px !important; border-radius: 7px !important; }
+  .vault-app .dock-account-link { display: none !important; }
+  .vault-app .membership-link { min-width: 0 !important; min-height: 32px !important; gap: 4px !important; padding: 0 8px !important; font-size: 9px !important; letter-spacing: .05em !important; }
+  .vault-app .membership-link svg { width: 13px !important; height: 13px !important; }
+  .vault-app .command-dock .dock-menu {
+    display: inline-grid !important;
+    place-items: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    border: 1px solid rgb(255 255 255 / 14%) !important;
+    border-radius: 7px !important;
+    background: rgb(255 255 255 / 2%) !important;
+    color: #edeef1 !important;
+  }
+}
+@media (max-width: 430px) {
+  .vault-app .recording-mark { font-size: 0 !important; gap: 0 !important; }
+  .vault-app .recording-mark i { width: 7px; height: 7px; flex-basis: 7px; }
+  .vault-app .dock-logo { font-size: 12px !important; }
+}
+
+.vault-app .hero-controls {
+  gap: 18px !important;
+  margin-top: 18px !important;
+  transform: none !important;
+}
+.vault-app .hero-controls .ingest-button,
+.vault-app .hero-controls .preview-button {
+  height: 50px !important;
+  min-height: 50px !important;
+  padding: 0 20px !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+}
+.vault-app .hero-controls .ingest-button { gap: 18px !important; }
+.vault-app .hero-controls .preview-button { gap: 9px !important; }
+@media (max-width: 420px) {
+  .vault-app .hero-controls { gap: 10px !important; margin-top: 10px !important; }
+  .vault-app .hero-controls .ingest-button,
+  .vault-app .hero-controls .preview-button { width: 100% !important; height: 48px !important; min-height: 48px !important; }
+}
+@media (min-width: 761px) {
+  .vault-app .hero-content-grid { transform: translateY(128px) !important; }
+}
+.vault-app .command-dock,
+.vault-app .command-dock .dock-nav a,
+.vault-app .command-dock .dock-icon-button,
+.vault-app .command-dock .membership-link,
+.vault-app .command-dock .dock-menu,
+.vault-app .studio-hero .hero-controls .ingest-button,
+.vault-app .studio-hero .hero-controls .preview-button {
+  border-radius: 9999px !important;
+}
+.vault-app .hero-editorial { gap: 8px !important; }
+.vault-app .hero-editorial h1 {
+  height: auto !important;
+  flex: 0 0 auto !important;
+  margin: 8px 0 !important;
+}
+.vault-app .headline-sub { margin-top: 8px !important; }
+.vault-app .hero-editorial .cast-list { margin: 4px 0 8px !important; }
+.vault-app .hero-controls { margin-top: 8px !important; }
+
+.frame-carousel {
+  grid-column: span 5;
+  display: flex;
+  width: 100%;
+  max-width: 620px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  justify-self: end;
+  align-self: center;
+}
+.frame-carousel-heading,
+.frame-carousel-navigation {
+  display: flex;
+  align-items: center;
+}
+.frame-carousel-heading {
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 38px;
+  padding: 0 2px;
+}
+.frame-carousel-eyebrow {
+  color: #d0d0ce;
+  font: 700 9px/1.2 ui-monospace, monospace;
+  letter-spacing: .18em;
+}
+.frame-carousel-navigation { gap: 11px; }
+.frame-carousel-arrow {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 27%);
+  border-radius: 50%;
+  background: rgb(9 10 13 / 28%);
+  color: #f3f2ef;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.frame-carousel-arrow:hover { transform: scale(1.06); border-color: rgb(255 255 255 / 64%); background: rgb(255 255 255 / 9%); }
+.frame-carousel-arrow:focus-visible,
+.frame-carousel-card:focus-visible { outline: 2px solid #f3f2ef; outline-offset: 3px; }
+.frame-carousel-count {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 52px;
+  justify-content: center;
+  color: #f1f0ec;
+  font: 500 13px/1 ui-monospace, monospace;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+.frame-carousel-count strong { font-size: 17px; font-weight: 500; }
+.frame-carousel-count > span { color: #a5a5a3; font-size: 12px; }
+.frame-carousel-stage {
+  display: flex;
+  width: 100%;
+  height: clamp(240px, 40vh, 320px);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, .7vw, 9px);
+  overflow: visible;
+}
+.frame-carousel-card {
+  position: relative;
+  display: block;
+  flex: 0 0 14%;
+  height: 74%;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 13px;
+  background: #101115;
+  color: #f6f4ef;
+  cursor: pointer;
+  opacity: .63;
+  transform: translateY(5px) scale(.97);
+  transition: flex-basis .55s cubic-bezier(.2,.8,.2,1), height .55s cubic-bezier(.2,.8,.2,1), opacity .4s ease, transform .55s cubic-bezier(.2,.8,.2,1), border-color .4s ease;
+}
+.frame-carousel-card--near { flex-basis: 20%; height: 85%; opacity: .84; transform: translateY(2px); }
+.frame-carousel-card--center {
+  z-index: 2;
+  flex-basis: 34%;
+  height: 100%;
+  border-color: #f2f0eb;
+  opacity: 1;
+  transform: none;
+  box-shadow: 0 16px 42px rgb(0 0 0 / 34%);
+}
+.frame-carousel-art {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: #19191b;
+  background-position: center;
+  background-size: cover;
+  animation: frame-art-enter .45s ease both;
+}
+.frame-carousel-copy {
+  position: absolute;
+  z-index: 1;
+  right: 9px;
+  bottom: 10px;
+  left: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+.frame-carousel-copy small {
+  color: rgb(245 245 240 / 74%);
+  font: 650 7px/1.2 ui-monospace, monospace;
+  letter-spacing: .12em;
+}
+.frame-carousel-copy strong {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #fff;
+  font: 750 clamp(9px, .95vw, 13px)/1.1 system-ui, sans-serif;
+  letter-spacing: -.025em;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 75%);
+}
+.frame-carousel-card--far .frame-carousel-copy { right: 5px; bottom: 7px; left: 5px; }
+.frame-carousel-card--far .frame-carousel-copy small { display: none; }
+.frame-carousel-card--far .frame-carousel-copy strong { font-size: 8px; }
+.frame-carousel-preview {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 7px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 999px;
+  background: rgb(8 10 12 / 72%);
+  color: #f3f2ee;
+  font: 700 7px/1 ui-monospace, monospace;
+  letter-spacing: .08em;
+}
+.frame-carousel-preview i { width: 5px; height: 5px; border-radius: 50%; background: #f45d62; box-shadow: 0 0 8px #f45d62; }
+.frame-carousel-progress {
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 24%);
+}
+.frame-carousel-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #f4f2ed;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: frame-progress var(--frame-duration) linear both;
+}
+@keyframes frame-progress { to { transform: scaleX(1); } }
+@keyframes frame-art-enter { from { opacity: .5; transform: scale(1.03); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 900px) and (min-width: 761px) {
+  .frame-carousel-card--far { display: none; }
+  .frame-carousel-card--near { flex-basis: 21%; height: 84%; }
+  .frame-carousel-card--center { flex-basis: 40%; }
+}
+@media (max-width: 760px) {
+  .frame-carousel { order: -1; width: 100%; max-width: 570px; gap: 12px; margin: 0 auto; }
+  .frame-carousel-heading { min-height: 36px; }
+  .frame-carousel-stage { height: clamp(230px, 62vw, 290px); gap: 8px; }
+  .frame-carousel-card--far { display: none; }
+  .frame-carousel-card--near { flex-basis: 21%; height: 82%; }
+  .frame-carousel-card--center { flex-basis: 40%; }
+  .frame-carousel-copy { right: 7px; bottom: 8px; left: 7px; }
+  .frame-carousel-copy strong { font-size: 10px; }
+}
+@media (max-width: 420px) {
+  .frame-carousel-stage { height: clamp(220px, 60vw, 250px); }
+  .frame-carousel-card--center { flex-basis: 42%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .frame-carousel-card,
+  .frame-carousel-art { transition: none; animation: none; }
+  .frame-carousel-progress > span { transform: scaleX(1); animation: none; }
+}
+
