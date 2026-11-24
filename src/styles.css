@@ -3972,11 +3972,97 @@ width: 34px !important;
 }
 
 @media (max-width: 760px) {
+  .vault-app .studio-hero {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    overflow: hidden !important;
+  }
+
+  .vault-app .hero-content-grid {
+    transform: translateY(32px) !important;
+  }
+
+  .vault-app .hero-editorial h1 {
+    font-size: clamp(48px, 13vw, 58px) !important;
+  }
+
+  .vault-app .hero-editorial h1 .headline-title {
+    font-size: clamp(28px, 8.5vw, 34px) !important;
+  }
+
+  .vault-app .hero-editorial .headline-sub {
+    font-size: 15px !important;
+  }
+
+  .vault-app .command-dock .vault-wordmark {
+    font-size: 14px !important;
+  }
+
+  .vault-app .membership-link {
+    font-size: 11px !important;
+  }
+
+  .vault-app .command-dock .dock-nav a {
+    font-size: 16px !important;
+  }
+
+  .vault-app .frame-carousel-stage {
+    height: clamp(210px, 29svh, 255px) !important;
+  }
+
   .vault-app .hero-editorial {
-    gap: 14px;
+    gap: 9px !important;
+    margin-top: 0 !important;
+  }
+
+  .vault-app .hero-editorial h1 {
+    margin: 0 !important;
+    row-gap: 6px;
+  }
+
+  .vault-app .hero-editorial .headline-sub {
+    margin-top: 0 !important;
+  }
+
+  .vault-app .cast-list {
+    margin: 4px 0 0 !important;
+    line-height: 1.45 !important;
+  }
+
+  .vault-app .hero-controls {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin-top: 4px !important;
+  }
+
+  .vault-app .hero-controls .ingest-button,
+  .vault-app .hero-controls .preview-button {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding-inline: 8px !important;
+    font-size: 10px !important;
+    white-space: nowrap;
   }
 
   .vault-app .drop-tile {
     height: auto !important;
+    aspect-ratio: 2 / 3 !important;
+  }
+}
+
+@media (max-width: 760px) and (max-height: 740px) {
+  .vault-app .hero-content-grid {
+    transform: translateY(8px) !important;
+  }
+
+  .vault-app .frame-carousel-stage {
+    height: 210px !important;
   }
 }
